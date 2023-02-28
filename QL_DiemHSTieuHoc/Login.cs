@@ -3,11 +3,11 @@ using ValueObject;
 
 namespace QL_DiemHSTieuHoc
 {
-    public partial class Form1 : Form
+    public partial class Login : Form
     {
         UserAccount ac = new UserAccount();
-        UserBLL acBll= new UserBLL();
-        public Form1()
+        UserBLL acBll = new UserBLL();
+        public Login()
         {
             InitializeComponent();
         }
@@ -36,6 +36,33 @@ namespace QL_DiemHSTieuHoc
             }
 
             MessageBox.Show("Xin chúc mừng bạn đã đăng nhập thành công hệ thống!");
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblFogotPass_Click(object sender, EventArgs e)
+        {
+            FogotPass fr = new FogotPass();
+            fr.ShowDialog();
+        }
+
+        private void lblCreateUserAccout_Click(object sender, EventArgs e)
+        {
+            Register re = new Register();
+            re.ShowDialog();
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void pnRight_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

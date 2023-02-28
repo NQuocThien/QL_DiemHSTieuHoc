@@ -13,5 +13,15 @@ namespace DataAccessLayer
             string info = CheckLogicDTO(taikhoan);
             return info;
         }
-    }
+        public string CheckEmail(string  email)
+        {
+            string pass = CheckEmailDAO(email);
+            return pass;
+        }
+        public string CreateAccout(UserAccount user)
+        {
+           string status =  CreateAccoutDAO(user);
+            return status;
+        }
+    }   
 }

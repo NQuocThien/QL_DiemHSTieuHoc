@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
 using ValueObject;
+using System.Data.Common;
 
 namespace DataAccessLayer
 {
@@ -19,17 +20,69 @@ namespace DataAccessLayer
             return conn;
         }
     }
+    /// <summary>
+    /// modifi
+    class Modify
+    {
+        public Modify()
+        {
+        }
+        SqlCommand sqlCommand;
+        SqlConnection connection;
+        SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
+        DataTable table = new DataTable();
+        SqlDataReader dataReader; // doc dL tron
+        public void Command(string squery) // thêm xóa sửa
+        {
+            using (SqlConnection sqlConnection = SqlConnectionData.Connect())
+            {
+                sqlConnection.Open();
+                sqlCommand = new SqlCommand(squery, sqlConnection);
+                sqlCommand.ExecuteNonQuery(); // thực thi câu truy vấn
+                sqlConnection.Close();
+            }
+        }
+        public DataTable GetDataTable(string squery) // 
+        {
+            using (SqlConnection sqlConnection = SqlConnectionData.Connect())
+            {
+                sqlConnection.Open();
+                sqlCommand = new SqlCommand(squery, sqlConnection);
+                DataTable dt = new DataTable();
+                dt.Load(sqlCommand.ExecuteReader());
+                return dt;
+            }
+        }
+        public SqlDataReader GetDataAdapter(string squery) // 
+        {
+            using (SqlConnection sqlConnection = SqlConnectionData.Connect())
+            {
+                sqlConnection.Open();
+                sqlCommand = new SqlCommand(squery, sqlConnection);
+                return sqlCommand.ExecuteReader();
+            }
+        }
+
+
+    }
+
+    /// </summary>
+
+
+
+
+
     public class DatabaseAccess
     {
+       
         public static string CheckLogicDTO(UserAccount taikhoan)
         {
+            Modify modify = new Modify();
             string user = null;
-            // Hàm connect tới CSDL
             SqlConnection conn = SqlConnectionData.Connect();
             conn.Open();
             string strSQL = "Select * From UserAccount Where userName = '" + taikhoan.UserName + "' and pass = '" + taikhoan.Pass + "'";
             SqlCommand command = new SqlCommand(strSQL, conn);
-            // Kiểm tra quyền các bạn thêm 1 cái parameter...
             command.Connection = conn;
             SqlDataReader reader = command.ExecuteReader();
             if (reader.HasRows)
@@ -46,6 +99,41 @@ namespace DataAccessLayer
                 return "Tài khoản hoặc mật khẩu không chính xác!";
             }
             return user;
+        }
+        public static string CheckEmailDAO(string email)
+        {
+            string pass = null;
+            string strSQL = "Select * From UserAccount Where email = '" + email + "'";
+            SqlConnection conn = SqlConnectionData.Connect();
+            conn.Open();
+            SqlCommand command = new SqlCommand(strSQL, conn);
+            command.Connection = conn;
+            SqlDataReader reader = command.ExecuteReader();
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    pass = reader.GetString(2);
+                }
+                reader.Close();
+            }
+            else
+            {
+                return null;
+            }
+            return pass;
+        }
+        public static string CreateAccoutDAO(UserAccount user)
+        {
+            Modify mo = new Modify();
+            try
+            {
+                mo.Command("Insert into UserAccount values( '" + user.UserName + "' , '" + user.Pass + "', '" + user.Email + "' )");
+            }catch (Exception ex)
+            {
+                return "exist_username_email";
+            }
+            return "success";
         }
     }
 }
