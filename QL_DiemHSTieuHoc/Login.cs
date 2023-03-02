@@ -11,7 +11,12 @@ namespace QL_DiemHSTieuHoc
         {
             InitializeComponent();
         }
-
+        private void reset()
+        {
+            txtUserName.Clear();
+            txtPass.Clear();
+            txtUserName.Focus();    
+        }
         private void btnLogin_Click(object sender, EventArgs e)
         {
             ac.UserName = txtUserName.Text;
@@ -33,9 +38,16 @@ namespace QL_DiemHSTieuHoc
                 case "Tài khoản hoặc mật khẩu không chính xác!":
                     MessageBox.Show("Tài khoản hoặc mật khẩu không chính xác!");
                     return;
+                case "user_not_accepted":
+                    MessageBox.Show("Tài khoản chưa được duyệt!");
+                    return;
             }
+            reset();
+            MessageBox.Show("Xin chúc mừng bạn đã đăng nhập thành công hệ thống với quyền");
+            Main main = new Main(ac.UserName);
+            main.Show();
+            this.Hide();
 
-            MessageBox.Show("Xin chúc mừng bạn đã đăng nhập thành công hệ thống!");
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)

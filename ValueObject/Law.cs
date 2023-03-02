@@ -6,13 +6,9 @@ using System.Threading.Tasks;
 
 namespace ValueObject
 {
-    public class UserAccount
+    public class Law
     {
-   
-        public String UserName { set; get; }
-        public String Pass { set; get; }
-        public String Email { set; get; }
-
         public int law_id { set; get; }
+        public string law_name { set; get; }
     }
 }
