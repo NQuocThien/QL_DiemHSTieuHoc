@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 using ValueObject;
@@ -41,13 +42,26 @@ namespace DataAccessLayer
         {
             return GetLawDAO(userName);
         }
+        public DataTable GetLawDataTB()
+        {
+            return GetLawDataTBDAO();
+        }
         public string UpdateUser(UserAccount user)
         {
             return UpdateUserDAO(user);
         }
-        public DataTable GetListUser()
+        public string ProvideLawUser(UserAccount user, string law_name)
         {
-            return GetListUserDAO();
+            return ProvideLawUserDAO(user , law_name);
         }
+        public DataTable GetListUserAccess()
+        {
+            return GetListUserAccessDAO();
+        }
+        public string DeleteUser(string userName)
+        {
+            return DeleteUserDAO(userName);
+        }
+
     }   
 }

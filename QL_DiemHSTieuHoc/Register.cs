@@ -34,16 +34,16 @@ namespace QL_DiemHSTieuHoc
 
                 case "requeid_password":
                     MessageBox.Show("Mật khẩu không được để trống");
-
                     return;
+
                 case "pass_not_match":
                     MessageBox.Show("Mật khẩu không trùng khớp");
-
                     return;
 
                 case "requeid_email":
                     MessageBox.Show("Email không hợp lệ!");
                     return;
+
                 case "exist_username_email":
                     MessageBox.Show("Tài khoản hoặc Email đã tồn tại");
                     return;

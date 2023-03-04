@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ValueObject;
 using System.Data.SqlClient;
+using QL_DiemHSTieuHoc.Forms.SubUserForms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace QL_DiemHSTieuHoc.Forms
 {
@@ -17,12 +19,14 @@ namespace QL_DiemHSTieuHoc.Forms
     {
         private string currentUser = null;
         UserAccount user = new UserAccount();
+        UserAccount userClick = new UserAccount();
         UserBLL userBll = new UserBLL();
 
         public User(string currentUser)
         {
             InitializeComponent();
             this.currentUser = currentUser;
+            this.ControlBox = false;
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -34,29 +38,18 @@ namespace QL_DiemHSTieuHoc.Forms
         {
             Load_Control();
             Load_CurrentUser();
-            Load_ListUser();
+            Load_ListUserAccess();
+            Load_cbLaw();
 
         }
 
-        private void Load_ListUser()
+        private void Load_ListUserAccess()
         {
             int n = gvListUser.Width / 3;
 
-            DataTable dt = userBll.GetListUser();
+            DataTable dt = userBll.GetListUserAccess();
             gvListUser.DataSource = dt;
-            DataTableReader re = dt.CreateDataReader();
-            if (re.HasRows)
-            {
-                while (re.Read())
-                {
-                    MessageBox.Show(re.GetString(0));
-                }
-            }
-
-            
             gvListUser.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            
-
             gvListUser.Columns[0].HeaderText = "User Name";
             gvListUser.Columns[0].Width = n;
 
@@ -65,29 +58,7 @@ namespace QL_DiemHSTieuHoc.Forms
 
             gvListUser.Columns[2].HeaderText = "Quyền";
             gvListUser.Columns[2].Width = n;
-
-            
-           
         }
-
-        private void List_GridView()
-        {
-            int n = gvListUser.Width/3;
-            gvListUser.ReadOnly = true;
-            gvListUser.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            gvListUser.ColumnCount = 3;
-
-            gvListUser.Columns[0].HeaderText = "User Name";
-            gvListUser.Columns[0].Width = n ;
-
-            gvListUser.Columns[1].HeaderText = "Email";
-            gvListUser.Columns[1].Width = n ;
-
-            gvListUser.Columns[2].HeaderText = "Quyền";
-            gvListUser.Columns[2].Width = n ;
-
-        }
-
         private void Load_CurrentUser()
         {
             user = userBll.GetUser(currentUser);
@@ -104,7 +75,6 @@ namespace QL_DiemHSTieuHoc.Forms
             {
                 this.btnAdd.Enabled = true;
                 this.btnDelete.Enabled = true;
-                this.btnProvideLaw.Enabled = true;
                 this.btnUpdate.Enabled = true;
             }
         }
@@ -115,13 +85,14 @@ namespace QL_DiemHSTieuHoc.Forms
             this.txtPass.Enabled = false;
             this.txtEmail.Enabled = false;
             this.txtType.Enabled = false;
+            this.cbLaw.Enabled = false;
+            this.cbLaw.DropDownStyle = ComboBoxStyle.DropDownList;
             Load_adminConTrol();
         }
         private void Load_adminConTrol()
         {
             this.btnAdd.Enabled = false;
             this.btnDelete.Enabled = false;
-            this.btnProvideLaw.Enabled = false;
             this.btnUpdate.Enabled = false;
         }
 
@@ -151,9 +122,86 @@ namespace QL_DiemHSTieuHoc.Forms
             else
             {
                 MessageBox.Show("Thất Bại");
-            };
+            }
+        }
 
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            Register regis = new Register();
+            regis.ShowDialog();
+            Load_ListUserAccess();
 
+        }
+
+        private void Load_cbLaw()
+        {
+            cbLaw.DataSource = userBll.GetLawDataTB();
+            cbLaw.DisplayMember = "law_name";
+            cbLaw.ValueMember = "law_id";
+        }
+
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
+        }
+        private void gvListUser_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int i = gvListUser.CurrentRow.Index;
+            if (i != null)
+            {
+                cbLaw.Enabled = true;
+                userClick.UserName = gvListUser.Rows[i].Cells[0].Value.ToString();
+            }
+        }
+
+        private void btnLaw_Click(object sender, EventArgs e)
+        {
+            string name = cbLaw.Text;
+            string test = userBll.ProvideLawUser(userClick, name);
+            if (test == "fail")
+            {
+                MessageBox.Show("Fail");
+            }
+            else
+            {
+                Load_ListUserAccess();
+            }
+        }
+
+        private void btnAdd_Click_1(object sender, EventArgs e)
+        {
+            Register regis = new Register();
+            regis.ShowDialog();
+            Load_ListUserAccess();
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                UpdateAccount udc = new UpdateAccount(userClick.UserName);
+                udc.ShowDialog();
+                Load_ListUserAccess();
+            }
+            catch
+            {
+                MessageBox.Show("Vui lòng chọn user cần sử");
+            }
+
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (userBll.DeleteUser(userClick.UserName) == "success")
+            {
+                MessageBox.Show("Đã xóa");
+                Load_ListUserAccess();
+            }
+            else
+            {
+                MessageBox.Show("Lỗi");
+
+            }
         }
     }
 }

@@ -140,6 +140,7 @@
             btnClasss.TabIndex = 5;
             btnClasss.Text = "Lớp Học";
             btnClasss.UseVisualStyleBackColor = true;
+            btnClasss.Click += btnClasss_Click;
             // 
             // btnSubject
             // 
@@ -289,7 +290,7 @@
             lblTitle.Name = "lblTitle";
             lblTitle.Size = new Size(87, 41);
             lblTitle.TabIndex = 0;
-            lblTitle.Text = "Title";
+            lblTitle.Text = "Home";
             lblTitle.Click += label1_Click;
             // 
             // panelDesktopPane

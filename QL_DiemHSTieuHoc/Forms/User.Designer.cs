@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(User));
             panel1 = new Panel();
             panel5 = new Panel();
             groupBox4 = new GroupBox();
@@ -48,17 +50,19 @@
             label1 = new Label();
             panel2 = new Panel();
             panel8 = new Panel();
+            groupBox3 = new GroupBox();
+            btnLaw = new Button();
+            cbLaw = new ComboBox();
             groupBox5 = new GroupBox();
-            btnProvideLaw = new Button();
             btnDelete = new Button();
             btnUpdate = new Button();
             btnAdd = new Button();
             panel7 = new Panel();
-            groupBox3 = new GroupBox();
             groupBox2 = new GroupBox();
             gvListUser = new DataGridView();
             panel6 = new Panel();
             label2 = new Label();
+            imgTitle = new ImageList(components);
             panel1.SuspendLayout();
             panel5.SuspendLayout();
             groupBox4.SuspendLayout();
@@ -67,6 +71,7 @@
             panel3.SuspendLayout();
             panel2.SuspendLayout();
             panel8.SuspendLayout();
+            groupBox3.SuspendLayout();
             groupBox5.SuspendLayout();
             panel7.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -90,9 +95,9 @@
             panel5.BackColor = SystemColors.ButtonFace;
             panel5.Controls.Add(groupBox4);
             panel5.Dock = DockStyle.Top;
-            panel5.Location = new Point(0, 387);
+            panel5.Location = new Point(0, 391);
             panel5.Name = "panel5";
-            panel5.Size = new Size(379, 100);
+            panel5.Size = new Size(379, 97);
             panel5.TabIndex = 2;
             // 
             // groupBox4
@@ -103,19 +108,18 @@
             groupBox4.Dock = DockStyle.Fill;
             groupBox4.Location = new Point(0, 0);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(379, 100);
+            groupBox4.Size = new Size(379, 97);
             groupBox4.TabIndex = 0;
             groupBox4.TabStop = false;
-            groupBox4.Text = "control";
             // 
             // btnSave
             // 
             btnSave.Anchor = AnchorStyles.None;
-            btnSave.BackColor = SystemColors.ActiveBorder;
+            btnSave.BackColor = Color.NavajoWhite;
             btnSave.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnSave.Location = new Point(118, 59);
+            btnSave.Location = new Point(269, 25);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(104, 36);
+            btnSave.Size = new Size(104, 61);
             btnSave.TabIndex = 0;
             btnSave.Text = "Lưu ";
             btnSave.UseVisualStyleBackColor = false;
@@ -124,11 +128,11 @@
             // btnUpdateEmail
             // 
             btnUpdateEmail.Anchor = AnchorStyles.None;
-            btnUpdateEmail.BackColor = SystemColors.ActiveBorder;
+            btnUpdateEmail.BackColor = Color.NavajoWhite;
             btnUpdateEmail.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnUpdateEmail.Location = new Point(210, 19);
+            btnUpdateEmail.Location = new Point(146, 25);
             btnUpdateEmail.Name = "btnUpdateEmail";
-            btnUpdateEmail.Size = new Size(104, 36);
+            btnUpdateEmail.Size = new Size(104, 60);
             btnUpdateEmail.TabIndex = 0;
             btnUpdateEmail.Text = "Đổi Email";
             btnUpdateEmail.UseVisualStyleBackColor = false;
@@ -137,11 +141,11 @@
             // btnUpdatePass
             // 
             btnUpdatePass.Anchor = AnchorStyles.None;
-            btnUpdatePass.BackColor = SystemColors.ActiveBorder;
+            btnUpdatePass.BackColor = Color.NavajoWhite;
             btnUpdatePass.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnUpdatePass.Location = new Point(27, 19);
+            btnUpdatePass.Location = new Point(12, 25);
             btnUpdatePass.Name = "btnUpdatePass";
-            btnUpdatePass.Size = new Size(148, 36);
+            btnUpdatePass.Size = new Size(115, 61);
             btnUpdatePass.TabIndex = 0;
             btnUpdatePass.Text = "Đổi Mật Khẩu";
             btnUpdatePass.UseVisualStyleBackColor = false;
@@ -152,9 +156,9 @@
             panel4.BackColor = SystemColors.ButtonHighlight;
             panel4.Controls.Add(groupBox1);
             panel4.Dock = DockStyle.Top;
-            panel4.Location = new Point(0, 68);
+            panel4.Location = new Point(0, 44);
             panel4.Name = "panel4";
-            panel4.Size = new Size(379, 319);
+            panel4.Size = new Size(379, 347);
             panel4.TabIndex = 1;
             // 
             // groupBox1
@@ -170,15 +174,14 @@
             groupBox1.Dock = DockStyle.Fill;
             groupBox1.Location = new Point(0, 0);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(379, 319);
+            groupBox1.Size = new Size(379, 347);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
-            groupBox1.Text = "infor";
             // 
             // txtType
             // 
             txtType.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtType.Location = new Point(52, 261);
+            txtType.Location = new Point(46, 282);
             txtType.Name = "txtType";
             txtType.ReadOnly = true;
             txtType.Size = new Size(275, 27);
@@ -187,7 +190,7 @@
             // txtEmail
             // 
             txtEmail.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtEmail.Location = new Point(52, 196);
+            txtEmail.Location = new Point(46, 212);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(275, 27);
             txtEmail.TabIndex = 1;
@@ -195,7 +198,7 @@
             // txtPass
             // 
             txtPass.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtPass.Location = new Point(52, 131);
+            txtPass.Location = new Point(46, 143);
             txtPass.Name = "txtPass";
             txtPass.PasswordChar = '*';
             txtPass.Size = new Size(275, 27);
@@ -204,7 +207,7 @@
             // txtName
             // 
             txtName.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtName.Location = new Point(52, 66);
+            txtName.Location = new Point(46, 71);
             txtName.Name = "txtName";
             txtName.ReadOnly = true;
             txtName.Size = new Size(275, 27);
@@ -216,7 +219,7 @@
             label6.AutoSize = true;
             label6.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label6.ForeColor = SystemColors.ActiveCaptionText;
-            label6.Location = new Point(12, 240);
+            label6.Location = new Point(12, 253);
             label6.Name = "label6";
             label6.Size = new Size(137, 18);
             label6.TabIndex = 0;
@@ -229,7 +232,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label5.ForeColor = SystemColors.ActiveCaptionText;
-            label5.Location = new Point(12, 175);
+            label5.Location = new Point(12, 182);
             label5.Name = "label5";
             label5.Size = new Size(60, 18);
             label5.TabIndex = 0;
@@ -242,7 +245,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label4.ForeColor = SystemColors.ActiveCaptionText;
-            label4.Location = new Point(12, 110);
+            label4.Location = new Point(12, 111);
             label4.Name = "label4";
             label4.Size = new Size(92, 18);
             label4.TabIndex = 0;
@@ -255,7 +258,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label3.ForeColor = SystemColors.ActiveCaptionText;
-            label3.Location = new Point(12, 45);
+            label3.Location = new Point(12, 40);
             label3.Name = "label3";
             label3.Size = new Size(141, 18);
             label3.TabIndex = 0;
@@ -269,20 +272,23 @@
             panel3.Dock = DockStyle.Top;
             panel3.Location = new Point(0, 0);
             panel3.Name = "panel3";
-            panel3.Size = new Size(379, 68);
+            panel3.Size = new Size(379, 44);
             panel3.TabIndex = 0;
             // 
             // label1
             // 
             label1.Anchor = AnchorStyles.None;
-            label1.AutoSize = true;
             label1.Font = new Font("Verdana", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             label1.ForeColor = SystemColors.ActiveCaptionText;
-            label1.Location = new Point(58, 19);
+            label1.ImageAlign = ContentAlignment.MiddleRight;
+            label1.ImageIndex = 0;
+            label1.ImageList = imgTitle;
+            label1.Location = new Point(56, 0);
             label1.Name = "label1";
-            label1.Size = new Size(229, 25);
+            label1.Size = new Size(265, 41);
             label1.TabIndex = 0;
             label1.Text = "Thông Tin Tài Khoản";
+            label1.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // panel2
             // 
@@ -299,94 +305,103 @@
             // panel8
             // 
             panel8.BackColor = SystemColors.ButtonFace;
+            panel8.Controls.Add(groupBox3);
             panel8.Controls.Add(groupBox5);
             panel8.Dock = DockStyle.Top;
-            panel8.Location = new Point(0, 387);
+            panel8.Location = new Point(0, 397);
             panel8.Name = "panel8";
             panel8.Size = new Size(658, 100);
             panel8.TabIndex = 3;
             // 
+            // groupBox3
+            // 
+            groupBox3.Controls.Add(btnLaw);
+            groupBox3.Controls.Add(cbLaw);
+            groupBox3.Dock = DockStyle.Fill;
+            groupBox3.Location = new Point(249, 0);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new Size(409, 100);
+            groupBox3.TabIndex = 5;
+            groupBox3.TabStop = false;
+            // 
+            // btnLaw
+            // 
+            btnLaw.BackColor = SystemColors.ActiveCaption;
+            btnLaw.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnLaw.Location = new Point(304, 14);
+            btnLaw.Name = "btnLaw";
+            btnLaw.Size = new Size(83, 66);
+            btnLaw.TabIndex = 6;
+            btnLaw.Text = "Cấp Quyền";
+            btnLaw.UseVisualStyleBackColor = false;
+            btnLaw.Click += btnLaw_Click;
+            // 
+            // cbLaw
+            // 
+            cbLaw.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cbLaw.FormattingEnabled = true;
+            cbLaw.Location = new Point(43, 41);
+            cbLaw.Name = "cbLaw";
+            cbLaw.Size = new Size(221, 29);
+            cbLaw.TabIndex = 5;
+            // 
             // groupBox5
             // 
-            groupBox5.Controls.Add(btnProvideLaw);
             groupBox5.Controls.Add(btnDelete);
             groupBox5.Controls.Add(btnUpdate);
             groupBox5.Controls.Add(btnAdd);
-            groupBox5.Dock = DockStyle.Fill;
+            groupBox5.Dock = DockStyle.Left;
             groupBox5.Location = new Point(0, 0);
             groupBox5.Name = "groupBox5";
-            groupBox5.Size = new Size(658, 100);
+            groupBox5.Size = new Size(249, 100);
             groupBox5.TabIndex = 0;
             groupBox5.TabStop = false;
-            groupBox5.Text = "control";
-            // 
-            // btnProvideLaw
-            // 
-            btnProvideLaw.Anchor = AnchorStyles.None;
-            btnProvideLaw.BackColor = SystemColors.ActiveBorder;
-            btnProvideLaw.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnProvideLaw.Location = new Point(462, 24);
-            btnProvideLaw.Name = "btnProvideLaw";
-            btnProvideLaw.Size = new Size(156, 65);
-            btnProvideLaw.TabIndex = 0;
-            btnProvideLaw.Text = "Cấp Quyền";
-            btnProvideLaw.UseVisualStyleBackColor = false;
             // 
             // btnDelete
             // 
-            btnDelete.Anchor = AnchorStyles.None;
-            btnDelete.BackColor = SystemColors.ActiveBorder;
+            btnDelete.BackColor = SystemColors.ActiveCaption;
             btnDelete.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnDelete.Location = new Point(305, 24);
+            btnDelete.Location = new Point(168, 14);
             btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(148, 65);
-            btnDelete.TabIndex = 0;
+            btnDelete.Size = new Size(81, 66);
+            btnDelete.TabIndex = 5;
             btnDelete.Text = "Xóa";
             btnDelete.UseVisualStyleBackColor = false;
+            btnDelete.Click += btnDelete_Click;
             // 
             // btnUpdate
             // 
-            btnUpdate.Anchor = AnchorStyles.None;
-            btnUpdate.BackColor = SystemColors.ActiveBorder;
+            btnUpdate.BackColor = SystemColors.ActiveCaption;
             btnUpdate.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnUpdate.Location = new Point(166, 24);
+            btnUpdate.Location = new Point(86, 14);
             btnUpdate.Name = "btnUpdate";
-            btnUpdate.Size = new Size(130, 67);
-            btnUpdate.TabIndex = 0;
+            btnUpdate.Size = new Size(82, 66);
+            btnUpdate.TabIndex = 6;
             btnUpdate.Text = "Sửa ";
             btnUpdate.UseVisualStyleBackColor = false;
+            btnUpdate.Click += btnUpdate_Click;
             // 
             // btnAdd
             // 
-            btnAdd.Anchor = AnchorStyles.None;
-            btnAdd.BackColor = SystemColors.ActiveBorder;
+            btnAdd.BackColor = SystemColors.ActiveCaption;
             btnAdd.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnAdd.Location = new Point(34, 22);
+            btnAdd.Location = new Point(3, 14);
             btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(123, 69);
-            btnAdd.TabIndex = 0;
+            btnAdd.Size = new Size(83, 66);
+            btnAdd.TabIndex = 7;
             btnAdd.Text = "Thêm ";
             btnAdd.UseVisualStyleBackColor = false;
+            btnAdd.Click += btnAdd_Click_1;
             // 
             // panel7
             // 
             panel7.BackColor = SystemColors.ButtonHighlight;
-            panel7.Controls.Add(groupBox3);
             panel7.Controls.Add(groupBox2);
             panel7.Dock = DockStyle.Top;
-            panel7.Location = new Point(0, 68);
+            panel7.Location = new Point(0, 44);
             panel7.Name = "panel7";
-            panel7.Size = new Size(658, 319);
+            panel7.Size = new Size(658, 353);
             panel7.TabIndex = 2;
-            // 
-            // groupBox3
-            // 
-            groupBox3.Location = new Point(82, 316);
-            groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(200, 100);
-            groupBox3.TabIndex = 0;
-            groupBox3.TabStop = false;
-            groupBox3.Text = "groupBox1";
             // 
             // groupBox2
             // 
@@ -394,22 +409,23 @@
             groupBox2.Dock = DockStyle.Fill;
             groupBox2.Location = new Point(0, 0);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(658, 319);
+            groupBox2.Size = new Size(658, 353);
             groupBox2.TabIndex = 0;
             groupBox2.TabStop = false;
-            groupBox2.Text = "list";
             // 
             // gvListUser
             // 
-            gvListUser.Anchor = AnchorStyles.None;
+            gvListUser.AllowUserToAddRows = false;
             gvListUser.BackgroundColor = SystemColors.ControlLight;
             gvListUser.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
             gvListUser.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            gvListUser.Dock = DockStyle.Fill;
             gvListUser.Location = new Point(3, 19);
             gvListUser.Name = "gvListUser";
             gvListUser.RowTemplate.Height = 25;
-            gvListUser.Size = new Size(652, 297);
+            gvListUser.Size = new Size(652, 331);
             gvListUser.TabIndex = 0;
+            gvListUser.CellClick += gvListUser_CellClick;
             // 
             // panel6
             // 
@@ -418,19 +434,30 @@
             panel6.Dock = DockStyle.Top;
             panel6.Location = new Point(0, 0);
             panel6.Name = "panel6";
-            panel6.Size = new Size(658, 68);
+            panel6.Size = new Size(658, 44);
             panel6.TabIndex = 1;
             // 
             // label2
             // 
             label2.Anchor = AnchorStyles.None;
-            label2.AutoSize = true;
             label2.Font = new Font("Verdana", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(235, 19);
+            label2.ImageAlign = ContentAlignment.MiddleRight;
+            label2.ImageIndex = 1;
+            label2.ImageList = imgTitle;
+            label2.Location = new Point(233, 0);
             label2.Name = "label2";
-            label2.Size = new Size(238, 25);
+            label2.Size = new Size(280, 41);
             label2.TabIndex = 0;
             label2.Text = "Danh Sách Tài Khoản";
+            label2.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // imgTitle
+            // 
+            imgTitle.ColorDepth = ColorDepth.Depth32Bit;
+            imgTitle.ImageStream = (ImageListStreamer)resources.GetObject("imgTitle.ImageStream");
+            imgTitle.TransparentColor = Color.Transparent;
+            imgTitle.Images.SetKeyName(0, "programmer.png");
+            imgTitle.Images.SetKeyName(1, "checklist.png");
             // 
             // User
             // 
@@ -449,15 +476,14 @@
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             panel3.ResumeLayout(false);
-            panel3.PerformLayout();
             panel2.ResumeLayout(false);
             panel8.ResumeLayout(false);
+            groupBox3.ResumeLayout(false);
             groupBox5.ResumeLayout(false);
             panel7.ResumeLayout(false);
             groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)gvListUser).EndInit();
             panel6.ResumeLayout(false);
-            panel6.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -475,7 +501,6 @@
         private Panel panel8;
         private GroupBox groupBox5;
         private Panel panel7;
-        private GroupBox groupBox3;
         private GroupBox groupBox2;
         private Panel panel6;
         private Label label2;
@@ -489,10 +514,13 @@
         private Label label6;
         private Label label5;
         private Label label4;
-        private Button btnProvideLaw;
+        private DataGridView gvListUser;
+        private GroupBox groupBox3;
         private Button btnDelete;
         private Button btnUpdate;
         private Button btnAdd;
-        private DataGridView gvListUser;
+        private ComboBox cbLaw;
+        private Button btnLaw;
+        private ImageList imgTitle;
     }
 }

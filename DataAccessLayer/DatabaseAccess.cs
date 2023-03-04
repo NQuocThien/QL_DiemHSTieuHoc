@@ -8,6 +8,7 @@ using System.Data;
 using ValueObject;
 using System.Data.Common;
 using System.Reflection.Metadata.Ecma335;
+using System.Linq.Expressions;
 
 namespace DataAccessLayer
 {
@@ -136,7 +137,7 @@ namespace DataAccessLayer
             Modify mo = new Modify();
             try
             {
-                mo.Command("Insert into UserAccount values( '" + user.UserName + "' , '" + user.Pass + "', '" + user.Email + "', NULL)");
+                mo.Command("Insert into UserAccount values( '" + user.UserName + "' , '" + user.Pass + "', '" + user.Email + "', '0')");
             }catch (Exception ex)
             {
                 return "exist_username_email";
@@ -166,6 +167,10 @@ namespace DataAccessLayer
                 return null;
             }
             return user;
+        }
+        public static DataTable GetLawDataTBDAO()
+        {
+            return new Modify().GetDataTable("select * from law");
         }
         public static Law GetLawDAO(string userName)
         {
@@ -198,15 +203,161 @@ namespace DataAccessLayer
             }
             catch
             {
+                return "exist_username_email";
+            }
+        }
+        public static string ProvideLawUserDAO(UserAccount user, string law_name)
+        {
+            Modify mo = new Modify();
+            int law_id1 = 0 ;
+            // get id
+            string strSQL = "select * from law where law_name = '"+law_name+ "'";
+            try
+            {
+                
+                DataTableReader re = mo.GetDataTable(strSQL).CreateDataReader();
+                if(re.HasRows)
+                {
+                    while (re.Read())
+                    {
+                        law_id1 = re.GetInt32(0);
+                    }
+                }else
+                {
+                    return "fail";
+                }
+
+                strSQL = "Update UserAccount set law_id = '" + law_id1 + "' where userName = '" + user.UserName + "'";
+                mo.Command(strSQL);
+                return "success";
+            }
+            catch
+            {
                 return "fail";
             }
         }
-        public static DataTable GetListUserDAO()
+        public static DataTable GetListUserAccessDAO()
         {
-            Modify modify = new Modify();   
-            string strSQL = "select us.userName, us.Email, l.law_name From UserAccount us, law l Where us.law_id = l.law_id";
+            Modify modify = new Modify();
+            string strSQL = "select us.userName, us.Email, l.law_name From UserAccount us, law l Where us.law_id = l.law_id ";
             return modify.GetDataTable(strSQL);
+        }
+        public static string DeleteUserDAO(string userName)
+        {
+            Modify modify = new Modify();
+            string strSQL = "Delete From UserAccount Where userName = '" + userName + "'";
+            try
+            {
+                modify.Command(strSQL);
+                return "success";
+            }
+            catch
+            {
+                return "fail";
+
+            }
+        }
+
+        public static DataTable BlockClassDAO()
+        {
+            Modify modify = new Modify();
+            string strSQL = "select * from BlockClass ";
+            return modify.GetDataTable(strSQL);
+        }
+        public static DataTable GetClassDAO()
+        {
+            Modify modify = new Modify();
+            string strSQL = "select c.class_id, c.nameClass, b.block_name, c.schoolYear, c.block_id from Class c, BlockClass b where c.block_id = b.block_id";
+            return modify.GetDataTable(strSQL);
+        }
+        public static DataTable GetClassDAO(string search)
+        {
+            Modify modify = new Modify();
+            string strSQL = "select c.class_id, c.nameClass, b.block_name, c.schoolYear, c.block_id from Class c, BlockClass b where c.block_id = b.block_id and nameClass like  '%"+search+"%' ";
+            return modify.GetDataTable(strSQL);
+        }
+        public static string CreateBlockDAO(Block block)
+        {
+            Modify mo = new Modify();
+            try
+            {
+                mo.Command("Insert into BlockClass values(  '" + block.block_name + "')");
+            }
+            catch (Exception ex)
+            {
+                return "exist_block_name";
+            }
+            return "success";
+        }
+
+        public static string UpdateBlockDAO(Block block)
+        {
+            Modify mo = new Modify();
+            string strSQL = "Update BlockClass set block_name = '" + block.block_name + "' where block_id = '" + block.block_id + "'";
+            try
+            {
+                mo.Command(strSQL);
+                return "success";
+            }
+            catch
+            {
+                return "exist_block_name";
+            }
             
+        }
+        public static string DeleteBlockDAO(Block block)
+        {
+            Modify mo = new Modify();
+            string strSQL = "Delete BlockClass where block_id = '" + block.block_id + "'";
+            try
+            {
+                mo.Command(strSQL);
+                return "success";
+            }catch
+                {
+                return "fail";
+            }
+        }
+        public static string CreateClassDAO(Class cl)
+        {
+            Modify mo = new Modify();
+            try
+            {
+                mo.Command("Insert into Class values( '"+cl.block_id+"','"+cl.nameClass+"','"+cl.schoolYear+"' )");
+            }
+            catch (Exception ex)
+            {
+                return "exist_class_name";
+            }
+            return "success";
+        }
+        public static string UpdateClassDAO(Class cl)
+        {
+            Modify mo = new Modify();
+            string strSQL = "Update Class set block_id = '" + cl.block_id + "', nameClass = '"+cl.nameClass+"', schoolYear = '"+cl.schoolYear+"' where class_id = '" + cl.class_id + "'";
+            try
+            {
+                mo.Command(strSQL);
+                return "success";
+            }
+            catch
+            {
+                return "exist_block_name";
+            }
+        }
+        public static string DeleteClassDAO(Class cl)
+        {
+            Modify mo = new Modify();
+            string strSQL = "Delete Class where class_id = '" + cl.class_id + "'";
+            try
+            {
+                mo.Command(strSQL);
+                return "success";
+            }
+            catch
+            {
+                return "fail";
+            }
         }
     }
 }

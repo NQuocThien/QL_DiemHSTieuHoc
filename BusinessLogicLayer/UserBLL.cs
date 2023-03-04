@@ -75,6 +75,12 @@ namespace BusinessLogicLayer
             }
             return null;
         }
+
+       public DataTable GetLawDataTB()
+        {
+            return tkAccess.GetLawDataTB();
+        }
+
         public Law GetLaw(string userName)
         {
             if (userName != null)
@@ -87,13 +93,28 @@ namespace BusinessLogicLayer
         {
             if(user != null)
             {
+                if (!isEmail(user.Email))
+                    return "requeid_email";
                 return tkAccess.UpdateUser(user);
             }
             return null;
         }
-        public DataTable GetListUser()
+        public string ProvideLawUser(UserAccount user, string law_name)
         {
-            return tkAccess.GetListUser();
+            if (user != null)
+            {
+                return tkAccess.ProvideLawUser(user , law_name);
+            }
+            return null;
         }
+        public DataTable GetListUserAccess()
+        {
+            return tkAccess.GetListUserAccess();
+        }
+        public string DeleteUser(string userName)
+        {
+            return tkAccess.DeleteUser(userName);
+        }
+ 
     }
 }

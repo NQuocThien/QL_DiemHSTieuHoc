@@ -134,5 +134,10 @@ namespace QL_DiemHSTieuHoc
             OpenChildForm(new User(currentUser), sender);
 
         }
+
+        private void btnClasss_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new BlockAndClass(currentUser), sender);
+        }
     }
 }
