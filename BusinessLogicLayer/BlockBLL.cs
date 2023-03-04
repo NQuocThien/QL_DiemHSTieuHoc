@@ -16,6 +16,10 @@ namespace BusinessLogicLayer
         {
             return blockAs.GetClass();
         }
+        public DataTable GetClasscb()
+        {
+            return blockAs.GetClasscb();
+        }
         public DataTable GetClass(string search)
         {
             return blockAs.GetClass(search);

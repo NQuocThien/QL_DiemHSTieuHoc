@@ -32,16 +32,16 @@
             panel5 = new Panel();
             panel6 = new Panel();
             groupBox3 = new GroupBox();
+            cbSex = new ComboBox();
+            dateBirth = new DateTimePicker();
             label6 = new Label();
             label5 = new Label();
             label4 = new Label();
             label3 = new Label();
             label2 = new Label();
-            textBox5 = new TextBox();
-            textBox4 = new TextBox();
-            textBox3 = new TextBox();
-            textBox2 = new TextBox();
-            textBox1 = new TextBox();
+            txtAdress = new TextBox();
+            txtSdt = new TextBox();
+            txtName = new TextBox();
             label1 = new Label();
             cbClass = new ComboBox();
             panel3 = new Panel();
@@ -49,25 +49,28 @@
             btnSearch = new Button();
             txtSearch = new TextBox();
             panel8 = new Panel();
-            panel2 = new Panel();
-            panel4 = new Panel();
             panel7 = new Panel();
+            groupBox5 = new GroupBox();
+            btnAdd = new Button();
+            panel4 = new Panel();
             groupBox2 = new GroupBox();
-            textBox6 = new TextBox();
-            label7 = new Label();
-            label8 = new Label();
-            textBox7 = new TextBox();
-            label9 = new Label();
-            textBox8 = new TextBox();
+            txtAdressParent = new TextBox();
             label10 = new Label();
-            textBox9 = new TextBox();
-            button1 = new Button();
-            button3 = new Button();
-            panel9 = new Panel();
+            txtJob = new TextBox();
+            label9 = new Label();
+            txtRelationship = new TextBox();
+            label8 = new Label();
+            txtNameParent = new TextBox();
+            label7 = new Label();
+            panel2 = new Panel();
             panel10 = new Panel();
-            dataGridView1 = new DataGridView();
-            button2 = new Button();
-            button4 = new Button();
+            groupBox6 = new GroupBox();
+            btnReport = new Button();
+            btnAbout = new Button();
+            panel9 = new Panel();
+            groupBox4 = new GroupBox();
+            gvStudent = new DataGridView();
+            btn = new Button();
             panel1.SuspendLayout();
             panel5.SuspendLayout();
             panel6.SuspendLayout();
@@ -75,13 +78,16 @@
             panel3.SuspendLayout();
             groupBox1.SuspendLayout();
             panel8.SuspendLayout();
-            panel2.SuspendLayout();
-            panel4.SuspendLayout();
             panel7.SuspendLayout();
+            groupBox5.SuspendLayout();
+            panel4.SuspendLayout();
             groupBox2.SuspendLayout();
-            panel9.SuspendLayout();
+            panel2.SuspendLayout();
             panel10.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            groupBox6.SuspendLayout();
+            panel9.SuspendLayout();
+            groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)gvStudent).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -114,16 +120,16 @@
             // 
             // groupBox3
             // 
+            groupBox3.Controls.Add(cbSex);
+            groupBox3.Controls.Add(dateBirth);
             groupBox3.Controls.Add(label6);
             groupBox3.Controls.Add(label5);
             groupBox3.Controls.Add(label4);
             groupBox3.Controls.Add(label3);
             groupBox3.Controls.Add(label2);
-            groupBox3.Controls.Add(textBox5);
-            groupBox3.Controls.Add(textBox4);
-            groupBox3.Controls.Add(textBox3);
-            groupBox3.Controls.Add(textBox2);
-            groupBox3.Controls.Add(textBox1);
+            groupBox3.Controls.Add(txtAdress);
+            groupBox3.Controls.Add(txtSdt);
+            groupBox3.Controls.Add(txtName);
             groupBox3.Controls.Add(label1);
             groupBox3.Controls.Add(cbClass);
             groupBox3.Dock = DockStyle.Fill;
@@ -134,11 +140,31 @@
             groupBox3.TabStop = false;
             groupBox3.Text = "Thông tin học sinh";
             // 
+            // cbSex
+            // 
+            cbSex.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cbSex.FormattingEnabled = true;
+            cbSex.Items.AddRange(new object[] { "Nam", "Nữ" });
+            cbSex.Location = new Point(22, 362);
+            cbSex.Name = "cbSex";
+            cbSex.Size = new Size(257, 29);
+            cbSex.TabIndex = 27;
+            // 
+            // dateBirth
+            // 
+            dateBirth.CustomFormat = "yyyy-MM-dd";
+            dateBirth.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dateBirth.Format = DateTimePickerFormat.Custom;
+            dateBirth.Location = new Point(22, 298);
+            dateBirth.Name = "dateBirth";
+            dateBirth.Size = new Size(257, 29);
+            dateBirth.TabIndex = 26;
+            // 
             // label6
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(16, 334);
+            label6.Location = new Point(22, 334);
             label6.Name = "label6";
             label6.Size = new Size(73, 21);
             label6.TabIndex = 20;
@@ -148,7 +174,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(16, 271);
+            label5.Location = new Point(22, 271);
             label5.Name = "label5";
             label5.Size = new Size(85, 21);
             label5.TabIndex = 21;
@@ -158,7 +184,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(16, 208);
+            label4.Location = new Point(22, 208);
             label4.Name = "label4";
             label4.Size = new Size(63, 21);
             label4.TabIndex = 22;
@@ -168,7 +194,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(16, 145);
+            label3.Location = new Point(22, 145);
             label3.Name = "label3";
             label3.Size = new Size(106, 21);
             label3.TabIndex = 23;
@@ -178,57 +204,41 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(16, 82);
+            label2.Location = new Point(22, 82);
             label2.Name = "label2";
             label2.Size = new Size(80, 21);
             label2.TabIndex = 24;
             label2.Text = "Họ và Tên:";
             // 
-            // textBox5
+            // txtAdress
             // 
-            textBox5.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox5.Location = new Point(12, 359);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(261, 27);
-            textBox5.TabIndex = 14;
+            txtAdress.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtAdress.Location = new Point(22, 229);
+            txtAdress.Name = "txtAdress";
+            txtAdress.Size = new Size(262, 27);
+            txtAdress.TabIndex = 16;
             // 
-            // textBox4
+            // txtSdt
             // 
-            textBox4.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox4.Location = new Point(12, 294);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(261, 27);
-            textBox4.TabIndex = 15;
+            txtSdt.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtSdt.Location = new Point(22, 171);
+            txtSdt.Name = "txtSdt";
+            txtSdt.Size = new Size(262, 27);
+            txtSdt.TabIndex = 17;
             // 
-            // textBox3
+            // txtName
             // 
-            textBox3.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox3.Location = new Point(12, 229);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(262, 27);
-            textBox3.TabIndex = 16;
-            // 
-            // textBox2
-            // 
-            textBox2.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox2.Location = new Point(12, 171);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(262, 27);
-            textBox2.TabIndex = 17;
-            // 
-            // textBox1
-            // 
-            textBox1.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(12, 115);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(262, 27);
-            textBox1.TabIndex = 18;
+            txtName.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtName.Location = new Point(22, 115);
+            txtName.Name = "txtName";
+            txtName.Size = new Size(262, 27);
+            txtName.TabIndex = 18;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(16, 19);
+            label1.Location = new Point(22, 19);
             label1.Name = "label1";
             label1.Size = new Size(40, 21);
             label1.TabIndex = 25;
@@ -238,10 +248,11 @@
             // 
             cbClass.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cbClass.FormattingEnabled = true;
-            cbClass.Location = new Point(12, 43);
+            cbClass.Location = new Point(22, 43);
             cbClass.Name = "cbClass";
             cbClass.Size = new Size(262, 29);
             cbClass.TabIndex = 19;
+            cbClass.SelectedIndexChanged += cbClass_SelectedIndexChanged;
             // 
             // panel3
             // 
@@ -267,19 +278,18 @@
             // btnSearch
             // 
             btnSearch.Anchor = AnchorStyles.None;
-            btnSearch.Location = new Point(200, 32);
+            btnSearch.Location = new Point(208, 32);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(86, 32);
             btnSearch.TabIndex = 5;
             btnSearch.Text = "Search";
             btnSearch.UseVisualStyleBackColor = true;
-            btnSearch.Click += btnSearch_Click;
             // 
             // txtSearch
             // 
             txtSearch.Anchor = AnchorStyles.None;
             txtSearch.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtSearch.Location = new Point(12, 32);
+            txtSearch.Location = new Point(20, 32);
             txtSearch.Name = "txtSearch";
             txtSearch.Size = new Size(169, 27);
             txtSearch.TabIndex = 4;
@@ -294,15 +304,37 @@
             panel8.Size = new Size(265, 515);
             panel8.TabIndex = 3;
             // 
-            // panel2
+            // panel7
             // 
-            panel2.Controls.Add(panel10);
-            panel2.Controls.Add(panel9);
-            panel2.Dock = DockStyle.Left;
-            panel2.Location = new Point(572, 0);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(476, 515);
-            panel2.TabIndex = 4;
+            panel7.Controls.Add(groupBox5);
+            panel7.Dock = DockStyle.Top;
+            panel7.Location = new Point(0, 323);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(265, 189);
+            panel7.TabIndex = 1;
+            // 
+            // groupBox5
+            // 
+            groupBox5.Controls.Add(btn);
+            groupBox5.Controls.Add(btnAdd);
+            groupBox5.Dock = DockStyle.Fill;
+            groupBox5.Location = new Point(0, 0);
+            groupBox5.Name = "groupBox5";
+            groupBox5.Size = new Size(265, 189);
+            groupBox5.TabIndex = 1;
+            groupBox5.TabStop = false;
+            groupBox5.Text = "Chức Năng";
+            // 
+            // btnAdd
+            // 
+            btnAdd.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnAdd.Location = new Point(14, 36);
+            btnAdd.Name = "btnAdd";
+            btnAdd.Size = new Size(222, 52);
+            btnAdd.TabIndex = 0;
+            btnAdd.Text = "Thêm Học Sinh Vào Lớp";
+            btnAdd.UseVisualStyleBackColor = true;
+            btnAdd.Click += btnAdd_Click;
             // 
             // panel4
             // 
@@ -313,25 +345,15 @@
             panel4.Size = new Size(265, 323);
             panel4.TabIndex = 0;
             // 
-            // panel7
-            // 
-            panel7.Controls.Add(button2);
-            panel7.Controls.Add(button1);
-            panel7.Dock = DockStyle.Top;
-            panel7.Location = new Point(0, 323);
-            panel7.Name = "panel7";
-            panel7.Size = new Size(265, 189);
-            panel7.TabIndex = 1;
-            // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(textBox9);
+            groupBox2.Controls.Add(txtAdressParent);
             groupBox2.Controls.Add(label10);
-            groupBox2.Controls.Add(textBox8);
+            groupBox2.Controls.Add(txtJob);
             groupBox2.Controls.Add(label9);
-            groupBox2.Controls.Add(textBox7);
+            groupBox2.Controls.Add(txtRelationship);
             groupBox2.Controls.Add(label8);
-            groupBox2.Controls.Add(textBox6);
+            groupBox2.Controls.Add(txtNameParent);
             groupBox2.Controls.Add(label7);
             groupBox2.Dock = DockStyle.Fill;
             groupBox2.Location = new Point(0, 0);
@@ -341,41 +363,33 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Phụ Huynh";
             // 
-            // textBox6
+            // txtAdressParent
             // 
-            textBox6.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox6.Location = new Point(6, 67);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(221, 27);
-            textBox6.TabIndex = 18;
+            txtAdressParent.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtAdressParent.Location = new Point(10, 278);
+            txtAdressParent.Name = "txtAdressParent";
+            txtAdressParent.ReadOnly = true;
+            txtAdressParent.Size = new Size(221, 27);
+            txtAdressParent.TabIndex = 18;
             // 
-            // label7
+            // label10
             // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.Location = new Point(10, 34);
-            label7.Name = "label7";
-            label7.Size = new Size(161, 21);
-            label7.TabIndex = 24;
-            label7.Text = "Họ và Tên Phụ Huynh:";
+            label10.AutoSize = true;
+            label10.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label10.Location = new Point(14, 245);
+            label10.Name = "label10";
+            label10.Size = new Size(63, 21);
+            label10.TabIndex = 24;
+            label10.Text = "Địa Chỉ:";
             // 
-            // label8
+            // txtJob
             // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.Location = new Point(10, 106);
-            label8.Name = "label8";
-            label8.Size = new Size(105, 21);
-            label8.TabIndex = 24;
-            label8.Text = "Mối Quan Hệ:";
-            // 
-            // textBox7
-            // 
-            textBox7.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox7.Location = new Point(6, 139);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(221, 27);
-            textBox7.TabIndex = 18;
+            txtJob.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtJob.Location = new Point(6, 209);
+            txtJob.Name = "txtJob";
+            txtJob.ReadOnly = true;
+            txtJob.Size = new Size(221, 27);
+            txtJob.TabIndex = 18;
             // 
             // label9
             // 
@@ -387,102 +401,137 @@
             label9.TabIndex = 24;
             label9.Text = "Công Việc:";
             // 
-            // textBox8
+            // txtRelationship
             // 
-            textBox8.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox8.Location = new Point(6, 209);
-            textBox8.Name = "textBox8";
-            textBox8.Size = new Size(221, 27);
-            textBox8.TabIndex = 18;
+            txtRelationship.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtRelationship.Location = new Point(6, 139);
+            txtRelationship.Name = "txtRelationship";
+            txtRelationship.ReadOnly = true;
+            txtRelationship.Size = new Size(221, 27);
+            txtRelationship.TabIndex = 18;
             // 
-            // label10
+            // label8
             // 
-            label10.AutoSize = true;
-            label10.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label10.Location = new Point(14, 245);
-            label10.Name = "label10";
-            label10.Size = new Size(63, 21);
-            label10.TabIndex = 24;
-            label10.Text = "Địa Chỉ:";
-            label10.Click += label10_Click;
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label8.Location = new Point(10, 106);
+            label8.Name = "label8";
+            label8.Size = new Size(105, 21);
+            label8.TabIndex = 24;
+            label8.Text = "Mối Quan Hệ:";
             // 
-            // textBox9
+            // txtNameParent
             // 
-            textBox9.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox9.Location = new Point(10, 278);
-            textBox9.Name = "textBox9";
-            textBox9.Size = new Size(221, 27);
-            textBox9.TabIndex = 18;
+            txtNameParent.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtNameParent.Location = new Point(6, 67);
+            txtNameParent.Name = "txtNameParent";
+            txtNameParent.ReadOnly = true;
+            txtNameParent.Size = new Size(221, 27);
+            txtNameParent.TabIndex = 18;
             // 
-            // button1
+            // label7
             // 
-            button1.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.Location = new Point(14, 27);
-            button1.Name = "button1";
-            button1.Size = new Size(222, 52);
-            button1.TabIndex = 0;
-            button1.Text = "Thêm Học Sinh Vào Lớp";
-            button1.UseVisualStyleBackColor = true;
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label7.Location = new Point(10, 34);
+            label7.Name = "label7";
+            label7.Size = new Size(161, 21);
+            label7.TabIndex = 24;
+            label7.Text = "Họ và Tên Phụ Huynh:";
             // 
-            // button3
+            // panel2
             // 
-            button3.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            button3.Location = new Point(34, 16);
-            button3.Name = "button3";
-            button3.Size = new Size(143, 38);
-            button3.TabIndex = 0;
-            button3.Text = "button1";
-            button3.UseVisualStyleBackColor = true;
-            // 
-            // panel9
-            // 
-            panel9.Controls.Add(dataGridView1);
-            panel9.Dock = DockStyle.Top;
-            panel9.Location = new Point(0, 0);
-            panel9.Name = "panel9";
-            panel9.Size = new Size(476, 449);
-            panel9.TabIndex = 0;
+            panel2.Controls.Add(panel10);
+            panel2.Controls.Add(panel9);
+            panel2.Dock = DockStyle.Left;
+            panel2.Location = new Point(572, 0);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(476, 515);
+            panel2.TabIndex = 4;
             // 
             // panel10
             // 
-            panel10.Controls.Add(button4);
-            panel10.Controls.Add(button3);
+            panel10.Controls.Add(groupBox6);
             panel10.Dock = DockStyle.Top;
             panel10.Location = new Point(0, 449);
             panel10.Name = "panel10";
             panel10.Size = new Size(476, 66);
             panel10.TabIndex = 1;
             // 
-            // dataGridView1
+            // groupBox6
             // 
-            dataGridView1.BackgroundColor = Color.LavenderBlush;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.Location = new Point(0, 0);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(476, 449);
-            dataGridView1.TabIndex = 0;
+            groupBox6.Controls.Add(btnReport);
+            groupBox6.Controls.Add(btnAbout);
+            groupBox6.Dock = DockStyle.Fill;
+            groupBox6.Location = new Point(0, 0);
+            groupBox6.Name = "groupBox6";
+            groupBox6.Size = new Size(476, 66);
+            groupBox6.TabIndex = 1;
+            groupBox6.TabStop = false;
+            groupBox6.Text = "Chi Tiết";
             // 
-            // button2
+            // btnReport
             // 
-            button2.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            button2.Location = new Point(14, 104);
-            button2.Name = "button2";
-            button2.Size = new Size(222, 52);
-            button2.TabIndex = 0;
-            button2.Text = "Thông tin phụ huynh";
-            button2.UseVisualStyleBackColor = true;
+            btnReport.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnReport.Location = new Point(266, 22);
+            btnReport.Name = "btnReport";
+            btnReport.Size = new Size(199, 38);
+            btnReport.TabIndex = 0;
+            btnReport.Text = "button1";
+            btnReport.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // btnAbout
             // 
-            button4.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            button4.Location = new Point(192, 16);
-            button4.Name = "button4";
-            button4.Size = new Size(143, 38);
-            button4.TabIndex = 0;
-            button4.Text = "button1";
-            button4.UseVisualStyleBackColor = true;
+            btnAbout.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnAbout.Location = new Point(24, 22);
+            btnAbout.Name = "btnAbout";
+            btnAbout.Size = new Size(218, 38);
+            btnAbout.TabIndex = 0;
+            btnAbout.Text = "Chi Tiết";
+            btnAbout.UseVisualStyleBackColor = true;
+            btnAbout.Click += btnAbout_Click;
+            // 
+            // panel9
+            // 
+            panel9.Controls.Add(groupBox4);
+            panel9.Dock = DockStyle.Top;
+            panel9.Location = new Point(0, 0);
+            panel9.Name = "panel9";
+            panel9.Size = new Size(476, 449);
+            panel9.TabIndex = 0;
+            // 
+            // groupBox4
+            // 
+            groupBox4.Controls.Add(gvStudent);
+            groupBox4.Dock = DockStyle.Fill;
+            groupBox4.Location = new Point(0, 0);
+            groupBox4.Name = "groupBox4";
+            groupBox4.Size = new Size(476, 449);
+            groupBox4.TabIndex = 0;
+            groupBox4.TabStop = false;
+            groupBox4.Text = "Lớp: ";
+            // 
+            // gvStudent
+            // 
+            gvStudent.BackgroundColor = Color.LavenderBlush;
+            gvStudent.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            gvStudent.Dock = DockStyle.Fill;
+            gvStudent.Location = new Point(3, 19);
+            gvStudent.Name = "gvStudent";
+            gvStudent.RowTemplate.Height = 25;
+            gvStudent.Size = new Size(470, 427);
+            gvStudent.TabIndex = 1;
+            // 
+            // btn
+            // 
+            btn.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btn.Location = new Point(14, 113);
+            btn.Name = "btn";
+            btn.Size = new Size(222, 52);
+            btn.TabIndex = 0;
+            btn.Text = "Thông Tin Phụ Huynh";
+            btn.UseVisualStyleBackColor = true;
+            btn.Click += btnAdd_Click;
             // 
             // Student
             // 
@@ -494,6 +543,7 @@
             Controls.Add(panel1);
             Name = "Student";
             Text = "Student";
+            Load += Student_Load;
             panel1.ResumeLayout(false);
             panel5.ResumeLayout(false);
             panel6.ResumeLayout(false);
@@ -503,14 +553,17 @@
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             panel8.ResumeLayout(false);
-            panel2.ResumeLayout(false);
-            panel4.ResumeLayout(false);
             panel7.ResumeLayout(false);
+            groupBox5.ResumeLayout(false);
+            panel4.ResumeLayout(false);
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
-            panel9.ResumeLayout(false);
+            panel2.ResumeLayout(false);
             panel10.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            groupBox6.ResumeLayout(false);
+            panel9.ResumeLayout(false);
+            groupBox4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)gvStudent).EndInit();
             ResumeLayout(false);
         }
 
@@ -529,9 +582,9 @@
         private Label label2;
         private TextBox textBox5;
         private TextBox textBox4;
-        private TextBox textBox3;
-        private TextBox textBox2;
-        private TextBox textBox1;
+        private TextBox txtAdress;
+        private TextBox txtSdt;
+        private TextBox txtName;
         private Label label1;
         private ComboBox cbClass;
         private Button btnSearch;
@@ -541,20 +594,27 @@
         private Panel panel4;
         private Panel panel2;
         private GroupBox groupBox2;
-        private TextBox textBox9;
+        private TextBox txtAdressParent;
         private Label label10;
-        private TextBox textBox8;
+        private TextBox txtJob;
         private Label label9;
-        private TextBox textBox7;
+        private TextBox txtRelationship;
         private Label label8;
-        private TextBox textBox6;
+        private TextBox txtNameParent;
         private Label label7;
         private Button button2;
-        private Button button1;
+        private Button btnAdd;
         private Panel panel10;
-        private Button button3;
+        private Button btnAbout;
         private Panel panel9;
         private DataGridView dataGridView1;
-        private Button button4;
+        private Button btnReport;
+        private ComboBox cbSex;
+        private DateTimePicker dateBirth;
+        private GroupBox groupBox5;
+        private GroupBox groupBox4;
+        private GroupBox groupBox6;
+        private DataGridView gvStudent;
+        private Button btn;
     }
 }

@@ -73,13 +73,13 @@ namespace DataAccessLayer
     /// </summary>
     public class DatabaseAccess
     {
-       public static string CheackAccessAcountDAO(UserAccount taikhoan)
+        public static string CheackAccessAcountDAO(UserAccount taikhoan)
         {
-            Modify modify = new Modify();   
-            string strSQL = "Select law_id From UserAccount Where userName = '"+taikhoan.UserName+"' and law_id in(Select law_id from law)";
+            Modify modify = new Modify();
+            string strSQL = "Select law_id From UserAccount Where userName = '" + taikhoan.UserName + "' and law_id in(Select law_id from law)";
             string infor = null;
             DataTableReader dr = modify.GetDataTable(strSQL).CreateDataReader();
-            if(dr.HasRows)
+            if (dr.HasRows)
             {
                 return "susccess";
             }
@@ -138,7 +138,8 @@ namespace DataAccessLayer
             try
             {
                 mo.Command("Insert into UserAccount values( '" + user.UserName + "' , '" + user.Pass + "', '" + user.Email + "', '0')");
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 return "exist_username_email";
             }
@@ -151,11 +152,11 @@ namespace DataAccessLayer
             UserAccount user = new UserAccount();
             string strSQL = "Select * from UserAccount Where userName = '" + userName + "'";
             DataTableReader reader = mo.GetDataTable(strSQL).CreateDataReader();
-            if(reader.HasRows)
+            if (reader.HasRows)
             {
                 while (reader.Read())
                 {
-                    
+
                     user.UserName = reader.GetString(0);
                     user.Pass = reader.GetString(1);
                     user.Email = reader.GetString(2);
@@ -195,7 +196,7 @@ namespace DataAccessLayer
         public static string UpdateUserDAO(UserAccount user)
         {
             Modify mo = new Modify();
-            string strSQL = "Update UserAccount set pass = '" + user.Pass + "', email = '" + user.Email + "' where userName = '"+user.UserName+"'";
+            string strSQL = "Update UserAccount set pass = '" + user.Pass + "', email = '" + user.Email + "' where userName = '" + user.UserName + "'";
             try
             {
                 mo.Command(strSQL);
@@ -209,20 +210,21 @@ namespace DataAccessLayer
         public static string ProvideLawUserDAO(UserAccount user, string law_name)
         {
             Modify mo = new Modify();
-            int law_id1 = 0 ;
+            int law_id1 = 0;
             // get id
-            string strSQL = "select * from law where law_name = '"+law_name+ "'";
+            string strSQL = "select * from law where law_name = '" + law_name + "'";
             try
             {
-                
+
                 DataTableReader re = mo.GetDataTable(strSQL).CreateDataReader();
-                if(re.HasRows)
+                if (re.HasRows)
                 {
                     while (re.Read())
                     {
                         law_id1 = re.GetInt32(0);
                     }
-                }else
+                }
+                else
                 {
                     return "fail";
                 }
@@ -270,10 +272,16 @@ namespace DataAccessLayer
             string strSQL = "select c.class_id, c.nameClass, b.block_name, c.schoolYear, c.block_id from Class c, BlockClass b where c.block_id = b.block_id";
             return modify.GetDataTable(strSQL);
         }
+        public static DataTable GetClasscbDAO()
+        {
+            Modify modify = new Modify();
+            string strSQL = "select* from Class c";
+            return modify.GetDataTable(strSQL);
+        }
         public static DataTable GetClassDAO(string search)
         {
             Modify modify = new Modify();
-            string strSQL = "select c.class_id, c.nameClass, b.block_name, c.schoolYear, c.block_id from Class c, BlockClass b where c.block_id = b.block_id and nameClass like  '%"+search+"%' ";
+            string strSQL = "select c.class_id, c.nameClass, b.block_name, c.schoolYear, c.block_id from Class c, BlockClass b where c.block_id = b.block_id and nameClass like  '%" + search + "%' ";
             return modify.GetDataTable(strSQL);
         }
         public static string CreateBlockDAO(Block block)
@@ -303,7 +311,7 @@ namespace DataAccessLayer
             {
                 return "exist_block_name";
             }
-            
+
         }
         public static string DeleteBlockDAO(Block block)
         {
@@ -313,8 +321,9 @@ namespace DataAccessLayer
             {
                 mo.Command(strSQL);
                 return "success";
-            }catch
-                {
+            }
+            catch
+            {
                 return "fail";
             }
         }
@@ -323,7 +332,7 @@ namespace DataAccessLayer
             Modify mo = new Modify();
             try
             {
-                mo.Command("Insert into Class values( '"+cl.block_id+"','"+cl.nameClass+"','"+cl.schoolYear+"' )");
+                mo.Command("Insert into Class values( '" + cl.block_id + "','" + cl.nameClass + "','" + cl.schoolYear + "' )");
             }
             catch (Exception ex)
             {
@@ -334,7 +343,7 @@ namespace DataAccessLayer
         public static string UpdateClassDAO(Class cl)
         {
             Modify mo = new Modify();
-            string strSQL = "Update Class set block_id = '" + cl.block_id + "', nameClass = '"+cl.nameClass+"', schoolYear = '"+cl.schoolYear+"' where class_id = '" + cl.class_id + "'";
+            string strSQL = "Update Class set block_id = '" + cl.block_id + "', nameClass = '" + cl.nameClass + "', schoolYear = '" + cl.schoolYear + "' where class_id = '" + cl.class_id + "'";
             try
             {
                 mo.Command(strSQL);
@@ -349,6 +358,49 @@ namespace DataAccessLayer
         {
             Modify mo = new Modify();
             string strSQL = "Delete Class where class_id = '" + cl.class_id + "'";
+            try
+            {
+                mo.Command(strSQL);
+                return "success";
+            }
+            catch
+            {
+                return "fail";
+            }
+        }
+
+        public static DataTable GetStudentDAO(int class_id)
+        {
+            try
+            {
+                return new Modify().GetDataTable("select sudentName, numberphone, dateOfBirth,sex, adress, student_id from Student where class_id = '" + class_id + "'");
+
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        public static string CreateStudentDAO(StudentObject st)
+        {
+            try
+            {
+                new Modify().Command("insert into Student values ('" + st.studentName + "','" + st.numberPhone + "','" + st.dateOfBirth + "','" + st.sex + "','" + st.adress + "','" + st.class_id + "')");
+                return "success";
+            }
+            catch { return null; }
+        }
+        public static string UpdateStudentDAO(StudentObject st)
+        {
+           new Modify().Command("Update Student set sudentName = '" + st.studentName + "' , numberphone = '" + st.numberPhone + "' ,dateOfBirth = '" + st.dateOfBirth + "' , sex = '" + st.sex + "', adress = '" + st.adress + "', class_id = '"+st.class_id+"' where student_id = '"+st.student_id+"'");
+            
+            return "success";
+
+        }
+        public static string DeleteStudentDAO(StudentObject st)
+        {
+            Modify mo = new Modify();
+            string strSQL = "Delete Student where class_id = '" + st.student_id + "'";
             try
             {
                 mo.Command(strSQL);

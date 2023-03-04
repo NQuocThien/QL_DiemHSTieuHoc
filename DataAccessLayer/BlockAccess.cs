@@ -18,6 +18,10 @@ namespace DataAccessLayer
         {
             return GetClassDAO();
         }
+        public DataTable GetClasscb()
+        {
+            return GetClasscbDAO();
+        }
         public DataTable GetClass(string search)
         {
             return GetClassDAO(search);

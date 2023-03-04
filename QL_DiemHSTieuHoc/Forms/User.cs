@@ -203,5 +203,10 @@ namespace QL_DiemHSTieuHoc.Forms
 
             }
         }
+
+        private void cbLaw_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

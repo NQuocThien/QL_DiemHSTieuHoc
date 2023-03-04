@@ -114,7 +114,7 @@ namespace QL_DiemHSTieuHoc
 
         private void button1_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Login(), sender);
+            OpenChildForm(new Student(currentUser), sender);
         }
 
         private void btnCloseChildForm_Click(object sender, EventArgs e)

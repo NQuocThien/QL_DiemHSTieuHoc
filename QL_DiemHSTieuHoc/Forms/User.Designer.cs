@@ -48,6 +48,7 @@
             label3 = new Label();
             panel3 = new Panel();
             label1 = new Label();
+            imgTitle = new ImageList(components);
             panel2 = new Panel();
             panel8 = new Panel();
             groupBox3 = new GroupBox();
@@ -62,7 +63,6 @@
             gvListUser = new DataGridView();
             panel6 = new Panel();
             label2 = new Label();
-            imgTitle = new ImageList(components);
             panel1.SuspendLayout();
             panel5.SuspendLayout();
             groupBox4.SuspendLayout();
@@ -290,6 +290,14 @@
             label1.Text = "Thông Tin Tài Khoản";
             label1.TextAlign = ContentAlignment.MiddleLeft;
             // 
+            // imgTitle
+            // 
+            imgTitle.ColorDepth = ColorDepth.Depth32Bit;
+            imgTitle.ImageStream = (ImageListStreamer)resources.GetObject("imgTitle.ImageStream");
+            imgTitle.TransparentColor = Color.Transparent;
+            imgTitle.Images.SetKeyName(0, "programmer.png");
+            imgTitle.Images.SetKeyName(1, "checklist.png");
+            // 
             // panel2
             // 
             panel2.BackColor = SystemColors.GradientInactiveCaption;
@@ -344,6 +352,7 @@
             cbLaw.Name = "cbLaw";
             cbLaw.Size = new Size(221, 29);
             cbLaw.TabIndex = 5;
+            cbLaw.SelectedIndexChanged += cbLaw_SelectedIndexChanged;
             // 
             // groupBox5
             // 
@@ -450,14 +459,6 @@
             label2.TabIndex = 0;
             label2.Text = "Danh Sách Tài Khoản";
             label2.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // imgTitle
-            // 
-            imgTitle.ColorDepth = ColorDepth.Depth32Bit;
-            imgTitle.ImageStream = (ImageListStreamer)resources.GetObject("imgTitle.ImageStream");
-            imgTitle.TransparentColor = Color.Transparent;
-            imgTitle.Images.SetKeyName(0, "programmer.png");
-            imgTitle.Images.SetKeyName(1, "checklist.png");
             // 
             // User
             // 
