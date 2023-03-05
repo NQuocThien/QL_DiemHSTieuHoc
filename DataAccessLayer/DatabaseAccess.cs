@@ -385,14 +385,14 @@ namespace DataAccessLayer
         {
             try
             {
-                new Modify().Command("insert into Student values ('" + st.studentName + "','" + st.numberPhone + "','" + st.dateOfBirth + "','" + st.sex + "','" + st.adress + "','" + st.class_id + "')");
+                new Modify().Command("insert into Student values (N'" + st.studentName + "','" + st.numberPhone + "','" + st.dateOfBirth + "',N'" + st.sex + "',N'" + st.adress + "','" + st.class_id + "')");
                 return "success";
             }
             catch { return null; }
         }
         public static string UpdateStudentDAO(StudentObject st)
         {
-           new Modify().Command("Update Student set sudentName = '" + st.studentName + "' , numberphone = '" + st.numberPhone + "' ,dateOfBirth = '" + st.dateOfBirth + "' , sex = '" + st.sex + "', adress = '" + st.adress + "', class_id = '"+st.class_id+"' where student_id = '"+st.student_id+"'");
+           new Modify().Command("Update Student set sudentName = N'" + st.studentName + "' , numberphone = N'" + st.numberPhone + "' ,dateOfBirth = '" + st.dateOfBirth + "' , sex = N'" + st.sex + "', adress = N'" + st.adress + "', class_id = '"+st.class_id+"' where student_id = '"+st.student_id+"'");
             
             return "success";
 
@@ -411,5 +411,129 @@ namespace DataAccessLayer
                 return "fail";
             }
         }
+        public static DataTable GetTeacherDAO()
+        {
+            try
+            {
+                return new Modify().GetDataTable("Select * From Teacher");
+            }catch
+            {
+                return null;
+            }
+        }
+        public static DataTable GetClassOfTeacherDAO(int techer_id)
+        {
+                return new Modify().GetDataTable("Select * From Class where class_id in(select class_id from TeacherAndClass where teacher_id = '" + techer_id+"')"); 
+
+        }
+        public static DataTable GetClassNonOfTeacherDAO(int techer_id)
+        {
+            return new Modify().GetDataTable("Select * From Class where class_id not in(select class_id from TeacherAndClass where teacher_id = '" + techer_id + "')");
+        }
+        public static DataTable GetSubjectOfTeacherDAO(int teacher_id)
+        {
+            try
+            {
+                return new Modify().GetDataTable("Select * From Subjectt where subject_id in(select subject_id from Undertake where teacher_id = '"+teacher_id+"')");
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        public static DataTable GetSubjectNonOfTeacherDAO(int teacher_id)
+        {
+            try
+            {
+                return new Modify().GetDataTable("Select * From Subjectt where subject_id not in(select subject_id from Undertake where teacher_id = '" + teacher_id + "')");
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        public static string CreateTeacherDAO(TeacherObject tc)
+        {
+            try
+            {
+                new Modify().Command("insert into Teacher values (N'" + tc.name_teacher + "','" + tc.numberPhone + "','" + tc.dateOfBirth + "',N'" + tc.sex + "',N'" + tc.adress + "')");
+                return "success";
+            }
+            catch { return null; }
+        }
+        public static string UpdateTeacherDAO(TeacherObject tc)
+        {
+            try
+            {
+                new Modify().Command("Update Teacher set  name_teacher = N'"+tc.name_teacher+"',numberphone = '"+tc.numberPhone+"', dateOfBirth = '"+tc.dateOfBirth+"', sex=N'"+tc.sex+"', adress=N'"+tc.adress+"' where teacher_id ='"+tc.teacher_id+"'");
+               // new Modify().Command("Update Teacher set  name_teacher = N'asdas',numberphone = '0123456789', dateOfBirth = '2002-03-03', sex=N'Nam', adress='An Giang' where teacher_id ='1'");
+
+                return "success";
+            }
+            catch(Exception e) { return e.Message; }
+        }
+        public static string DeleteTeacherDAO(TeacherObject tc)
+        {
+            Modify mo = new Modify();
+            string strSQL = "Delete Teacher where teacher_id = '" + tc.teacher_id + "'";
+            try
+            {
+                mo.Command(strSQL);
+                return "success";
+            }
+            catch (Exception e)
+            {
+                return e.Message;
+            }
+        }
+
+        public static string AddClassForTeacherDAO(int class_id, int teacher_id)
+        {
+            try
+            {
+                new Modify().Command("Insert into TeacherAndClass values('" + class_id + "','" + teacher_id + "')");
+                return "success";
+            }catch(Exception e)
+            {
+                return e.Message;
+            }
+        }
+        public static string RemoveClassForTeacherDAO(int class_id, int teacher_id)
+        {
+            try
+            {
+                new Modify().Command("Delete TeacherAndClass where class_id = '"+class_id+"' and teacher_id = '"+teacher_id+"'");
+                return "success";
+            }
+            catch (Exception e)
+            {
+                return e.Message;
+            }
+        }
+        public static string AddSubjectForTeacherDAO(int subject_id, int teacher_id)
+        {
+            try
+            {
+                new Modify().Command("Insert into Undertake values('" + subject_id + "','" + teacher_id + "')");
+                return "success";
+            }
+            catch (Exception e)
+            {
+                return e.Message;
+            }
+        }
+        public static string RemoveSubjectForTeacherDAO(int subject_id, int teacher_id)
+        {
+            try
+            {
+                new Modify().Command("Delete Undertake where subject_id = '" + subject_id + "' and teacher_id = '" + teacher_id + "'");
+                return "success";
+            }
+            catch (Exception e)
+            {
+                return e.Message;
+            }
+        }
+
     }
 }

@@ -70,14 +70,12 @@ namespace QL_DiemHSTieuHoc.Forms.SubFroms
             try
             {
                 st.class_id = int.Parse(cbClass.SelectedValue.ToString());
-
             }
             catch
             {
                 MessageBox.Show("chọn lớp");
                 return;
             }
-
 
             switch (stBll.UpdateStudent(st))
             {

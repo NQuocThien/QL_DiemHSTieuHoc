@@ -213,6 +213,7 @@
             btnTeacher.TabIndex = 1;
             btnTeacher.Text = "Giáo Viên";
             btnTeacher.UseVisualStyleBackColor = true;
+            btnTeacher.Click += btnTeacher_Click;
             // 
             // btnStudent
             // 
