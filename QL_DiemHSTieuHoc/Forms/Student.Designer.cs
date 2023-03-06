@@ -51,17 +51,11 @@
             panel8 = new Panel();
             panel7 = new Panel();
             groupBox5 = new GroupBox();
+            btn = new Button();
             btnAdd = new Button();
             panel4 = new Panel();
             groupBox2 = new GroupBox();
-            txtAdressParent = new TextBox();
-            label10 = new Label();
-            txtJob = new TextBox();
-            label9 = new Label();
-            txtRelationship = new TextBox();
-            label8 = new Label();
-            txtNameParent = new TextBox();
-            label7 = new Label();
+            gvParent = new DataGridView();
             panel2 = new Panel();
             panel10 = new Panel();
             groupBox6 = new GroupBox();
@@ -70,7 +64,6 @@
             panel9 = new Panel();
             groupBox4 = new GroupBox();
             gvStudent = new DataGridView();
-            btn = new Button();
             panel1.SuspendLayout();
             panel5.SuspendLayout();
             panel6.SuspendLayout();
@@ -82,6 +75,7 @@
             groupBox5.SuspendLayout();
             panel4.SuspendLayout();
             groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)gvParent).BeginInit();
             panel2.SuspendLayout();
             panel10.SuspendLayout();
             groupBox6.SuspendLayout();
@@ -325,6 +319,17 @@
             groupBox5.TabStop = false;
             groupBox5.Text = "Chức Năng";
             // 
+            // btn
+            // 
+            btn.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btn.Location = new Point(14, 113);
+            btn.Name = "btn";
+            btn.Size = new Size(222, 52);
+            btn.TabIndex = 0;
+            btn.Text = "Thông Tin Phụ Huynh";
+            btn.UseVisualStyleBackColor = true;
+            btn.Click += btnAdd_Click;
+            // 
             // btnAdd
             // 
             btnAdd.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
@@ -347,14 +352,7 @@
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(txtAdressParent);
-            groupBox2.Controls.Add(label10);
-            groupBox2.Controls.Add(txtJob);
-            groupBox2.Controls.Add(label9);
-            groupBox2.Controls.Add(txtRelationship);
-            groupBox2.Controls.Add(label8);
-            groupBox2.Controls.Add(txtNameParent);
-            groupBox2.Controls.Add(label7);
+            groupBox2.Controls.Add(gvParent);
             groupBox2.Dock = DockStyle.Fill;
             groupBox2.Location = new Point(0, 0);
             groupBox2.Name = "groupBox2";
@@ -363,81 +361,17 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Phụ Huynh";
             // 
-            // txtAdressParent
+            // gvParent
             // 
-            txtAdressParent.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtAdressParent.Location = new Point(10, 278);
-            txtAdressParent.Name = "txtAdressParent";
-            txtAdressParent.ReadOnly = true;
-            txtAdressParent.Size = new Size(221, 27);
-            txtAdressParent.TabIndex = 18;
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label10.Location = new Point(14, 245);
-            label10.Name = "label10";
-            label10.Size = new Size(63, 21);
-            label10.TabIndex = 24;
-            label10.Text = "Địa Chỉ:";
-            // 
-            // txtJob
-            // 
-            txtJob.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtJob.Location = new Point(6, 209);
-            txtJob.Name = "txtJob";
-            txtJob.ReadOnly = true;
-            txtJob.Size = new Size(221, 27);
-            txtJob.TabIndex = 18;
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label9.Location = new Point(10, 176);
-            label9.Name = "label9";
-            label9.Size = new Size(83, 21);
-            label9.TabIndex = 24;
-            label9.Text = "Công Việc:";
-            // 
-            // txtRelationship
-            // 
-            txtRelationship.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtRelationship.Location = new Point(6, 139);
-            txtRelationship.Name = "txtRelationship";
-            txtRelationship.ReadOnly = true;
-            txtRelationship.Size = new Size(221, 27);
-            txtRelationship.TabIndex = 18;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.Location = new Point(10, 106);
-            label8.Name = "label8";
-            label8.Size = new Size(105, 21);
-            label8.TabIndex = 24;
-            label8.Text = "Mối Quan Hệ:";
-            // 
-            // txtNameParent
-            // 
-            txtNameParent.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtNameParent.Location = new Point(6, 67);
-            txtNameParent.Name = "txtNameParent";
-            txtNameParent.ReadOnly = true;
-            txtNameParent.Size = new Size(221, 27);
-            txtNameParent.TabIndex = 18;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.Location = new Point(10, 34);
-            label7.Name = "label7";
-            label7.Size = new Size(161, 21);
-            label7.TabIndex = 24;
-            label7.Text = "Họ và Tên Phụ Huynh:";
+            gvParent.AllowUserToAddRows = false;
+            gvParent.BackgroundColor = Color.LavenderBlush;
+            gvParent.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            gvParent.Dock = DockStyle.Fill;
+            gvParent.Location = new Point(3, 19);
+            gvParent.Name = "gvParent";
+            gvParent.RowTemplate.Height = 25;
+            gvParent.Size = new Size(259, 301);
+            gvParent.TabIndex = 0;
             // 
             // panel2
             // 
@@ -509,10 +443,11 @@
             groupBox4.Size = new Size(476, 449);
             groupBox4.TabIndex = 0;
             groupBox4.TabStop = false;
-            groupBox4.Text = "Lớp: ";
+            groupBox4.Text = "Thông tin học sinh:";
             // 
             // gvStudent
             // 
+            gvStudent.AllowUserToAddRows = false;
             gvStudent.BackgroundColor = Color.LavenderBlush;
             gvStudent.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             gvStudent.Dock = DockStyle.Fill;
@@ -521,17 +456,7 @@
             gvStudent.RowTemplate.Height = 25;
             gvStudent.Size = new Size(470, 427);
             gvStudent.TabIndex = 1;
-            // 
-            // btn
-            // 
-            btn.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btn.Location = new Point(14, 113);
-            btn.Name = "btn";
-            btn.Size = new Size(222, 52);
-            btn.TabIndex = 0;
-            btn.Text = "Thông Tin Phụ Huynh";
-            btn.UseVisualStyleBackColor = true;
-            btn.Click += btnAdd_Click;
+            gvStudent.CellClick += gvStudent_CellClick;
             // 
             // Student
             // 
@@ -557,7 +482,7 @@
             groupBox5.ResumeLayout(false);
             panel4.ResumeLayout(false);
             groupBox2.ResumeLayout(false);
-            groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)gvParent).EndInit();
             panel2.ResumeLayout(false);
             panel10.ResumeLayout(false);
             groupBox6.ResumeLayout(false);
@@ -594,14 +519,6 @@
         private Panel panel4;
         private Panel panel2;
         private GroupBox groupBox2;
-        private TextBox txtAdressParent;
-        private Label label10;
-        private TextBox txtJob;
-        private Label label9;
-        private TextBox txtRelationship;
-        private Label label8;
-        private TextBox txtNameParent;
-        private Label label7;
         private Button button2;
         private Button btnAdd;
         private Panel panel10;
@@ -616,5 +533,6 @@
         private GroupBox groupBox6;
         private DataGridView gvStudent;
         private Button btn;
+        private DataGridView gvParent;
     }
 }

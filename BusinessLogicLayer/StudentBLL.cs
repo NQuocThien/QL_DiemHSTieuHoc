@@ -17,6 +17,22 @@ namespace BusinessLogicLayer
         {
             return stAs.GetStudent(class_id);
         }
+        public DataTable GetStudent(string name)
+        {
+            return stAs.GetStudent(name);
+        }
+        public DataTable GetStudentOfFamily(int family_id)
+        {
+            return stAs.GetStudentOfFamily(family_id);
+        }
+        public DataTable GetStudentNonOfFamily(int family_id,int class_id)
+        {
+            return stAs.GetStudentNonOfFamily(family_id, class_id);
+        }
+        public DataTable GetStudentNonOfFamily(int family_id, string name)
+        {
+            return stAs.GetStudentNonOfFamily(family_id, name);
+        }
         public string CreateStudent(StudentObject st)
         {
             if(st!= null)
@@ -46,6 +62,16 @@ namespace BusinessLogicLayer
                 return stAs.DeleteStudent(st);
             }
             return null;
+        }
+        public string AddStudentForFamily(int student_id, int family_id)
+        {
+            return stAs.AddStudentForFamily(student_id, family_id);
+        
+            }
+        public string RemoveStudentForFamily(int student_id, int family_id)
+        {
+            return stAs.RemoveStudentForFamily(student_id, family_id);
+
         }
     }
 }

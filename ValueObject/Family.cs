@@ -13,8 +13,7 @@ namespace ValueObject
         public string numberPhone { get; set; }
         public string yearOfBirth { get; set; }
         public string sex { get; set; }
-        public string andress { get; set; }
-        public string job { get; set; }
+        public string parent_name { get; set; }
 
 
 

@@ -1,4 +1,5 @@
 ﻿using BusinessLogicLayer;
+using DataAccessLayer;
 using Microsoft.VisualBasic.ApplicationServices;
 using QL_DiemHSTieuHoc.Forms.SubFroms;
 using System;
@@ -24,6 +25,7 @@ namespace QL_DiemHSTieuHoc.Forms
         StudentObject st = new StudentObject();
         BlockBLL blockBll = new BlockBLL();
         StudentBLL stBll = new StudentBLL();
+        FamilyBLL familyBLL = new FamilyBLL();
         int class_id;
         int tmp = 0;
         private void Load_CurrentUser()
@@ -34,8 +36,6 @@ namespace QL_DiemHSTieuHoc.Forms
             {
                 Load_ControlUnLock();
             }
-
-
         }
         public Student(string currentUser)
         {
@@ -48,7 +48,35 @@ namespace QL_DiemHSTieuHoc.Forms
             Load_cbClass();
             Load_Control();
             Load_CurrentUser();
+            // Load_gvParent();
         }
+
+        private void Load_gvParent()
+        {
+            StudentObject student = GetCurrentStudent();
+
+
+            int n = gvParent.Width / 2;
+
+            DataTable dt = familyBLL.GetFamilyForStudent(student);
+            if (dt == null)
+                return;
+            gvParent.DataSource = dt;
+            gvParent.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            gvParent.Columns[0].Visible = false;
+            gvParent.Columns[1].Width = n;
+
+            gvParent.Columns[1].HeaderText = "Quan Hệ";
+
+            gvParent.Columns[2].Visible = false;
+
+            gvParent.Columns[3].Visible = false;
+
+            gvParent.Columns[4].HeaderText = "Họ Tên";
+            gvParent.Columns[4].Width = n;
+
+        }
+
         private void Load_Control()
         {
             this.btnAbout.Enabled = false;
@@ -134,22 +162,39 @@ namespace QL_DiemHSTieuHoc.Forms
             MessageBox.Show("Đã Nhập!!!");
             Load_gvStudent(class_id);
         }
-
-        private void btnAbout_Click(object sender, EventArgs e)
+        private StudentObject GetCurrentStudent()
         {
-            DataGridViewRow dr = gvStudent.SelectedRows[0];
-            if(dr != null)
+            try
             {
+                DataGridViewRow dr = gvStudent.SelectedRows[0];
                 st.studentName = dr.Cells[0].Value.ToString();
                 st.numberPhone = dr.Cells[1].Value.ToString();
                 st.dateOfBirth = dr.Cells[2].Value.ToString();
                 st.sex = dr.Cells[3].Value.ToString();
                 st.adress = dr.Cells[4].Value.ToString();
                 st.student_id = int.Parse(dr.Cells[5].Value.ToString());
+                return st;
+            }
+            catch
+            {
+                return null;
+            }
+
+        }
+        private void btnAbout_Click(object sender, EventArgs e)
+        {
+
+            if (GetCurrentStudent() != null)
+            {
                 SubStudentForm f = new SubStudentForm(st);
                 f.ShowDialog();
                 Load_gvStudent(class_id);
             }
+        }
+
+        private void gvStudent_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Load_gvParent();
         }
     }
 }

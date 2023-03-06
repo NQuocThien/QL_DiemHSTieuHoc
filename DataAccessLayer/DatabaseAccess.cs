@@ -275,7 +275,7 @@ namespace DataAccessLayer
         public static DataTable GetClasscbDAO()
         {
             Modify modify = new Modify();
-            string strSQL = "select* from Class c";
+            string strSQL = "select* from Class ";
             return modify.GetDataTable(strSQL);
         }
         public static DataTable GetClassDAO(string search)
@@ -374,6 +374,18 @@ namespace DataAccessLayer
             try
             {
                 return new Modify().GetDataTable("select sudentName, numberphone, dateOfBirth,sex, adress, student_id from Student where class_id = '" + class_id + "'");
+
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        public static DataTable GetStudentDAO(string name)
+        {
+            try
+            {
+                return new Modify().GetDataTable("select sudentName, numberphone, dateOfBirth,sex, adress, student_id from Student where sudentName  like N'%" + name + "%'");
 
             }
             catch
@@ -534,6 +546,98 @@ namespace DataAccessLayer
                 return e.Message;
             }
         }
+        public static DataTable GetFamilyForStudentDAO(StudentObject st)
+        {
+            try
+            {
+                return new Modify().GetDataTable("Select * From Farmily Where farmily_id in (select farmily_id from SutdentAndFarmily where student_id = '" + st.student_id + "')");
+            }catch(Exception e)
+            {
+                return null;
+            }
+        }
+        public static DataTable GetFamilyDAO()
+        {
+            try
+            {
+                return new Modify().GetDataTable("Select * From Farmily ");
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+        public static string CreateFamilyDAO(Family f)
+        {
+            try
+            {
+                new Modify().Command("insert into Farmily values (N'" + f.nameRelationShip + "','" + f.numberPhone + "','" + f.yearOfBirth + "',N'" + f.parent_name + "')");
+                return "success";
+            }
+            catch(Exception e) { return e.Message; }
+        }
+        public static string UpdateFamilyDAO(Family f)
+        {
+            try
+            {
+                new Modify().Command("update Farmily set nameRelationship = N'" + f.nameRelationShip + "',numberphone = '" + f.numberPhone + "', yearOfBirth = '" + f.yearOfBirth + "',parent_name =  N'" + f.parent_name + "' Where farmily_id = '"+f.family_id+"'");
+                return "success";
+            }
+            catch (Exception e) { return e.Message; }
+        }
+        public static string DeleteFamilyDAO(Family f)
+        {
+            try
+            {
+                new Modify().Command("Delete Farmily Where farmily_id = '" + f.family_id + "'");
+                return "success";
+            }
+            catch (Exception e) { return e.Message; }
+        }
+        public static string AddStudentForFamilyDAO(int student_id, int family_id)
+        {
+            try
+            {
+                new Modify().Command("insert into SutdentAndFarmily values('"+family_id+"','"+student_id+"')");
+                return "success";
+            }
+            catch (Exception e) { return e.Message; }
+        }
+        public static string RemoveStudentForFamilyDAO(int student_id, int family_id)
+        {
+            try
+            {
+                new Modify().Command("Delete SutdentAndFarmily where farmily_id =  '" + family_id + "'and student_id =  '" + student_id + "'");
+                return "success";
+            }
+            catch (Exception e) { return e.Message; }
+        }
+        public static DataTable GetStudentOfFamilyDAO(int family_id)
+        {
+            try
+            {
+               return new Modify().GetDataTable("Select  sudentName, numberphone, dateOfBirth,sex, adress, student_id From Student where student_id in (select student_id From SutdentAndFarmily where farmily_id = '"+family_id+"')");
+                
+            }
+            catch (Exception e) { return null; }
+        }
+        public static DataTable GetStudentNonOfFamilyDAO(int family_id, int class_id)
+        {
+            try
+            {
+                return new Modify().GetDataTable("Select  sudentName, numberphone, dateOfBirth,sex, adress, student_id From Student where class_id = '"+class_id+"' and  student_id not in (select student_id From SutdentAndFarmily where farmily_id = '" + family_id + "')");
 
+            }
+            catch (Exception e) { return null; }
+        }
+        public static DataTable GetStudentNonOfFamilyDAO(int family_id, string name)
+        {
+            try
+            {
+                return new Modify().GetDataTable("Select  sudentName, numberphone, dateOfBirth,sex, adress, student_id From Student where sudentName like '%"+name+"%' and student_id not in (select student_id From SutdentAndFarmily where farmily_id = '" + family_id + "')");
+
+            }
+            catch (Exception e) { return null; }
+        }
     }
 }

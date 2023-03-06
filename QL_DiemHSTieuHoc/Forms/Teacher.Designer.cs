@@ -438,7 +438,7 @@
             // btnSearch
             // 
             btnSearch.Anchor = AnchorStyles.None;
-            btnSearch.Location = new Point(187, 18);
+            btnSearch.Location = new Point(181, 24);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(86, 32);
             btnSearch.TabIndex = 5;
@@ -449,7 +449,7 @@
             // 
             txtSearch.Anchor = AnchorStyles.None;
             txtSearch.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtSearch.Location = new Point(-1, 18);
+            txtSearch.Location = new Point(10, 26);
             txtSearch.Name = "txtSearch";
             txtSearch.Size = new Size(169, 27);
             txtSearch.TabIndex = 4;

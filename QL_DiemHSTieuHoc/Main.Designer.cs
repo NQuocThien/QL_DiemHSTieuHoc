@@ -122,6 +122,7 @@
             btnFamily.TabIndex = 6;
             btnFamily.Text = "Người Nhà";
             btnFamily.UseVisualStyleBackColor = true;
+            btnFamily.Click += btnFamily_Click;
             // 
             // btnClasss
             // 

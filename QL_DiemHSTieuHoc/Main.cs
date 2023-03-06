@@ -1,5 +1,6 @@
 ﻿//using QL_DiemHSTieuHoc.Forms;
 using QL_DiemHSTieuHoc.Forms;
+using QL_DiemHSTieuHoc.Forms.SubFroms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -143,6 +144,11 @@ namespace QL_DiemHSTieuHoc
         private void btnTeacher_Click(object sender, EventArgs e)
         {
             OpenChildForm(new Teacher(currentUser), sender);
+        }
+
+        private void btnFamily_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FamilyForm(currentUser), sender);
         }
     }
 }
