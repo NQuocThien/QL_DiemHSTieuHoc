@@ -21,6 +21,15 @@ namespace BusinessLogicLayer
         {
             return stAs.GetStudent(name);
         }
+        public DataTable GetStudent1(int class_id)
+        {
+            return stAs.GetStudent1(class_id);
+        }
+        public DataTable GetStudent1(string name)
+        {
+            return stAs.GetStudent1(name);
+        }
+
         public DataTable GetStudentOfFamily(int family_id)
         {
             return stAs.GetStudentOfFamily(family_id);

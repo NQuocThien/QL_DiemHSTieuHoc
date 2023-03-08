@@ -9,6 +9,7 @@ using ValueObject;
 using System.Data.Common;
 using System.Reflection.Metadata.Ecma335;
 using System.Linq.Expressions;
+using System.Net.NetworkInformation;
 
 namespace DataAccessLayer
 {
@@ -369,6 +370,26 @@ namespace DataAccessLayer
             }
         }
 
+        public static DataTable GetNameClassDAO(int class_id)
+        {
+            return new Modify().GetDataTable("Select nameClass from Class where class_id = '" + class_id + "')");
+        }
+
+        public static string GetClassNameByStudentIDDAO(int studentID)
+        {
+            DataTableReader re = new Modify().GetDataTable("Select c.nameClass From Class c, Student st Where c.class_id = st.class_id and st.student_id = '"+ studentID+ "'").CreateDataReader();
+            string className = null;
+            if(re.HasRows)
+            {
+                while(re.Read())
+                {
+                    className = re.GetString(0);
+                }
+            }
+            return className;
+        }
+
+
         public static DataTable GetStudentDAO(int class_id)
         {
             try
@@ -386,6 +407,32 @@ namespace DataAccessLayer
             try
             {
                 return new Modify().GetDataTable("select sudentName, numberphone, dateOfBirth,sex, adress, student_id from Student where sudentName  like N'%" + name + "%'");
+
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+
+        public static DataTable GetStudentDAO1(int class_id)
+        {
+            try
+            {
+                return new Modify().GetDataTable("select sudentName, numberphone, dateOfBirth,sex, adress, student_id,class_id from Student where class_id = '" + class_id + "'");
+
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        public static DataTable GetStudentDAO1(string name)
+        {
+            try
+            {
+                return new Modify().GetDataTable("select sudentName, numberphone, dateOfBirth,sex, adress, student_id,class_id from Student where sudentName  like N'%" + name + "%'");
 
             }
             catch
@@ -638,6 +685,104 @@ namespace DataAccessLayer
 
             }
             catch (Exception e) { return null; }
+        }
+
+        // report
+        public static DataTable TestStusentExistReportDAO(int student_id)
+        {
+            Modify mo = new Modify();
+            // check exist report
+            return mo.GetDataTable("Select * from Report r, Student s Where s.student_id = '" + student_id + "' and s.student_id = r.student_id and s.class_id = r.class_id");
+        }
+        public string CreateReportDAO(int student_id, int class_id)
+        {
+            try
+            {
+                new Modify().Command("Insert Into Report values('" + student_id + "','" + class_id + "')");
+                return "success";
+            }catch(Exception e)
+            { return e.Message; }
+        }
+        public string CreateReportDAO(ReportObject report)
+        {
+            try
+            {
+                new Modify().Command("Insert Into Report values('" + report.student_id + "','" +report.class_id + "', '"+report.semester+"',NULL, NULL, NULL )");
+                return "success";
+            }
+            catch (Exception e)
+            { return e.Message; }
+        }
+        public string DeleteReportDAO(ReportObject report)
+        {
+            try
+            {
+                new Modify().Command("Delete Report where report_id = '" + report.report_id + "'");
+                return "success";
+            }
+            catch (Exception e)
+            { return e.Message; }
+        }
+        public string CreatePractiseDAO(int report_id)
+        {
+            try
+            {
+                new Modify().Command("Insert Into Practise values('" + report_id + "')");
+                return "success";
+            }
+            catch (Exception e)
+            { return e.Message; }
+        }
+        public static DataTable GetReportDAO()
+        {
+            try
+            {
+                return new Modify().GetDataTable("Select * From Report");
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        public static DataTable GetReportOfStudentDAO(int student_id)
+        {
+            try
+            {
+                return new Modify().GetDataTable("Select r.report_id, r.student_id, r.class_id, r.semester,c.schoolYear,  r.comment_id, r.capacity_id, r.quality_id From Report r , Class c Where c.class_id = r.class_id and student_id = '" + student_id+"'");
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        public static DataTable GetSubjectNotHaveImportedDAO(int report_id)
+        {
+            try
+            {
+                return new Modify().GetDataTable("Select * From Subject Where subject_id not in(Select subject_id From Report Where report_id = '" + report_id + "')");
+            }
+            catch
+            {
+                return null;    
+            }
+        }
+        public static DataTable GetSubjectImportedDAO(int report_id)
+        {
+            try
+            {
+                return new Modify().GetDataTable("Select r.subjectresult_id ,r.subject_id,r.report_id, s.subject_name ,r.lever,r.scores From SubjectResult r ,Subject s Where s.subject_id = r.subject_id and r.report_id = '" + report_id + "'");
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        /// suject
+        public static DataTable GetSubjectHaveNotScoreDAO(int report_id)
+        {
+            string strSQL = "Select * from Sujectt where subject_id not in (select subject_id from SubjectResult where report_id  = '"+report_id+"')";
+            return new Modify().GetDataTable(strSQL);
         }
     }
 }

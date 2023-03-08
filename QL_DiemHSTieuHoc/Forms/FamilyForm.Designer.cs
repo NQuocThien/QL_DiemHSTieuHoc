@@ -41,10 +41,10 @@
             txtSdt = new TextBox();
             txtName = new TextBox();
             panel3 = new Panel();
+            btnStudent = new Button();
             btnDelete = new Button();
             btnAdd = new Button();
             btnUpdate = new Button();
-            btnStudent = new Button();
             panel2.SuspendLayout();
             panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)gvParent).BeginInit();
@@ -189,6 +189,17 @@
             panel3.Size = new Size(1049, 71);
             panel3.TabIndex = 9;
             // 
+            // btnStudent
+            // 
+            btnStudent.Font = new Font("Verdana", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btnStudent.Location = new Point(798, 17);
+            btnStudent.Name = "btnStudent";
+            btnStudent.Size = new Size(251, 42);
+            btnStudent.TabIndex = 0;
+            btnStudent.Text = "Thông Tin HS";
+            btnStudent.UseVisualStyleBackColor = true;
+            btnStudent.Click += btnStudent_Click;
+            // 
             // btnDelete
             // 
             btnDelete.Font = new Font("Verdana", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
@@ -222,17 +233,6 @@
             btnUpdate.UseVisualStyleBackColor = true;
             btnUpdate.Click += btnUpdate_Click_1;
             // 
-            // btnStudent
-            // 
-            btnStudent.Font = new Font("Verdana", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            btnStudent.Location = new Point(798, 17);
-            btnStudent.Name = "btnStudent";
-            btnStudent.Size = new Size(251, 42);
-            btnStudent.TabIndex = 0;
-            btnStudent.Text = "Thông Tin HS";
-            btnStudent.UseVisualStyleBackColor = true;
-            btnStudent.Click += btnStudent_Click;
-            // 
             // FamilyForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -242,6 +242,7 @@
             Controls.Add(panel2);
             Name = "FamilyForm";
             Text = "Family";
+            Load += FamilyForm_Load;
             panel2.ResumeLayout(false);
             panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)gvParent).EndInit();

@@ -19,6 +19,16 @@ namespace DataAccessLayer
         {
             return GetStudentDAO(name);
         }
+
+        public DataTable GetStudent1(int class_id)
+        {
+            return GetStudentDAO1(class_id);
+        }
+        public DataTable GetStudent1(string name)
+        {
+            return GetStudentDAO1(name);
+        }
+
         public string CreateStudent(StudentObject st)
         {
             return CreateStudentDAO(st);

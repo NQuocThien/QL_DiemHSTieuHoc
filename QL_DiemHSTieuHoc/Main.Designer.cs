@@ -196,6 +196,7 @@
             btnScore.TabIndex = 2;
             btnScore.Text = "Nhập Điểm";
             btnScore.UseVisualStyleBackColor = true;
+            btnScore.Click += btnScore_Click;
             // 
             // btnTeacher
             // 

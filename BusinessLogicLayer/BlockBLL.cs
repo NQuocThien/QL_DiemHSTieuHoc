@@ -82,5 +82,27 @@ namespace BusinessLogicLayer
             }
             return null;
         }
+        public string GetNameClass(int class_id)
+        {
+            string nameclass = null;
+           DataTableReader re = blockAs.GetNameClass(class_id).CreateDataReader();
+            if(re.HasRows)
+            {
+                 while(re.Read())
+                {
+                    nameclass = re.GetString(0);
+                }
+                return nameclass;
+            }
+            else
+            {
+                return "nothave_class";
+            }
+            //return blockAs.GetNameClass(class_id);
+        }
+        public string GetClassNameByStudentID(int studentID)
+        {
+            return blockAs.GetClassNameByStudentID(studentID);
+        }
     }
 }

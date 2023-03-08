@@ -50,5 +50,13 @@ namespace DataAccessLayer
         {
             return DeleteClassDAO(cl);
         }
+        public DataTable GetNameClass(int class_id)
+        {
+            return GetNameClassDAO(class_id);
+        }
+        public string GetClassNameByStudentID(int studentID)
+        {
+            return GetClassNameByStudentIDDAO(studentID);
+        }
     }
 }

@@ -150,5 +150,10 @@ namespace QL_DiemHSTieuHoc
         {
             OpenChildForm(new FamilyForm(currentUser), sender);
         }
+
+        private void btnScore_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new InputScore(currentUser), sender);
+        }
     }
 }
