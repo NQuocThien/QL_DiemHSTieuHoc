@@ -9,8 +9,8 @@ namespace ValueObject
     public class Class
     {
         public int class_id { get; set; }
+        public int teacher_id { get; set; }
         public int block_id { get; set; }
-
         public string nameClass { get; set; }
         public string schoolYear { get; set;}
     }

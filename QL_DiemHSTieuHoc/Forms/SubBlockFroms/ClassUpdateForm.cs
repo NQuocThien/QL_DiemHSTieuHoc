@@ -15,6 +15,7 @@ namespace QL_DiemHSTieuHoc.Forms.SubBlockFroms
     {
         Class cl;
         BlockBLL bll = new BlockBLL();
+        TeacherBLL teacherBLL = new TeacherBLL();
         public ClassUpdateForm(Class cl)
         {
             InitializeComponent();
@@ -31,9 +32,16 @@ namespace QL_DiemHSTieuHoc.Forms.SubBlockFroms
             cbBlockName.DataSource = bll.BlockClass();
             cbBlockName.DisplayMember = "block_name";
             cbBlockName.ValueMember = "block_id";
+            cbBlockName.SelectedValue = cl.block_id;
             txtName.Text = cl.nameClass;
             txtSchoolYear.Text = cl.schoolYear;
             cbBlockName.SelectedItem = cl.block_id;
+            cbTeacherBoss.DataSource = teacherBLL.GetTeacherIsNotBoss();
+            cbTeacherBoss.DisplayMember = "name_teacher";
+            cbTeacherBoss.ValueMember = "teacher_id";
+            cbTeacherBoss.SelectedValue = cl.teacher_id;
+            string teacherName = teacherBLL.GetNameByID(cl.teacher_id);
+            lblBoss.Text += teacherName;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -41,6 +49,7 @@ namespace QL_DiemHSTieuHoc.Forms.SubBlockFroms
             cl.nameClass = txtName.Text;
             cl.schoolYear = txtSchoolYear.Text;
             cl.block_id = int.Parse(cbBlockName.SelectedValue.ToString());
+            cl.teacher_id = int.Parse(cbTeacherBoss.SelectedValue.ToString());
             switch (bll.UpdateClass(cl))
             {
                 case "requeid_blockname":
@@ -52,6 +61,11 @@ namespace QL_DiemHSTieuHoc.Forms.SubBlockFroms
             }
             MessageBox.Show("đã sửa");
             this.Close();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 

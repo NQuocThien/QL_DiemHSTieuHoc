@@ -37,9 +37,12 @@
             txtSchoolYear = new TextBox();
             cbBlockName = new ComboBox();
             panel2 = new Panel();
+            cbTeacherBoss = new ComboBox();
+            lblBoss = new Label();
             panel3 = new Panel();
             btnAdd = new Button();
             btnCancel = new Button();
+            label7 = new Label();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
@@ -65,12 +68,13 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(426, 56);
             panel1.TabIndex = 6;
+            panel1.Paint += panel1_Paint;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(70, 40);
+            label1.Location = new Point(55, 21);
             label1.Name = "label1";
             label1.Size = new Size(67, 21);
             label1.TabIndex = 0;
@@ -80,7 +84,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(70, 92);
+            label2.Location = new Point(55, 64);
             label2.Name = "label2";
             label2.Size = new Size(85, 21);
             label2.TabIndex = 0;
@@ -90,7 +94,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(104, 149);
+            label3.Location = new Point(55, 112);
             label3.Name = "label3";
             label3.Size = new Size(44, 21);
             label3.TabIndex = 0;
@@ -99,7 +103,7 @@
             // txtName
             // 
             txtName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtName.Location = new Point(154, 40);
+            txtName.Location = new Point(154, 13);
             txtName.Name = "txtName";
             txtName.Size = new Size(209, 29);
             txtName.TabIndex = 1;
@@ -107,7 +111,7 @@
             // txtSchoolYear
             // 
             txtSchoolYear.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtSchoolYear.Location = new Point(154, 93);
+            txtSchoolYear.Location = new Point(154, 61);
             txtSchoolYear.Name = "txtSchoolYear";
             txtSchoolYear.Size = new Size(209, 29);
             txtSchoolYear.TabIndex = 1;
@@ -116,7 +120,7 @@
             // 
             cbBlockName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cbBlockName.FormattingEnabled = true;
-            cbBlockName.Location = new Point(154, 149);
+            cbBlockName.Location = new Point(154, 109);
             cbBlockName.Name = "cbBlockName";
             cbBlockName.Size = new Size(209, 29);
             cbBlockName.TabIndex = 2;
@@ -124,8 +128,11 @@
             // panel2
             // 
             panel2.BackColor = SystemColors.GradientInactiveCaption;
+            panel2.Controls.Add(label7);
+            panel2.Controls.Add(cbTeacherBoss);
             panel2.Controls.Add(cbBlockName);
             panel2.Controls.Add(txtSchoolYear);
+            panel2.Controls.Add(lblBoss);
             panel2.Controls.Add(txtName);
             panel2.Controls.Add(label3);
             panel2.Controls.Add(label2);
@@ -135,6 +142,25 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(426, 216);
             panel2.TabIndex = 5;
+            // 
+            // cbTeacherBoss
+            // 
+            cbTeacherBoss.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cbTeacherBoss.FormattingEnabled = true;
+            cbTeacherBoss.Location = new Point(154, 181);
+            cbTeacherBoss.Name = "cbTeacherBoss";
+            cbTeacherBoss.Size = new Size(209, 29);
+            cbTeacherBoss.TabIndex = 2;
+            // 
+            // lblBoss
+            // 
+            lblBoss.AutoSize = true;
+            lblBoss.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblBoss.Location = new Point(48, 150);
+            lblBoss.Name = "lblBoss";
+            lblBoss.Size = new Size(92, 21);
+            lblBoss.TabIndex = 0;
+            lblBoss.Text = "Chủ Nhiệm:";
             // 
             // panel3
             // 
@@ -169,6 +195,16 @@
             btnCancel.UseVisualStyleBackColor = true;
             btnCancel.Click += btnCancel_Click;
             // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label7.Location = new Point(48, 184);
+            label7.Name = "label7";
+            label7.Size = new Size(92, 21);
+            label7.TabIndex = 3;
+            label7.Text = "Chủ Nhiệm:";
+            // 
             // ClassUpdateForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -202,5 +238,8 @@
         private Panel panel3;
         private Button btnAdd;
         private Button btnCancel;
+        private ComboBox cbTeacherBoss;
+        private Label lblBoss;
+        private Label label7;
     }
 }

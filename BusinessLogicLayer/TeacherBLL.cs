@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 using ValueObject;
@@ -78,6 +79,27 @@ namespace BusinessLogicLayer
         public string RemoveSubjectForTeacher(int class_id, int teacher_id)
         {
             return teacherAs.RemoveSubjectForTeacher(class_id, teacher_id);
+        }        
+        public DataTable GetTeacherIsNotBoss()
+        {
+            return teacherAs.GetTeacherIsNotBoss();
+        } public string GetNameByID(int teacher_id)
+        {
+            string teacher_name = "";
+            if(teacher_id > 0)
+            {
+                DataTableReader dt = teacherAs.GetNameByID(teacher_id).CreateDataReader();
+                if(dt.HasRows)
+                {
+                    while(dt.Read())
+                    {
+                        teacher_name = dt.GetString(1);
+                    }
+                }
+                return teacher_name;
+            }
+            return "requide_id";
+            
         }
     }
 }

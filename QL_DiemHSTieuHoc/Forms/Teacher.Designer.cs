@@ -48,6 +48,7 @@
             panel5 = new Panel();
             groupBox8 = new GroupBox();
             btnAddSubject = new Button();
+            btnUpdate = new Button();
             btnDeleteSubject = new Button();
             label1 = new Label();
             txtSubjectName = new TextBox();
@@ -57,7 +58,6 @@
             groupBox1 = new GroupBox();
             btnSearch = new Button();
             txtSearch = new TextBox();
-            btnUpdate = new Button();
             gvClassAccess.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)gvTeacher).BeginInit();
             groupBox5.SuspendLayout();
@@ -120,9 +120,9 @@
             // btnAbout
             // 
             btnAbout.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnAbout.Location = new Point(36, 139);
+            btnAbout.Location = new Point(36, 147);
             btnAbout.Name = "btnAbout";
-            btnAbout.Size = new Size(222, 41);
+            btnAbout.Size = new Size(222, 43);
             btnAbout.TabIndex = 0;
             btnAbout.Text = "Chi Tiết";
             btnAbout.UseVisualStyleBackColor = true;
@@ -133,7 +133,7 @@
             btnTakeSubject.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnTakeSubject.Location = new Point(36, 85);
             btnTakeSubject.Name = "btnTakeSubject";
-            btnTakeSubject.Size = new Size(222, 41);
+            btnTakeSubject.Size = new Size(222, 43);
             btnTakeSubject.TabIndex = 0;
             btnTakeSubject.Text = "Phân công môn";
             btnTakeSubject.UseVisualStyleBackColor = true;
@@ -142,9 +142,9 @@
             // bttnTakeClass
             // 
             bttnTakeClass.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            bttnTakeClass.Location = new Point(36, 29);
+            bttnTakeClass.Location = new Point(36, 22);
             bttnTakeClass.Name = "bttnTakeClass";
-            bttnTakeClass.Size = new Size(222, 41);
+            bttnTakeClass.Size = new Size(222, 43);
             bttnTakeClass.TabIndex = 0;
             bttnTakeClass.Text = "Phân công lớp";
             bttnTakeClass.UseVisualStyleBackColor = true;
@@ -299,6 +299,17 @@
             btnAddSubject.UseVisualStyleBackColor = true;
             btnAddSubject.Click += btnAddSubject_Click;
             // 
+            // btnUpdate
+            // 
+            btnUpdate.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnUpdate.Location = new Point(119, 97);
+            btnUpdate.Name = "btnUpdate";
+            btnUpdate.Size = new Size(70, 39);
+            btnUpdate.TabIndex = 2;
+            btnUpdate.Text = "Sủa";
+            btnUpdate.UseVisualStyleBackColor = true;
+            btnUpdate.Click += btnUpdate_Click;
+            // 
             // btnDeleteSubject
             // 
             btnDeleteSubject.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
@@ -392,17 +403,6 @@
             txtSearch.Name = "txtSearch";
             txtSearch.Size = new Size(169, 27);
             txtSearch.TabIndex = 4;
-            // 
-            // btnUpdate
-            // 
-            btnUpdate.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnUpdate.Location = new Point(119, 97);
-            btnUpdate.Name = "btnUpdate";
-            btnUpdate.Size = new Size(70, 39);
-            btnUpdate.TabIndex = 2;
-            btnUpdate.Text = "Sủa";
-            btnUpdate.UseVisualStyleBackColor = true;
-            btnUpdate.Click += btnUpdate_Click;
             // 
             // Teacher
             // 

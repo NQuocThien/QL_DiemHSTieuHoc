@@ -293,8 +293,17 @@ namespace DataAccessLayer
         public static DataTable GetClassDAO()
         {
             Modify modify = new Modify();
-            string strSQL = "select c.class_id, c.nameClass, b.block_name, c.schoolYear, c.block_id from Class c, BlockClass b where c.block_id = b.block_id";
-            return modify.GetDataTable(strSQL);
+           
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "proc_GetClassAndBlock";
+                return modify.GetDataTable(cmd);
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
         }
         public static DataTable GetClasscbDAO()
         {
@@ -366,11 +375,17 @@ namespace DataAccessLayer
         }
         public static string UpdateClassDAO(Class cl)
         {
-            Modify mo = new Modify();
-            string strSQL = "Update Class set block_id = '" + cl.block_id + "', nameClass = '" + cl.nameClass + "', schoolYear = '" + cl.schoolYear + "' where class_id = '" + cl.class_id + "'";
+            
             try
             {
-                mo.Command(strSQL);
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "proc_UpdateClass";
+                cmd.Parameters.Add("@class_id", SqlDbType.Int).Value = cl.class_id ;
+                cmd.Parameters.Add("@block_id", SqlDbType.Int).Value = cl.block_id ;
+                cmd.Parameters.Add("@class_name", SqlDbType.NVarChar).Value = cl.nameClass ;
+                cmd.Parameters.Add("@schoolYead", SqlDbType.NVarChar).Value = cl.schoolYear;
+                cmd.Parameters.Add("@teacher_id", SqlDbType.Int).Value = cl.teacher_id;
+                new Modify().Command(cmd);
                 return "success";
             }
             catch
@@ -615,6 +630,31 @@ namespace DataAccessLayer
             {
                 return e.Message;
             }
+        }  public static DataTable GetTeacherIsNotBossDAO()
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "proc_GetTeacherIsNotBoss";
+                return new Modify().GetDataTable(cmd);
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }public static DataTable GetNameByIDDAO(int teacher_id)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "proc_GetTecherNameById";
+                cmd.Parameters.Add("@teacher_id", SqlDbType.Int).Value = teacher_id;
+                return new Modify().GetDataTable(cmd);
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
         }
         public static DataTable GetFamilyForStudentDAO(StudentObject st)
         {
@@ -793,7 +833,10 @@ namespace DataAccessLayer
         {
             try
             {
-                return new Modify().GetDataTable("Select r.subjectresult_id ,r.subject_id,r.report_id, s.subject_name ,r.lever,r.scores From SubjectResult r ,Subject s Where s.subject_id = r.subject_id and r.report_id = '" + report_id + "'");
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "proc_GetSubjectImportedByReport_Id";
+                cmd.Parameters.Add("@report_id", SqlDbType.Int).Value = report_id;
+                return new Modify().GetDataTable(cmd);
             }
             catch
             {
@@ -858,6 +901,19 @@ namespace DataAccessLayer
             catch(Exception ex) 
             {
                 return ex.Message;
+            }
+        }
+        public DataTable GetClassNotHaveTeacherDAO()
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "proc_GetClassNotHaveTeacher";
+                return new Modify().GetDataTable(cmd);
+            }
+            catch
+            {
+                return null;
             }
         }
     }

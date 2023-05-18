@@ -16,6 +16,7 @@ namespace QL_DiemHSTieuHoc.Forms.SubTeacherForms
     {
         TeacherObject teacher;
         TeacherBLL tcBll = new TeacherBLL();
+        ClassBLL classBll = new ClassBLL();
         public TeacherAboutForm(TeacherObject teacher)
         {
             InitializeComponent();
@@ -33,15 +34,12 @@ namespace QL_DiemHSTieuHoc.Forms.SubTeacherForms
             txtAdress.Text = teacher.adress;
             txtSdt.Text = teacher.numberPhone;
             dateBirth.Text = teacher.dateOfBirth;
+            cbTeacherBoss.DataSource = classBll.GetClassNotHaveTeacher();
+            cbTeacherBoss.DisplayMember = "nameClass";
+            cbTeacherBoss.ValueMember = "teacher_id";
 
-            foreach (var item in cbSex.Items)
-            {
-                if (item.ToString() == teacher.sex)
-                {
-                    cbSex.SelectedItem = item;
-                    break;
-                }
-            }
+            cbSex.SelectedText= teacher.sex;
+            cbTeacherBoss.SelectedValue = teacher.teacher_id;
         }
         private void btnUpdate_Click(object sender, EventArgs e)
         {

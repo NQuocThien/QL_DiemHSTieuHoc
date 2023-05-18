@@ -21,6 +21,7 @@ namespace QL_DiemHSTieuHoc.Forms.SubInputScoreFoms
         StudentObject st = new StudentObject();
         ReportObject rp = new ReportObject();
         Class cl = new Class();
+        bool buttonType = true;
         public InputCoreReportForm(StudentObject st, Class cl, ReportObject rp)
         {
             InitializeComponent();
@@ -40,7 +41,7 @@ namespace QL_DiemHSTieuHoc.Forms.SubInputScoreFoms
         {
 
             int n = gvSuject.Width / 2;
-            DataTable dt = reportBLL.GetSubjectNotHaveImported(rp.report_id);
+            DataTable dt = SubjectBLL.GetAllSubject();
             if (dt == null)
                 return;
             gvSuject.DataSource = dt;
@@ -51,24 +52,44 @@ namespace QL_DiemHSTieuHoc.Forms.SubInputScoreFoms
             gvSuject.Columns[1].Width = n;
         }
         private void Load_gvScoreImported()
-        { 
+        {
             int n = gvScoreImported.Width / 3;
             DataTable dt = reportBLL.GetSubjectImported(rp.report_id);
             if (dt == null)
                 return;
-            gvSuject.DataSource = dt;
-            gvSuject.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            gvScoreImported.Columns[0].Visible = false;
-            gvScoreImported.Columns[1].Visible = false;
-            gvScoreImported.Columns[2].Visible = false;
+            gvScoreImported.DataSource = dt;
+            gvScoreImported.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
-            gvScoreImported.Columns[3].HeaderText = "Tên Môn";
-            gvScoreImported.Columns[3].Width = n;
-            gvScoreImported.Columns[4].HeaderText = "Đánh Giá";
-            gvScoreImported.Columns[4].Width = n;
-            gvScoreImported.Columns[5].HeaderText = "Điểm";
-            gvScoreImported.Columns[5].Width = n;
         }
 
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnImport_Click(object sender, EventArgs e)
+        {
+            if(buttonType)
+            {
+                // Nhập
+                SubjectObject subject = new SubjectObject();
+                SubjectResultObject result = new SubjectResultObject();
+                subject.subject_id = int.Parse(gvSuject.SelectedRows[0].Cells[0].Value.ToString());
+                btnImport.Text = "Nhập";
+                result.lever = cbScore.Text;
+                result.scores = int.Parse(txtScore.Text);
+                result.report_id = rp.report_id;
+                MessageBox.Show("report: " + result.report_id + ", lever: " + result.lever + ",scores: " + result.scores + ", subject: " + result.subject_id);
+
+
+            }
+            else
+            {
+                // Sửa
+                btnImport.Text = "Sửa";
+                MessageBox.Show("asdasd");
+
+            }
+        }
     }
 }

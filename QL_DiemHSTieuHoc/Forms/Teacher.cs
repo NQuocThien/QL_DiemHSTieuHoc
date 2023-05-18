@@ -235,5 +235,10 @@ namespace QL_DiemHSTieuHoc.Forms
             MessageBox.Show("" + delete, "Thông Báo!!");
             Load_gvListSubject();
         }
+
+        private void btnBossOfClass_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

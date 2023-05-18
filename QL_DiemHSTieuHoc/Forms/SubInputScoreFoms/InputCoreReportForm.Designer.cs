@@ -30,19 +30,21 @@
         {
             panel1 = new Panel();
             lblClass = new Label();
+            label1 = new Label();
             lblNamSudent = new Label();
             panel2 = new Panel();
             groupBox1 = new GroupBox();
             panel5 = new Panel();
             gvScoreImported = new DataGridView();
             panel4 = new Panel();
+            label3 = new Label();
+            label2 = new Label();
             txtScore = new TextBox();
             cbScore = new ComboBox();
             btnImport = new Button();
             panel3 = new Panel();
             gvSuject = new DataGridView();
             btnExit = new Button();
-            btnSave = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -55,7 +57,9 @@
             // 
             // panel1
             // 
+            panel1.BackColor = SystemColors.Highlight;
             panel1.Controls.Add(lblClass);
+            panel1.Controls.Add(label1);
             panel1.Controls.Add(lblNamSudent);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
@@ -66,20 +70,35 @@
             // lblClass
             // 
             lblClass.AutoSize = true;
-            lblClass.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblClass.Location = new Point(605, 17);
+            lblClass.Font = new Font("Verdana", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblClass.ForeColor = SystemColors.ButtonHighlight;
+            lblClass.Location = new Point(679, 17);
             lblClass.Name = "lblClass";
-            lblClass.Size = new Size(50, 18);
+            lblClass.Size = new Size(61, 23);
             lblClass.TabIndex = 0;
             lblClass.Text = "Lớp: ";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = SystemColors.Highlight;
+            label1.Font = new Font("Verdana", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.ForeColor = SystemColors.Control;
+            label1.Location = new Point(31, 17);
+            label1.Name = "label1";
+            label1.Size = new Size(116, 23);
+            label1.TabIndex = 0;
+            label1.Text = "Nhập Điểm";
             // 
             // lblNamSudent
             // 
             lblNamSudent.AutoSize = true;
-            lblNamSudent.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblNamSudent.Location = new Point(173, 17);
+            lblNamSudent.BackColor = SystemColors.Highlight;
+            lblNamSudent.Font = new Font("Verdana", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblNamSudent.ForeColor = SystemColors.Control;
+            lblNamSudent.Location = new Point(211, 17);
             lblNamSudent.Name = "lblNamSudent";
-            lblNamSudent.Size = new Size(122, 18);
+            lblNamSudent.Size = new Size(147, 23);
             lblNamSudent.TabIndex = 0;
             lblNamSudent.Text = "Tên Học Sinh:";
             // 
@@ -126,6 +145,8 @@
             // 
             // panel4
             // 
+            panel4.Controls.Add(label3);
+            panel4.Controls.Add(label2);
             panel4.Controls.Add(txtScore);
             panel4.Controls.Add(cbScore);
             panel4.Controls.Add(btnImport);
@@ -135,29 +156,53 @@
             panel4.Size = new Size(194, 446);
             panel4.TabIndex = 4;
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Verdana", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.Location = new Point(11, 108);
+            label3.Name = "label3";
+            label3.Size = new Size(77, 25);
+            label3.TabIndex = 4;
+            label3.Text = "Điểm:";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Verdana", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Location = new Point(6, 27);
+            label2.Name = "label2";
+            label2.Size = new Size(119, 25);
+            label2.TabIndex = 4;
+            label2.Text = "Đánh Giá:";
+            // 
             // txtScore
             // 
-            txtScore.Location = new Point(36, 133);
+            txtScore.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtScore.Location = new Point(11, 148);
             txtScore.Name = "txtScore";
-            txtScore.Size = new Size(100, 23);
+            txtScore.Size = new Size(155, 27);
             txtScore.TabIndex = 2;
             // 
             // cbScore
             // 
+            cbScore.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cbScore.FormattingEnabled = true;
-            cbScore.Location = new Point(36, 70);
+            cbScore.Location = new Point(11, 66);
             cbScore.Name = "cbScore";
-            cbScore.Size = new Size(121, 23);
+            cbScore.Size = new Size(155, 26);
             cbScore.TabIndex = 1;
             // 
             // btnImport
             // 
-            btnImport.Location = new Point(36, 186);
+            btnImport.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnImport.Location = new Point(45, 213);
             btnImport.Name = "btnImport";
-            btnImport.Size = new Size(75, 23);
+            btnImport.Size = new Size(89, 42);
             btnImport.TabIndex = 3;
-            btnImport.Text = "button1";
+            btnImport.Text = "Nhập";
             btnImport.UseVisualStyleBackColor = true;
+            btnImport.Click += btnImport_Click;
             // 
             // panel3
             // 
@@ -180,33 +225,24 @@
             // 
             // btnExit
             // 
-            btnExit.Location = new Point(173, 537);
+            btnExit.Location = new Point(199, 537);
             btnExit.Name = "btnExit";
-            btnExit.Size = new Size(135, 41);
+            btnExit.Size = new Size(517, 41);
             btnExit.TabIndex = 2;
             btnExit.Text = "Thoát";
             btnExit.UseVisualStyleBackColor = true;
-            // 
-            // btnSave
-            // 
-            btnSave.Location = new Point(605, 537);
-            btnSave.Name = "btnSave";
-            btnSave.Size = new Size(135, 41);
-            btnSave.TabIndex = 2;
-            btnSave.Text = "Lưu";
-            btnSave.UseVisualStyleBackColor = true;
+            btnExit.Click += btnExit_Click;
             // 
             // InputCoreReportForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1048, 590);
-            Controls.Add(btnSave);
             Controls.Add(btnExit);
             Controls.Add(panel2);
             Controls.Add(panel1);
             Name = "InputCoreReportForm";
-            Text = "InputCoreReportForm";
+            Text = "`";
             Load += InputCoreReportForm_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -229,7 +265,6 @@
         private Panel panel2;
         private GroupBox groupBox1;
         private Button btnExit;
-        private Button btnSave;
         private Panel panel5;
         private DataGridView gvScoreImported;
         private Panel panel4;
@@ -238,5 +273,8 @@
         private Button btnImport;
         private Panel panel3;
         private DataGridView gvSuject;
+        private Label label1;
+        private Label label3;
+        private Label label2;
     }
 }

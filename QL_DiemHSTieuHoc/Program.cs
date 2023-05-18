@@ -11,7 +11,7 @@ namespace QL_DiemHSTieuHoc
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Main("thien"));
+            Application.Run(new Main("quocthien"));
         }
     }
 }

@@ -67,6 +67,12 @@ namespace DataAccessLayer
         public string RemoveSubjectForTeacher(int class_id, int teacher_id)
         {
             return RemoveSubjectForTeacherDAO(class_id, teacher_id);
+        } public DataTable GetTeacherIsNotBoss()
+        {
+            return GetTeacherIsNotBossDAO();
+        }public DataTable GetNameByID(int teacher_id)
+        {
+            return GetNameByIDDAO(teacher_id);
         }
     }
 }

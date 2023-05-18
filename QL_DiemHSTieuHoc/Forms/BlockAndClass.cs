@@ -108,7 +108,7 @@ namespace QL_DiemHSTieuHoc.Forms
         }
         private void Load_gvClass()
         {
-            int n = gvClass.Width / 4;
+            int n = gvClass.Width / 5;
 
             DataTable dt = blockBll.GetClass();
             gvClass.DataSource = dt;
@@ -123,7 +123,10 @@ namespace QL_DiemHSTieuHoc.Forms
             gvClass.Columns[2].Width = n;
 
             gvClass.Columns[3].HeaderText = "Niên Khóa";
-            gvClass.Columns[3].Width = n;
+            gvClass.Columns[3].Width = n;        
+            
+            gvClass.Columns[5].HeaderText = "Mã Chủ Nhiệm";
+            gvClass.Columns[5].Width = n;
 
             gvClass.Columns[4].Visible = false;
         }
@@ -205,6 +208,13 @@ namespace QL_DiemHSTieuHoc.Forms
             clClick.nameClass = gr.Cells[1].Value.ToString();
             clClick.schoolYear = gr.Cells[3].Value.ToString();
             clClick.class_id = int.Parse(gr.Cells[0].Value.ToString());
+            string teacher_id = gr.Cells[5].Value.ToString();
+            if(teacher_id != "")
+            {
+                clClick.teacher_id = int.Parse(teacher_id);
+            }else 
+                clClick.teacher_id = 0;
+
         }
         private void btnFind_Click(object sender, EventArgs e)
         {

@@ -45,6 +45,7 @@
             txtName = new TextBox();
             label1 = new Label();
             panel1 = new Panel();
+            cbTeacherBoss = new ComboBox();
             panel3.SuspendLayout();
             panel2.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -154,6 +155,7 @@
             // 
             // groupBox3
             // 
+            groupBox3.Controls.Add(cbTeacherBoss);
             groupBox3.Controls.Add(cbSex);
             groupBox3.Controls.Add(dateBirth);
             groupBox3.Controls.Add(label6);
@@ -228,6 +230,15 @@
             panel1.Size = new Size(800, 69);
             panel1.TabIndex = 3;
             // 
+            // cbTeacherBoss
+            // 
+            cbTeacherBoss.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cbTeacherBoss.FormattingEnabled = true;
+            cbTeacherBoss.Location = new Point(425, 181);
+            cbTeacherBoss.Name = "cbTeacherBoss";
+            cbTeacherBoss.Size = new Size(262, 26);
+            cbTeacherBoss.TabIndex = 28;
+            // 
             // TeacherAboutForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -267,5 +278,6 @@
         private TextBox txtName;
         private Label label1;
         private Panel panel1;
+        private ComboBox cbTeacherBoss;
     }
 }
