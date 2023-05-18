@@ -47,6 +47,17 @@ namespace DataAccessLayer
                 sqlCommand.ExecuteNonQuery(); // thực thi câu truy vấn
                 sqlConnection.Close();
             }
+        } 
+        public void Command(SqlCommand cmd) // thêm xóa sửa
+        {
+            using (SqlConnection sqlConnection = SqlConnectionData.Connect())
+            {
+                sqlConnection.Open();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Connection = sqlConnection;
+                cmd.ExecuteNonQuery(); // thực thi câu truy vấn
+                sqlConnection.Close();
+            }
         }
         public DataTable GetDataTable(string squery) // 
         {
@@ -56,6 +67,18 @@ namespace DataAccessLayer
                 sqlCommand = new SqlCommand(squery, sqlConnection);
                 DataTable dt = new DataTable();
                 dt.Load(sqlCommand.ExecuteReader());
+                return dt;
+            }
+        }
+        public DataTable GetDataTable(SqlCommand command ) // 
+        {
+            using (SqlConnection sqlConnection = SqlConnectionData.Connect())
+            {
+                sqlConnection.Open();
+                command.CommandType = CommandType.StoredProcedure;
+                command.Connection = sqlConnection;
+                DataTable dt = new DataTable();
+                dt.Load(command.ExecuteReader());
                 return dt;
             }
         }
@@ -783,6 +806,59 @@ namespace DataAccessLayer
         {
             string strSQL = "Select * from Sujectt where subject_id not in (select subject_id from SubjectResult where report_id  = '"+report_id+"')";
             return new Modify().GetDataTable(strSQL);
+        }
+        public static DataTable GetAllSubjectDAO()
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "proc_GetAllSubject";
+            return new Modify().GetDataTable(cmd);
+        }
+        public string  InsertSubjectDAO(string SubjectName)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                //cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "proc_InsertSubject";
+                cmd.Parameters.Add("@SubjectName", SqlDbType.NVarChar).Value =SubjectName;
+                new Modify().Command(cmd);
+                return "success";
+            }
+            catch
+            {
+                return "false";
+            }
+        } public string  DeleteSubjectDAO(int SubjectId )
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                //cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "proc_DeleteSubject";
+                cmd.Parameters.Add("@subject_id", SqlDbType.Int).Value = SubjectId;
+                new Modify().Command(cmd);
+                return "success";
+            }
+            catch(Exception ex) 
+            {
+                return ex.Message;
+            }
+        }public string UpdateSubjectDAO(SubjectObject subject )
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                //cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "proc_UpdateSubject";
+                cmd.Parameters.Add("@subject_id", SqlDbType.Int).Value = subject.subject_id;
+                cmd.Parameters.Add("@subject_name",SqlDbType.NVarChar).Value = subject.subject_name;
+                new Modify().Command(cmd);
+                return "success";
+            }
+            catch(Exception ex) 
+            {
+                return ex.Message;
+            }
         }
     }
 }

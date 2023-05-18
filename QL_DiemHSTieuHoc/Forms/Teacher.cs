@@ -19,6 +19,7 @@ namespace QL_DiemHSTieuHoc.Forms
         TeacherObject currentTeacher = new TeacherObject();
         UserAccount currentUser = new UserAccount();
         UserBLL userBll = new UserBLL();
+        SubjectBLL subjectBLL = new SubjectBLL();
         string currentUserName;
         public Teacher(string currentUserName)
         {
@@ -39,7 +40,6 @@ namespace QL_DiemHSTieuHoc.Forms
 
         private void Load_ControlUnLock()
         {
-            this.btnAdd.Enabled = true;
             this.btnSearch.Enabled = true;
             this.btnTakeSubject.Enabled = true;
             this.bttnTakeClass.Enabled = true;
@@ -50,7 +50,23 @@ namespace QL_DiemHSTieuHoc.Forms
             Load_lockControl();
             Load_CurrentUser();
             Load_gvTeacher();
+            Load_gvListSubject();
         }
+
+        private void Load_gvListSubject()
+        {
+            int n = gv_ListSubject.Width / 2;
+            gv_ListSubject.DataSource = subjectBLL.GetAllSubject();
+            gv_ListSubject.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            gv_ListSubject.ReadOnly = true;
+
+            gvTeacher.Columns[0].HeaderText = "Mã Môn";
+            gvTeacher.Columns[0].Width = n;
+
+            gvTeacher.Columns[1].HeaderText = "Tên Môn";
+            gvTeacher.Columns[1].Width = n;
+        }
+
         private void Load_gvTeacher()
         {
             if (teacherBLL.GetTeacher() != null)
@@ -80,11 +96,9 @@ namespace QL_DiemHSTieuHoc.Forms
         }
         private void Load_lockControl()
         {
-            this.btnAdd.Enabled = false;
             this.btnSearch.Enabled = false;
             this.btnTakeSubject.Enabled = false;
             this.bttnTakeClass.Enabled = false;
-            this.cbSex.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private void gvTeacher_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -178,6 +192,48 @@ namespace QL_DiemHSTieuHoc.Forms
         {
             new TeacherTakeSubject(GetTeacherClicked()).ShowDialog();
             Load_gvSubject();
+        }
+
+        private void btnAddSubject_Click(object sender, EventArgs e)
+        {
+            SubjectObject subject = new SubjectObject();
+            subject.subject_name = txtSubjectName.Text;
+            string insert = subjectBLL.InsertSubject(subject);
+            if (insert == "require_name")
+            {
+                MessageBox.Show("Chưa Nhập Tên", "Lỗi");
+                txtSubjectName.Focus();
+            }
+            else
+            {
+                MessageBox.Show(" " + insert, "Thông báo!!!");
+            }
+            Load_gvListSubject();
+        }
+
+        private void btnDeleteSubject_Click(object sender, EventArgs e)
+        {
+            SubjectObject subject = new SubjectObject();
+
+            subject.subject_id = int.Parse(gv_ListSubject.SelectedRows[0].Cells[0].Value.ToString());
+            string delete = subjectBLL.DeleteSubject(subject);
+            MessageBox.Show("" + delete, "Thông Báo!!");
+            Load_gvListSubject();
+        }
+
+        private void gv_ListSubject_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtSubjectName.Text = gv_ListSubject.SelectedRows[0].Cells[1].Value.ToString();
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            SubjectObject subject = new SubjectObject();
+            subject.subject_id = int.Parse(gv_ListSubject.SelectedRows[0].Cells[0].Value.ToString());
+            subject.subject_name = txtSubjectName.Text;
+            string delete = subjectBLL.UpdateSubject(subject);
+            MessageBox.Show("" + delete, "Thông Báo!!");
+            Load_gvListSubject();
         }
     }
 }
