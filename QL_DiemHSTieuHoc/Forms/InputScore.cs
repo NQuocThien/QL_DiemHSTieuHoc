@@ -130,8 +130,6 @@ namespace QL_DiemHSTieuHoc.Forms
 
             gvStudent.Columns[5].Visible = false;
             gvStudent.Columns[6].Visible = false;
-
-
         }
 
         private void rdbName_CheckedChanged(object sender, EventArgs e)
@@ -169,7 +167,10 @@ namespace QL_DiemHSTieuHoc.Forms
             int n = gvReport.Width / 3;
             DataTable dt = reportBLL.GetReportOfStudent(student_id);
             if (dt == null)
+            {
+                MessageBox.Show("ko có: st "+ student_id +", "+class_id);
                 return;
+            }
             gvReport.DataSource = dt;
             gvReport.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             gvReport.Columns[0].HeaderText = "Mã Phiếu";
@@ -186,8 +187,7 @@ namespace QL_DiemHSTieuHoc.Forms
 
             gvReport.Columns[5].Visible = false;
             gvReport.Columns[6].Visible = false;
-            gvReport.Columns[7].Visible = false;
-            
+
         }
 
         private void gvStudent_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -250,22 +250,38 @@ namespace QL_DiemHSTieuHoc.Forms
 
         private void btnImportReportSubject_Click(object sender, EventArgs e)
         {
-            DataGridViewRow reSt = gvStudent.SelectedRows[0];
-            DataGridViewRow reRp = gvReport.SelectedRows[0];
-            StudentObject st = new StudentObject();
-            ReportObject rp = new ReportObject();
-            Class cl = new Class();
+            try
+            {
+                DataGridViewRow reSt = gvStudent.SelectedRows[0];
+                DataGridViewRow reRp = gvReport.SelectedRows[0];
+                StudentObject st = new StudentObject();
+                ReportObject rp = new ReportObject();
+                Class cl = new Class();
 
-            cl.class_id = int.Parse(reSt.Cells["class_id"].Value.ToString());
-            cl.nameClass = blockBll.GetClassNameByStudentID(student_id);
+                cl.class_id = int.Parse(reSt.Cells["class_id"].Value.ToString());
+                cl.nameClass = blockBll.GetClassNameByStudentID(student_id);
+                cl.semerter = gvReport.SelectedRows[0].Cells[3].Value.ToString();
+                st.student_id = int.Parse(reSt.Cells["student_id"].Value.ToString());
+                st.studentName = reSt.Cells[0].Value.ToString();
+                rp.report_id = int.Parse(reRp.Cells["report_id"].Value.ToString());
+                new InputCoreReportForm(st, cl, rp).ShowDialog();
+            }
+            catch
+            {
+                MessageBox.Show("Chọn Phiếu");
+                return;
+            }
 
-            st.student_id = int.Parse(reSt.Cells["student_id"].Value.ToString());
-            st.studentName = reSt.Cells[0].Value.ToString();
+        }
 
-            rp.report_id = int.Parse(reRp.Cells["report_id"].Value.ToString());
+        private void btnCapacityAndQuality_Click(object sender, EventArgs e)
+        {
 
+        }
 
-            new InputCoreReportForm(st, cl, rp).ShowDialog();
+        private void btnComment_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -13,5 +13,6 @@ namespace ValueObject
         public int block_id { get; set; }
         public string nameClass { get; set; }
         public string schoolYear { get; set;}
+        public string semerter { set; get; }
     }
 }

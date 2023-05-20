@@ -10,6 +10,7 @@ using System.Data.Common;
 using System.Reflection.Metadata.Ecma335;
 using System.Linq.Expressions;
 using System.Net.NetworkInformation;
+using System.Security.Cryptography.X509Certificates;
 
 namespace DataAccessLayer
 {
@@ -770,7 +771,11 @@ namespace DataAccessLayer
         {
             try
             {
-                new Modify().Command("Insert Into Report values('" + report.student_id + "','" +report.class_id + "', '"+report.semester+"',NULL, NULL, NULL )");
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "proc_CreateNewReport";
+                cmd.Parameters.Add("@student_id", SqlDbType.Int).Value = report.student_id;
+                cmd.Parameters.Add("@class_id", SqlDbType.Int).Value = report.class_id;
+                cmd.Parameters.Add("@semester", SqlDbType.NVarChar).Value= report.semester ;
                 return "success";
             }
             catch (Exception e)
@@ -811,7 +816,7 @@ namespace DataAccessLayer
         {
             try
             {
-                return new Modify().GetDataTable("Select r.report_id, r.student_id, r.class_id, r.semester,c.schoolYear,  r.comment_id, r.capacity_id, r.quality_id From Report r , Class c Where c.class_id = r.class_id and student_id = '" + student_id+"'");
+                return new Modify().GetDataTable("Select r.report_id, r.student_id, r.class_id, r.semester,c.schoolYear, r.capacity_id, r.quality_id From Report r , Class c Where c.class_id = r.class_id and student_id = '" + student_id+"'");
             }
             catch
             {
@@ -842,6 +847,88 @@ namespace DataAccessLayer
             {
                 return null;
             }
+        }    
+        public string  CheckOrCreateCapacityAndQualityDAO(int report_id)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "proc_checkOrCreateCapacityAndQuality";
+                cmd.Parameters.Add("@report_id", SqlDbType.Int).Value = report_id;
+                new Modify().Command(cmd);
+                return "success";
+            }
+            catch(Exception ex) 
+            {
+                return ex.Message + report_id;
+            }
+        } 
+        public DataTable GetCapacityDAO(int report_id)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "proc_GetCapacity";
+                cmd.Parameters.Add("@report_id", SqlDbType.Int).Value = report_id;
+                return new Modify().GetDataTable(cmd);
+            }
+            catch(Exception ex) 
+            {
+                return null;
+            }
+        }
+        public DataTable GetQualityDAO(int report_id)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "proc_GetQuality";
+                cmd.Parameters.Add("@report_id", SqlDbType.Int).Value = report_id;
+                return new Modify().GetDataTable(cmd);
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public DataTable GetReportByIDDAO(int report_id)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "proc_GetReportByID";
+                cmd.Parameters.Add("@report_id", SqlDbType.Int).Value = report_id;
+                return new Modify().GetDataTable(cmd);
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        public static string SetCappacityAndQualityByReportIDDAO(CapacityObject cp, QualityObject ql, string cmt)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "proc_SetCapacityAndQuality";
+                cmd.Parameters.AddWithValue("@report_id", cp.report_id);
+                cmd.Parameters.AddWithValue("@selftSeviceAndManage", cp.selftSeviceAndManage);
+                cmd.Parameters.AddWithValue("@cooperate", cp.cooperate);
+                cmd.Parameters.AddWithValue("@selfStudyAndreslove", cp.selfStudyAndreslove);
+                cmd.Parameters.AddWithValue("@hardWorking", ql.hardWorking);
+                cmd.Parameters.AddWithValue("@honestAndDiscipline", ql.honestAndDiscipline);
+                cmd.Parameters.AddWithValue("@unite", ql.unite);
+                cmd.Parameters.AddWithValue("@confidenceAndResponsibility", ql.confidenceAndResponsibility) ;
+                cmd.Parameters.AddWithValue("@cmt", cmt) ;
+                new Modify().Command(cmd);
+                return "success";
+            }
+            catch(Exception ex)
+            {
+                return ex.Message;
+            }
+            return null;
         }
 
         /// suject
@@ -914,6 +1001,57 @@ namespace DataAccessLayer
             catch
             {
                 return null;
+            }
+        }
+        public string InsertSubjectResultDAO(SubjectResultObject sr)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "proc_InsertSubjectResult";
+                cmd.Parameters.Add("@subject_id", SqlDbType.Int).Value = sr.subject_id;
+                cmd.Parameters.Add("@report_id", SqlDbType.Int).Value = sr.report_id;
+                cmd.Parameters.Add("@lever", SqlDbType.NVarChar).Value = sr.lever;
+                cmd.Parameters.Add("@scores", SqlDbType.Float).Value = sr.scores;
+                new Modify().Command(cmd);
+                return "success";
+            }
+            catch(Exception ex )
+            {
+                return ex.Message;
+            }
+        }
+        public string UpdateSubjectResultDAO( SubjectResultObject sr)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "proc_UpdateSubjectImportedById";
+                cmd.Parameters.Add("@id", SqlDbType.Int).Value = sr.subjectresult_id;
+                cmd.Parameters.Add("@lever", SqlDbType.NVarChar).Value = sr.lever;
+                float score = (float) sr.scores;
+                cmd.Parameters.Add("@scores", SqlDbType.Float).Value = score;
+                new Modify().Command(cmd);
+                return "success " + score;
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }  
+        public string DeleteSubjectResultDAO( SubjectResultObject sr)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "proc_DeleteSubjectResult";
+                cmd.Parameters.Add("@id", SqlDbType.Float).Value = sr.subjectresult_id;
+                new Modify().Command(cmd);
+                return "success " ;
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
             }
         }
     }

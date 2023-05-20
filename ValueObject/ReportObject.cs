@@ -14,7 +14,7 @@ namespace ValueObject
         public string semester { set; get; }
 
         public int subjectresult_id { set; get; }
-        public int comment_id { set; get; }
+        public string comment { set; get; }
         public int capacity_id { set; get; }
 
         public int quality_id { set; get; }

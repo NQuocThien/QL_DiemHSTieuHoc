@@ -12,7 +12,7 @@ namespace ValueObject
         public int subject_id { set; get; }
         public int report_id { set; get; }
         public string lever { set; get; }   
-        public double scores { set; get; }
+        public float scores { set; get; }
 
     }
 }
