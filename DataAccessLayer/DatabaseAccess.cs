@@ -1054,5 +1054,46 @@ namespace DataAccessLayer
                 return ex.Message;
             }
         }
+        public static string SaoLuuDuLieu(string DuongDan)
+        {
+            try
+            {
+                string ten = "\\QLTieuHoc(" + DateTime.Now.Day.ToString() + "_" +
+               DateTime.Now.Month.ToString() + "_" +
+               DateTime.Now.Year.ToString() + "_" +
+               DateTime.Now.Hour.ToString() + "_" +
+               DateTime.Now.Minute.ToString() + ").bak";
+                string sql = "BACKUP DATABASE QLNV TO DISK = N'" + DuongDan + ten + "'";
+                new Modify().Command(sql);
+                return "sucess";
+            }catch(Exception ex)
+            {
+                return ex.Message;
+            }
+           
+            //conn = DataProvider.MoKetNoi();
+            //bool kq = DataProvider.TruyVanKhongLayDuLieu(sql, conn);
+        }
+
+        public static string PhucHoiDuLieu(string DuongDan)
+        {
+            try
+            {
+                string ten = "\\QLTieuHoc(" + DateTime.Now.Day.ToString() + "_" +
+                DateTime.Now.Month.ToString() + "_" +
+                DateTime.Now.Year.ToString() + "_" +
+                DateTime.Now.Hour.ToString() + "_" +
+                DateTime.Now.Minute.ToString() + ").bak";
+                string sql = "RESTORE DATABASE QLNV FROM DISK = N'" + DuongDan + ten + "'";
+                new Modify().Command(sql);
+                return "success";
+            }catch(Exception e)
+            {
+                return e.Message;
+            }
+
+           // conn = DataProvider.MoKetNoi();
+           // bool kq = DataProvider.TruyVanKhongLayDuLieu(sql, conn);
+        }
     }
 }
