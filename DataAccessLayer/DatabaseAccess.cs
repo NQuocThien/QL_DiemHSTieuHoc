@@ -102,7 +102,6 @@ namespace DataAccessLayer
         {
             Modify modify = new Modify();
             string strSQL = "Select law_id From UserAccount Where userName = '" + taikhoan.UserName + "' and law_id in(Select law_id from law)";
-            string infor = null;
             DataTableReader dr = modify.GetDataTable(strSQL).CreateDataReader();
             if (dr.HasRows)
             {
@@ -136,26 +135,18 @@ namespace DataAccessLayer
         }
         public static string CheckEmailDAO(string email)
         {
-            string pass = null;
-            string strSQL = "Select * From UserAccount Where email = '" + email + "'";
-            SqlConnection conn = SqlConnectionData.Connect();
-            conn.Open();
-            SqlCommand command = new SqlCommand(strSQL, conn);
-            command.Connection = conn;
-            SqlDataReader reader = command.ExecuteReader();
-            if (reader.HasRows)
+            try
             {
-                while (reader.Read())
-                {
-                    pass = reader.GetString(1);
-                }
-                reader.Close();
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "proc_checkEmail";
+                cmd.Parameters.AddWithValue("@email", email);
+                new Modify().Command(cmd);
+                return "success";
             }
-            else
+            catch(Exception ex)
             {
-                return null;
+                return ex.Message;
             }
-            return pass;
         }
         public static string CreateAccoutDAO(UserAccount user)
         {
@@ -166,7 +157,7 @@ namespace DataAccessLayer
             }
             catch (Exception ex)
             {
-                return "exist_username_email";
+                return ex.Message;
             }
             return "success";
         }
@@ -221,7 +212,7 @@ namespace DataAccessLayer
         public static string UpdateUserDAO(UserAccount user)
         {
             Modify mo = new Modify();
-            string strSQL = "Update UserAccount set pass = '" + user.Pass + "', email = '" + user.Email + "' where userName = '" + user.UserName + "'";
+            string strSQL = "Update UserAccount set pass = '" + user.Pass + "', email = '" + user.Email + "' where userName = '" + user.UserName + "' or email = '"+user.Email+"' ";
             try
             {
                 mo.Command(strSQL);
@@ -281,6 +272,24 @@ namespace DataAccessLayer
             catch
             {
                 return "fail";
+
+            }
+        }
+        public static string UpdateUserByEmailDAO(UserAccount us)
+        {
+           
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "proc_updateUserByEmail";
+                cmd.Parameters.AddWithValue("@email", us.Email);
+                cmd.Parameters.AddWithValue("@pass", us.Pass);
+                new Modify().Command(cmd);
+                return "success";
+            }
+            catch(Exception e)
+            {
+                return e.Message;
 
             }
         }
@@ -366,11 +375,11 @@ namespace DataAccessLayer
             Modify mo = new Modify();
             try
             {
-                mo.Command("Insert into Class values( '" + cl.block_id + "','" + cl.nameClass + "','" + cl.schoolYear + "' )");
+                mo.Command("Insert into Class values( '" + cl.block_id + "','" + cl.nameClass + "','" + cl.schoolYear + "', NULL )");
             }
             catch (Exception ex)
             {
-                return "exist_class_name";
+                return ex.Message;
             }
             return "success";
         }
@@ -403,9 +412,9 @@ namespace DataAccessLayer
                 mo.Command(strSQL);
                 return "success";
             }
-            catch
+            catch(Exception e)
             {
-                return "fail";
+                return e.Message;
             }
         }
 
@@ -776,7 +785,8 @@ namespace DataAccessLayer
                 cmd.Parameters.Add("@student_id", SqlDbType.Int).Value = report.student_id;
                 cmd.Parameters.Add("@class_id", SqlDbType.Int).Value = report.class_id;
                 cmd.Parameters.Add("@semester", SqlDbType.NVarChar).Value= report.semester ;
-                return "success";
+                new Modify().Command(cmd);
+                return "success:";
             }
             catch (Exception e)
             { return e.Message; }
@@ -785,7 +795,10 @@ namespace DataAccessLayer
         {
             try
             {
-                new Modify().Command("Delete Report where report_id = '" + report.report_id + "'");
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "proc_deleteReportById";
+                cmd.Parameters.AddWithValue("@report_id", report.report_id);
+                new Modify().Command(cmd);
                 return "success";
             }
             catch (Exception e)
@@ -1054,7 +1067,7 @@ namespace DataAccessLayer
                 return ex.Message;
             }
         }
-        public static string SaoLuuDuLieu(string DuongDan)
+        public static string BackupDAO(string DuongDan)
         {
             try
             {
@@ -1063,19 +1076,16 @@ namespace DataAccessLayer
                DateTime.Now.Year.ToString() + "_" +
                DateTime.Now.Hour.ToString() + "_" +
                DateTime.Now.Minute.ToString() + ").bak";
-                string sql = "BACKUP DATABASE QLNV TO DISK = N'" + DuongDan + ten + "'";
+                string sql = "BACKUP DATABASE QLTieuHoc TO DISK = N'" + DuongDan + ten + "'";
                 new Modify().Command(sql);
-                return "sucess";
+                return "success";
             }catch(Exception ex)
             {
                 return ex.Message;
             }
-           
-            //conn = DataProvider.MoKetNoi();
-            //bool kq = DataProvider.TruyVanKhongLayDuLieu(sql, conn);
         }
 
-        public static string PhucHoiDuLieu(string DuongDan)
+        public static string RetoreDAO(string DuongDan)
         {
             try
             {
@@ -1084,16 +1094,13 @@ namespace DataAccessLayer
                 DateTime.Now.Year.ToString() + "_" +
                 DateTime.Now.Hour.ToString() + "_" +
                 DateTime.Now.Minute.ToString() + ").bak";
-                string sql = "RESTORE DATABASE QLNV FROM DISK = N'" + DuongDan + ten + "'";
+                string sql = "RESTORE DATABASE QLTieuHoc FROM DISK = N'" + DuongDan + ten + "'";
                 new Modify().Command(sql);
                 return "success";
             }catch(Exception e)
             {
                 return e.Message;
             }
-
-           // conn = DataProvider.MoKetNoi();
-           // bool kq = DataProvider.TruyVanKhongLayDuLieu(sql, conn);
         }
     }
 }

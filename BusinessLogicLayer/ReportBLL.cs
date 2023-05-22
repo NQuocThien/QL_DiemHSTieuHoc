@@ -91,9 +91,9 @@ namespace BusinessLogicLayer
             {
                 while (dt.Read())
                 {
-                    cp.selftSeviceAndManage = dt.GetString(1);
-                    cp.cooperate = dt.GetString(2);
-                    cp.selfStudyAndreslove = dt.GetString(3);
+                    cp.selftSeviceAndManage = dt.GetString(1) != null ? dt.GetString(1) :"" ;
+                    cp.cooperate = dt.GetString(2) != null ? dt.GetString(2) : "";
+                    cp.selfStudyAndreslove = dt.GetString(3) != null ? dt.GetString(3) : "";
                 }
                 return cp;
             }

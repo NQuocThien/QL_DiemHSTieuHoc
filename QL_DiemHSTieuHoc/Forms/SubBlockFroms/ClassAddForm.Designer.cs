@@ -180,6 +180,7 @@
             Controls.Add(panel1);
             Name = "ClassAddForm";
             Text = "ClassAddForm";
+            Load += ClassAddForm_Load;
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             panel1.ResumeLayout(false);

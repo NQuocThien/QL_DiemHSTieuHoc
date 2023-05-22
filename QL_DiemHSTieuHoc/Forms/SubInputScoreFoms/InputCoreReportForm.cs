@@ -37,6 +37,7 @@ namespace QL_DiemHSTieuHoc.Forms.SubInputScoreFoms
             lblClass.Text += cl.nameClass;
             lblSemester.Text += cl.semerter;
             btnDeleteResult.Enabled = false;
+            txtScore.Text = "";
             Load_gvSubject();
             Load_gvScoreImported();
             Load_CapacityAndQuality();
@@ -267,7 +268,8 @@ namespace QL_DiemHSTieuHoc.Forms.SubInputScoreFoms
                 result.subject_id = int.Parse(gvSuject.SelectedRows[0].Cells[0].Value.ToString());
                 result.lever = cbScore.Text;
                 result.report_id = rp.report_id;
-                result.scores = (float)Math.Round(float.Parse(txtScore.Text), 2);
+                
+                result.scores = txtScore.Text!= ""?(float)Math.Round(float.Parse(txtScore.Text), 2) : float.NaN;
                 //MessageBox.Show("" + result.scores);
                 string mess = srll.InsertSubjectResult(result);
                 MessageBox.Show("" + mess, "Thông Báo!!!");

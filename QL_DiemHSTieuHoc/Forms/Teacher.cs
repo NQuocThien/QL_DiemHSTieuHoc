@@ -142,26 +142,7 @@ namespace QL_DiemHSTieuHoc.Forms
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            TeacherObject teacher = new TeacherObject();
-            teacher.name_teacher = txtName.Text;
-            teacher.numberPhone = txtSdt.Text;
-            teacher.dateOfBirth = dateBirth.Text;
-            teacher.sex = cbSex.Text;
-            teacher.adress = txtAdress.Text;
-            switch (teacherBLL.CreateTeacher(teacher))
-            {
-                case "requeid_name":
-                    MessageBox.Show("Nhập Tên");
-                    return;
-                case "requeid_adress":
-                    MessageBox.Show("Nhập địa chỉ");
-                    return;
-                case "requeid_numberphone":
-                    MessageBox.Show("Nhập nhập số điện thoại");
-                    return;
-            }
-            MessageBox.Show("Đã thêm giáo viên");
-            Load_gvTeacher();
+            
         }
         private TeacherObject GetTeacherClicked()
         {
@@ -239,6 +220,12 @@ namespace QL_DiemHSTieuHoc.Forms
         private void btnBossOfClass_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnAddTeacher_Click(object sender, EventArgs e)
+        {
+            new TeacherAddFrom().ShowDialog();
+            Load_gvTeacher();
         }
     }
 }

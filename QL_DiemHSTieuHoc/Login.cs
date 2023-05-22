@@ -15,7 +15,7 @@ namespace QL_DiemHSTieuHoc
         {
             txtUserName.Clear();
             txtPass.Clear();
-            txtUserName.Focus();    
+            txtUserName.Focus();
         }
         private void btnLogin_Click(object sender, EventArgs e)
         {
@@ -43,11 +43,10 @@ namespace QL_DiemHSTieuHoc
                     return;
             }
             reset();
-            MessageBox.Show("Xin chúc mừng bạn đã đăng nhập thành công hệ thống với quyền");
+            MessageBox.Show(" bạn đã đăng nhập thành công");
             Main main = new Main(ac.UserName);
             main.Show();
             this.Hide();
-
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)

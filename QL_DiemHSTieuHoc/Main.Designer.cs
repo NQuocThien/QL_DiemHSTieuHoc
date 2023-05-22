@@ -31,6 +31,9 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             panelMenu = new Panel();
+            btnHuongDan = new Button();
+            btnRetore = new Button();
+            btnBackup = new Button();
             btnUser = new Button();
             iconButon = new ImageList(components);
             btnFamily = new Button();
@@ -46,14 +49,20 @@
             btnCloseChildForm = new Button();
             lblTitle = new Label();
             panelDesktopPane = new Panel();
+            pictureBox1 = new PictureBox();
             panelMenu.SuspendLayout();
             panelLogo.SuspendLayout();
             panelTitleBar.SuspendLayout();
+            panelDesktopPane.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // panelMenu
             // 
             panelMenu.BackColor = Color.FromArgb(51, 51, 76);
+            panelMenu.Controls.Add(btnHuongDan);
+            panelMenu.Controls.Add(btnRetore);
+            panelMenu.Controls.Add(btnBackup);
             panelMenu.Controls.Add(btnUser);
             panelMenu.Controls.Add(btnFamily);
             panelMenu.Controls.Add(btnClasss);
@@ -69,6 +78,60 @@
             panelMenu.Size = new Size(220, 581);
             panelMenu.TabIndex = 0;
             panelMenu.Paint += panelMenu_Paint;
+            // 
+            // btnHuongDan
+            // 
+            btnHuongDan.Dock = DockStyle.Bottom;
+            btnHuongDan.FlatAppearance.BorderSize = 0;
+            btnHuongDan.FlatStyle = FlatStyle.Flat;
+            btnHuongDan.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnHuongDan.ForeColor = SystemColors.Control;
+            btnHuongDan.ImageAlign = ContentAlignment.MiddleLeft;
+            btnHuongDan.ImageIndex = 1;
+            btnHuongDan.Location = new Point(0, 492);
+            btnHuongDan.Name = "btnHuongDan";
+            btnHuongDan.Padding = new Padding(5, 0, 0, 0);
+            btnHuongDan.Size = new Size(220, 31);
+            btnHuongDan.TabIndex = 10;
+            btnHuongDan.Text = "Hướng Dẫn";
+            btnHuongDan.UseVisualStyleBackColor = true;
+            btnHuongDan.Click += btnHuongDan_Click;
+            // 
+            // btnRetore
+            // 
+            btnRetore.Dock = DockStyle.Bottom;
+            btnRetore.FlatAppearance.BorderSize = 0;
+            btnRetore.FlatStyle = FlatStyle.Flat;
+            btnRetore.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnRetore.ForeColor = SystemColors.Control;
+            btnRetore.ImageAlign = ContentAlignment.MiddleLeft;
+            btnRetore.ImageIndex = 1;
+            btnRetore.Location = new Point(0, 523);
+            btnRetore.Name = "btnRetore";
+            btnRetore.Padding = new Padding(5, 0, 0, 0);
+            btnRetore.Size = new Size(220, 29);
+            btnRetore.TabIndex = 9;
+            btnRetore.Text = "Khôi Phục";
+            btnRetore.UseVisualStyleBackColor = true;
+            btnRetore.Click += btnRetore_Click;
+            // 
+            // btnBackup
+            // 
+            btnBackup.Dock = DockStyle.Bottom;
+            btnBackup.FlatAppearance.BorderSize = 0;
+            btnBackup.FlatStyle = FlatStyle.Flat;
+            btnBackup.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnBackup.ForeColor = SystemColors.Control;
+            btnBackup.ImageAlign = ContentAlignment.MiddleLeft;
+            btnBackup.ImageIndex = 1;
+            btnBackup.Location = new Point(0, 552);
+            btnBackup.Name = "btnBackup";
+            btnBackup.Padding = new Padding(5, 0, 0, 0);
+            btnBackup.Size = new Size(220, 29);
+            btnBackup.TabIndex = 8;
+            btnBackup.Text = "Sao Lưu";
+            btnBackup.UseVisualStyleBackColor = true;
+            btnBackup.Click += btnBackup_Click;
             // 
             // btnUser
             // 
@@ -213,7 +276,7 @@
             btnTeacher.Padding = new Padding(5, 0, 0, 0);
             btnTeacher.Size = new Size(220, 49);
             btnTeacher.TabIndex = 1;
-            btnTeacher.Text = "Giáo Viên";
+            btnTeacher.Text = "Giáo Viên Môn Học";
             btnTeacher.UseVisualStyleBackColor = true;
             btnTeacher.Click += btnTeacher_Click;
             // 
@@ -298,11 +361,22 @@
             // 
             // panelDesktopPane
             // 
+            panelDesktopPane.Controls.Add(pictureBox1);
             panelDesktopPane.Dock = DockStyle.Fill;
             panelDesktopPane.Location = new Point(220, 54);
             panelDesktopPane.Name = "panelDesktopPane";
             panelDesktopPane.Size = new Size(1065, 527);
             panelDesktopPane.TabIndex = 2;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Dock = DockStyle.Fill;
+            pictureBox1.Image = Properties.Resources.primary_school;
+            pictureBox1.Location = new Point(0, 0);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(1065, 527);
+            pictureBox1.TabIndex = 2;
+            pictureBox1.TabStop = false;
             // 
             // Main
             // 
@@ -313,12 +387,15 @@
             Controls.Add(panelTitleBar);
             Controls.Add(panelMenu);
             Name = "Main";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Main";
             Load += Main_Load;
             panelMenu.ResumeLayout(false);
             panelLogo.ResumeLayout(false);
             panelLogo.PerformLayout();
             panelTitleBar.ResumeLayout(false);
+            panelDesktopPane.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -340,5 +417,9 @@
         private Button btnCloseChildForm;
         private Label label1;
         private Button btnUser;
+        private PictureBox pictureBox1;
+        private Button btnBackup;
+        private Button btnRetore;
+        private Button btnHuongDan;
     }
 }

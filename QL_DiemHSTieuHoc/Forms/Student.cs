@@ -50,7 +50,13 @@ namespace QL_DiemHSTieuHoc.Forms
             Load_CurrentUser();
             // Load_gvParent();
         }
-
+        private void xoa()
+        {
+            txtAdress.Clear();
+            txtName.Clear();
+            txtSdt.Clear();
+            txtName.Focus();
+        }
         private void Load_gvParent()
         {
             StudentObject student = GetCurrentStudent();
@@ -161,6 +167,7 @@ namespace QL_DiemHSTieuHoc.Forms
             }
             MessageBox.Show("Đã Nhập!!!");
             Load_gvStudent(class_id);
+            xoa();
         }
         private StudentObject GetCurrentStudent()
         {

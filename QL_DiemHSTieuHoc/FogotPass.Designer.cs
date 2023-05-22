@@ -33,7 +33,7 @@
             btnCancel = new Button();
             panel2 = new Panel();
             txtEmail = new TextBox();
-            label1 = new Label();
+            lblTitle = new Label();
             panel1 = new Panel();
             pictureBox1 = new PictureBox();
             panel3.SuspendLayout();
@@ -79,7 +79,7 @@
             // 
             panel2.BackColor = SystemColors.GradientInactiveCaption;
             panel2.Controls.Add(txtEmail);
-            panel2.Controls.Add(label1);
+            panel2.Controls.Add(lblTitle);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 191);
             panel2.Name = "panel2";
@@ -89,20 +89,20 @@
             // txtEmail
             // 
             txtEmail.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtEmail.Location = new Point(88, 51);
+            txtEmail.Location = new Point(52, 51);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(229, 29);
+            txtEmail.Size = new Size(265, 29);
             txtEmail.TabIndex = 1;
             // 
-            // label1
+            // lblTitle
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(52, 27);
-            label1.Name = "label1";
-            label1.Size = new Size(131, 21);
-            label1.TabIndex = 0;
-            label1.Text = "Email đã đăng ký:";
+            lblTitle.AutoSize = true;
+            lblTitle.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblTitle.Location = new Point(52, 27);
+            lblTitle.Name = "lblTitle";
+            lblTitle.Size = new Size(131, 21);
+            lblTitle.TabIndex = 0;
+            lblTitle.Text = "Email đã đăng ký:";
             // 
             // panel1
             // 
@@ -148,7 +148,7 @@
         private Button btnCancel;
         private Panel panel2;
         private TextBox txtEmail;
-        private Label label1;
+        private Label lblTitle;
         private Panel panel1;
         private PictureBox pictureBox1;
     }

@@ -106,11 +106,11 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(87, 96);
+            label2.Location = new Point(55, 96);
             label2.Name = "label2";
-            label2.Size = new Size(78, 21);
+            label2.Size = new Size(110, 21);
             label2.TabIndex = 0;
-            label2.Text = "Mật khẩu:";
+            label2.Text = "Mật khẩu Mới:";
             // 
             // label1
             // 

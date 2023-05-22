@@ -199,6 +199,7 @@
             Controls.Add(panel2);
             Controls.Add(panel1);
             Name = "Register";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Register";
             panel2.ResumeLayout(false);
             panel2.PerformLayout();

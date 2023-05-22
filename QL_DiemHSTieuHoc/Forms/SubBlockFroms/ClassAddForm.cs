@@ -38,7 +38,8 @@ namespace QL_DiemHSTieuHoc.Forms.SubBlockFroms
             classs.block_id = int.Parse(cbBlockName.SelectedValue.ToString());
             classs.nameClass = txtName.Text;
             classs.schoolYear = txtSchoolYear.Text;
-            switch (bLL.CreateClass(classs))
+            string mess = bLL.CreateClass(classs);
+            switch (mess)
             {
                 case "requeid_nameclass":
                     MessageBox.Show("nhập tên lớp");
@@ -47,7 +48,7 @@ namespace QL_DiemHSTieuHoc.Forms.SubBlockFroms
                     MessageBox.Show("Nhập niên khóa");
                     return;
             }
-            MessageBox.Show("Đã Tạo Lớp " + classs.nameClass);
+            MessageBox.Show(mess);
             this.Close();
         }
 
@@ -59,6 +60,11 @@ namespace QL_DiemHSTieuHoc.Forms.SubBlockFroms
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void ClassAddForm_Load(object sender, EventArgs e)
+        {
+            cbBlockName.DropDownStyle = ComboBoxStyle.DropDownList;
         }
     }
 }

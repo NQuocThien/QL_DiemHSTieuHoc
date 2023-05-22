@@ -112,7 +112,7 @@
             btnExit.Location = new Point(24, 271);
             btnExit.Name = "btnExit";
             btnExit.Size = new Size(266, 47);
-            btnExit.TabIndex = 5;
+            btnExit.TabIndex = 3;
             btnExit.Text = "Thoát";
             btnExit.UseVisualStyleBackColor = false;
             btnExit.Click += btnExit_Click;
@@ -128,7 +128,7 @@
             btnLogin.Location = new Point(24, 214);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(266, 47);
-            btnLogin.TabIndex = 4;
+            btnLogin.TabIndex = 2;
             btnLogin.Text = "Đăng Nhập";
             btnLogin.UseVisualStyleBackColor = false;
             btnLogin.Click += btnLogin_Click;
@@ -151,7 +151,7 @@
             txtPass.Name = "txtPass";
             txtPass.PasswordChar = '*';
             txtPass.Size = new Size(266, 33);
-            txtPass.TabIndex = 3;
+            txtPass.TabIndex = 1;
             // 
             // txtUserName
             // 
@@ -161,7 +161,7 @@
             txtUserName.Location = new Point(24, 70);
             txtUserName.Name = "txtUserName";
             txtUserName.Size = new Size(266, 33);
-            txtUserName.TabIndex = 2;
+            txtUserName.TabIndex = 0;
             // 
             // label3
             // 
@@ -227,7 +227,7 @@
             lblFogotPass.Location = new Point(76, 0);
             lblFogotPass.Name = "lblFogotPass";
             lblFogotPass.Size = new Size(143, 50);
-            lblFogotPass.TabIndex = 0;
+            lblFogotPass.TabIndex = 4;
             lblFogotPass.Text = "Quên mật khẩu";
             lblFogotPass.TextAlign = ContentAlignment.MiddleLeft;
             lblFogotPass.Click += lblFogotPass_Click;
@@ -243,7 +243,7 @@
             lblCreateUserAccout.Location = new Point(432, 0);
             lblCreateUserAccout.Name = "lblCreateUserAccout";
             lblCreateUserAccout.Size = new Size(134, 50);
-            lblCreateUserAccout.TabIndex = 0;
+            lblCreateUserAccout.TabIndex = 5;
             lblCreateUserAccout.Text = "Tạo tài khoản";
             lblCreateUserAccout.TextAlign = ContentAlignment.MiddleLeft;
             lblCreateUserAccout.Click += lblCreateUserAccout_Click;
@@ -265,6 +265,7 @@
             Controls.Add(pnBody);
             Controls.Add(pnTop);
             Name = "Login";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Login";
             pnTop.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();

@@ -28,7 +28,7 @@ namespace QL_DiemHSTieuHoc.Forms.SubUserForms
         {
             user = userBLL.GetUser(userName);
             txtUserName.Text = user.UserName;
-            txtPass.Text = user.Pass;
+            //txtPass.Text = user.Pass;
             txtEmail.Text = user.Email;
             this.txtUserName.Enabled = false;
         }
@@ -58,7 +58,7 @@ namespace QL_DiemHSTieuHoc.Forms.SubUserForms
         }
         private void btnCancel_Click(object sender, EventArgs e)
         {
-      
+
             this.Close();
         }
     }

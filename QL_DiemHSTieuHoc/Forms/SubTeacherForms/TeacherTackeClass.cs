@@ -34,7 +34,6 @@ namespace QL_DiemHSTieuHoc.Forms.SubTeacherForms
             Load_Title();
             Load_gvClass();
             Load_gvClassAccess();
-            MessageBox.Show(teacher.name_teacher + "," + teacher.teacher_id);
         }
 
         private void Load_Title()

@@ -1,4 +1,5 @@
 ﻿//using QL_DiemHSTieuHoc.Forms;
+using BusinessLogicLayer;
 using QL_DiemHSTieuHoc.Forms;
 using QL_DiemHSTieuHoc.Forms.SubFroms;
 using System;
@@ -7,6 +8,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Resources;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -154,6 +156,51 @@ namespace QL_DiemHSTieuHoc
         private void btnScore_Click(object sender, EventArgs e)
         {
             OpenChildForm(new InputScore(currentUser), sender);
+        }
+
+        private void btnBackup_Click(object sender, EventArgs e)
+        {
+            DatabaseBLL dbll = new DatabaseBLL();
+            FolderBrowserDialog saoluu = new FolderBrowserDialog();
+            saoluu.Description = "Chọn thư mực lưu trự";
+            if (saoluu.ShowDialog() == DialogResult.OK)
+            {
+                string DuongDan = saoluu.SelectedPath;
+                string mess = dbll.Backup(DuongDan);
+                if (mess == "success")
+                {
+                    MessageBox.Show("Đã sao lưu dữ liệu vào " + DuongDan);
+                }
+                else
+                {
+                    MessageBox.Show("Thao tác không thành công: " + mess);
+                }
+            }
+        }
+
+        private void btnRetore_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog phuchoi = new OpenFileDialog();
+            DatabaseBLL dbll = new DatabaseBLL();
+            phuchoi.Filter = "*.bak|*.bak";
+            phuchoi.Title = "Chọn tập tin phục hồi(.bak)";
+            if (phuchoi.ShowDialog() == DialogResult.OK && phuchoi.CheckFileExists == true)
+            {
+                string DuongDan = phuchoi.FileName;
+                string mess = dbll.Retore(DuongDan);
+                if (mess == "success")
+                {
+                    MessageBox.Show("Thành Công");
+                }
+                else
+                {
+                    MessageBox.Show("Thất Bại: " + mess);
+                }
+            }
+        }
+        private void btnHuongDan_Click(object sender, EventArgs e)
+        {
+            Help.ShowHelp(this, "DA.chm");
         }
     }
 }

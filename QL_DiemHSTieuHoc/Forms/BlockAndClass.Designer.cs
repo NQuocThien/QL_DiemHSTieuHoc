@@ -36,6 +36,7 @@
             panel16 = new Panel();
             groupBox10 = new GroupBox();
             btnDeleteBlock = new Button();
+            imgIcon = new ImageList(components);
             btnUpdateBlock = new Button();
             btnAddBlock = new Button();
             panel17 = new Panel();
@@ -60,7 +61,6 @@
             gvClass = new DataGridView();
             panel14 = new Panel();
             label3 = new Label();
-            imgIcon = new ImageList(components);
             panel1.SuspendLayout();
             panel15.SuspendLayout();
             panel16.SuspendLayout();
@@ -148,6 +148,18 @@
             btnDeleteBlock.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnDeleteBlock.UseVisualStyleBackColor = false;
             btnDeleteBlock.Click += btnDeleteBlock_Click;
+            // 
+            // imgIcon
+            // 
+            imgIcon.ColorDepth = ColorDepth.Depth32Bit;
+            imgIcon.ImageStream = (ImageListStreamer)resources.GetObject("imgIcon.ImageStream");
+            imgIcon.TransparentColor = Color.Transparent;
+            imgIcon.Images.SetKeyName(0, "delete (1).png");
+            imgIcon.Images.SetKeyName(1, "delete.png");
+            imgIcon.Images.SetKeyName(2, "import.png");
+            imgIcon.Images.SetKeyName(3, "insert.png");
+            imgIcon.Images.SetKeyName(4, "refresh.png");
+            imgIcon.Images.SetKeyName(5, "update.png");
             // 
             // btnUpdateBlock
             // 
@@ -350,7 +362,7 @@
             btnDeleteClass.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnDeleteClass.ImageIndex = 0;
             btnDeleteClass.ImageList = imgIcon;
-            btnDeleteClass.Location = new Point(168, 14);
+            btnDeleteClass.Location = new Point(187, 17);
             btnDeleteClass.Name = "btnDeleteClass";
             btnDeleteClass.Size = new Size(94, 66);
             btnDeleteClass.TabIndex = 5;
@@ -365,7 +377,7 @@
             btnUdateClass.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnUdateClass.ImageIndex = 5;
             btnUdateClass.ImageList = imgIcon;
-            btnUdateClass.Location = new Point(86, 14);
+            btnUdateClass.Location = new Point(95, 17);
             btnUdateClass.Name = "btnUdateClass";
             btnUdateClass.Size = new Size(95, 66);
             btnUdateClass.TabIndex = 6;
@@ -447,18 +459,6 @@
             label3.TabIndex = 0;
             label3.Text = "Danh Sách Lớp Học";
             label3.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // imgIcon
-            // 
-            imgIcon.ColorDepth = ColorDepth.Depth32Bit;
-            imgIcon.ImageStream = (ImageListStreamer)resources.GetObject("imgIcon.ImageStream");
-            imgIcon.TransparentColor = Color.Transparent;
-            imgIcon.Images.SetKeyName(0, "delete (1).png");
-            imgIcon.Images.SetKeyName(1, "delete.png");
-            imgIcon.Images.SetKeyName(2, "import.png");
-            imgIcon.Images.SetKeyName(3, "insert.png");
-            imgIcon.Images.SetKeyName(4, "refresh.png");
-            imgIcon.Images.SetKeyName(5, "update.png");
             // 
             // BlockAndClass
             // 

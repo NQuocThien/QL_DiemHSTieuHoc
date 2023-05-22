@@ -66,7 +66,7 @@ namespace QL_DiemHSTieuHoc.Forms
 
             if (user != null)
             {
-                txtPass.Text = user.Pass;
+                //txtPass.Text = user.Pass;
                 txtEmail.Text = user.Email;
                 txtType.Text = l.law_name.ToString();
             }
@@ -187,7 +187,6 @@ namespace QL_DiemHSTieuHoc.Forms
             {
                 MessageBox.Show("Vui lòng chọn user cần sử");
             }
-
         }
 
         private void btnDelete_Click(object sender, EventArgs e)

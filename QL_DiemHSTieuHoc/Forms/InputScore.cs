@@ -227,6 +227,7 @@ namespace QL_DiemHSTieuHoc.Forms
                 MessageBox.Show("Chọn học kỳ");
                 return;
             }
+            MessageBox.Show(mess); 
             Load_gvReport();
         }
 

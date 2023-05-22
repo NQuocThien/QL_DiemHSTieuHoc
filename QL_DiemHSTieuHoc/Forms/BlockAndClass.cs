@@ -123,8 +123,8 @@ namespace QL_DiemHSTieuHoc.Forms
             gvClass.Columns[2].Width = n;
 
             gvClass.Columns[3].HeaderText = "Niên Khóa";
-            gvClass.Columns[3].Width = n;        
-            
+            gvClass.Columns[3].Width = n;
+
             gvClass.Columns[5].HeaderText = "Mã Chủ Nhiệm";
             gvClass.Columns[5].Width = n;
 
@@ -188,15 +188,9 @@ namespace QL_DiemHSTieuHoc.Forms
         {
             if (MessageBox.Show("Xóa Lơp: " + clClick.nameClass, "Thông Báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
-                switch (blockBll.DeleteClass(clClick))
-                {
-                    case "success":
-                        MessageBox.Show("Đã xóa");
-                        break;
-                    case "fail":
-                        MessageBox.Show("không xóa đưzơc");
-                        break;
-                }
+                string mess = blockBll.DeleteClass(clClick);
+
+                MessageBox.Show(mess);
                 Load_gvClass();
             }
         }
@@ -209,10 +203,11 @@ namespace QL_DiemHSTieuHoc.Forms
             clClick.schoolYear = gr.Cells[3].Value.ToString();
             clClick.class_id = int.Parse(gr.Cells[0].Value.ToString());
             string teacher_id = gr.Cells[5].Value.ToString();
-            if(teacher_id != "")
+            if (teacher_id != "")
             {
                 clClick.teacher_id = int.Parse(teacher_id);
-            }else 
+            }
+            else
                 clClick.teacher_id = 0;
 
         }

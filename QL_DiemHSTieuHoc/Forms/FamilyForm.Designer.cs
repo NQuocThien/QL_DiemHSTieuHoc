@@ -203,7 +203,7 @@
             // btnDelete
             // 
             btnDelete.Font = new Font("Verdana", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            btnDelete.Location = new Point(531, 17);
+            btnDelete.Location = new Point(541, 17);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(251, 42);
             btnDelete.TabIndex = 0;
@@ -214,7 +214,7 @@
             // btnAdd
             // 
             btnAdd.Font = new Font("Verdana", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            btnAdd.Location = new Point(-17, 17);
+            btnAdd.Location = new Point(12, 17);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(251, 42);
             btnAdd.TabIndex = 0;
@@ -225,7 +225,7 @@
             // btnUpdate
             // 
             btnUpdate.Font = new Font("Verdana", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            btnUpdate.Location = new Point(257, 17);
+            btnUpdate.Location = new Point(274, 17);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(251, 42);
             btnUpdate.TabIndex = 0;

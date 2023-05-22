@@ -120,6 +120,7 @@ namespace QL_DiemHSTieuHoc.Forms.SubFroms
         }
         private void gvParent_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            GetCurrentFamily();
             Load_Control();
         }
 
@@ -174,7 +175,6 @@ namespace QL_DiemHSTieuHoc.Forms.SubFroms
         private void btnStudent_Click(object sender, EventArgs e)
         {
             GetCurrentFamily();
-            MessageBox.Show("" + currentfamily.family_id);
             new FamilyAndStudent(currentfamily).ShowDialog();
         }
 

@@ -12,21 +12,20 @@ namespace DataAccessLayer
     {
         public string CheckLogic(UserAccount taikhoan)
         {
-            string claw = CheackAccessAcountDAO(taikhoan);
+            string claw = CheckLogicDTO (taikhoan);
             if(claw == "susccess") {
-                string info = CheckLogicDTO(taikhoan);
+                string info = CheackAccessAcountDAO(taikhoan);
                 return info;
             }
             else
             {
-                return "user_not_accepted";
+                return claw;
             }
         }
         
         public string CheckEmail(string  email)
         {
-            string pass = CheckEmailDAO(email);
-            return pass;
+            return CheckEmailDAO(email);            
         }
         public string CreateAccout(UserAccount user)
         {
@@ -62,6 +61,9 @@ namespace DataAccessLayer
         {
             return DeleteUserDAO(userName);
         }
-
+        public string UpdateUserByEmail(UserAccount us)
+        {
+            return UpdateUserByEmailDAO(us);
+        }
     }   
 }

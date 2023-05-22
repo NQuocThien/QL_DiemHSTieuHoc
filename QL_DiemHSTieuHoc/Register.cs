@@ -48,10 +48,9 @@ namespace QL_DiemHSTieuHoc
                     MessageBox.Show("Tài khoản hoặc Email đã tồn tại");
                     return;
             }
-            if (MessageBox.Show("Tạo Tài khoản thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
-            {
+            MessageBox.Show(test);
+            if (test == "success")
                 this.Close();
-            }
         }
 
         private void panel3_Paint(object sender, PaintEventArgs e)

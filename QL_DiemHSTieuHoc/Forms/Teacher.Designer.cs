@@ -58,6 +58,7 @@
             groupBox1 = new GroupBox();
             btnSearch = new Button();
             txtSearch = new TextBox();
+            btnAddTeacher = new Button();
             gvClassAccess.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)gvTeacher).BeginInit();
             groupBox5.SuspendLayout();
@@ -106,6 +107,7 @@
             // 
             // groupBox5
             // 
+            groupBox5.Controls.Add(btnAddTeacher);
             groupBox5.Controls.Add(btnAbout);
             groupBox5.Controls.Add(btnTakeSubject);
             groupBox5.Controls.Add(bttnTakeClass);
@@ -120,9 +122,9 @@
             // btnAbout
             // 
             btnAbout.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnAbout.Location = new Point(36, 147);
+            btnAbout.Location = new Point(151, 134);
             btnAbout.Name = "btnAbout";
-            btnAbout.Size = new Size(222, 43);
+            btnAbout.Size = new Size(107, 43);
             btnAbout.TabIndex = 0;
             btnAbout.Text = "Chi Tiết";
             btnAbout.UseVisualStyleBackColor = true;
@@ -131,7 +133,7 @@
             // btnTakeSubject
             // 
             btnTakeSubject.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnTakeSubject.Location = new Point(36, 85);
+            btnTakeSubject.Location = new Point(36, 69);
             btnTakeSubject.Name = "btnTakeSubject";
             btnTakeSubject.Size = new Size(222, 43);
             btnTakeSubject.TabIndex = 0;
@@ -404,6 +406,17 @@
             txtSearch.Size = new Size(169, 27);
             txtSearch.TabIndex = 4;
             // 
+            // btnAddTeacher
+            // 
+            btnAddTeacher.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnAddTeacher.Location = new Point(36, 134);
+            btnAddTeacher.Name = "btnAddTeacher";
+            btnAddTeacher.Size = new Size(98, 43);
+            btnAddTeacher.TabIndex = 0;
+            btnAddTeacher.Text = "Thêm";
+            btnAddTeacher.UseVisualStyleBackColor = true;
+            btnAddTeacher.Click += btnAddTeacher_Click;
+            // 
             // Teacher
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -485,5 +498,6 @@
         private GroupBox groupBox7;
         private DataGridView gv_ListSubject;
         private Button btnUpdate;
+        private Button btnAddTeacher;
     }
 }

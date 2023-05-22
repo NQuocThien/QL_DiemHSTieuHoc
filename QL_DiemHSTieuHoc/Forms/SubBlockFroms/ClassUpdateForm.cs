@@ -49,7 +49,13 @@ namespace QL_DiemHSTieuHoc.Forms.SubBlockFroms
             cl.nameClass = txtName.Text;
             cl.schoolYear = txtSchoolYear.Text;
             cl.block_id = int.Parse(cbBlockName.SelectedValue.ToString());
-            cl.teacher_id = int.Parse(cbTeacherBoss.SelectedValue.ToString());
+            try
+            {
+                cl.teacher_id = int.Parse(cbTeacherBoss.SelectedValue.ToString());
+            }
+            catch
+            {
+            }
             switch (bll.UpdateClass(cl))
             {
                 case "requeid_blockname":
