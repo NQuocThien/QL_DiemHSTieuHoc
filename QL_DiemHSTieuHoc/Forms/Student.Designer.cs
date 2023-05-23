@@ -51,16 +51,12 @@
             panel8 = new Panel();
             panel7 = new Panel();
             groupBox5 = new GroupBox();
-            btn = new Button();
             btnAdd = new Button();
+            btnAbout = new Button();
             panel4 = new Panel();
             groupBox2 = new GroupBox();
             gvParent = new DataGridView();
             panel2 = new Panel();
-            panel10 = new Panel();
-            groupBox6 = new GroupBox();
-            btnReport = new Button();
-            btnAbout = new Button();
             panel9 = new Panel();
             groupBox4 = new GroupBox();
             gvStudent = new DataGridView();
@@ -77,8 +73,6 @@
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)gvParent).BeginInit();
             panel2.SuspendLayout();
-            panel10.SuspendLayout();
-            groupBox6.SuspendLayout();
             panel9.SuspendLayout();
             groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)gvStudent).BeginInit();
@@ -309,8 +303,8 @@
             // 
             // groupBox5
             // 
-            groupBox5.Controls.Add(btn);
             groupBox5.Controls.Add(btnAdd);
+            groupBox5.Controls.Add(btnAbout);
             groupBox5.Dock = DockStyle.Fill;
             groupBox5.Location = new Point(0, 0);
             groupBox5.Name = "groupBox5";
@@ -319,27 +313,27 @@
             groupBox5.TabStop = false;
             groupBox5.Text = "Chức Năng";
             // 
-            // btn
-            // 
-            btn.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btn.Location = new Point(14, 113);
-            btn.Name = "btn";
-            btn.Size = new Size(222, 52);
-            btn.TabIndex = 0;
-            btn.Text = "Thông Tin Phụ Huynh";
-            btn.UseVisualStyleBackColor = true;
-            btn.Click += btnAdd_Click;
-            // 
             // btnAdd
             // 
             btnAdd.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnAdd.Location = new Point(14, 36);
+            btnAdd.Location = new Point(23, 46);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(222, 52);
             btnAdd.TabIndex = 0;
             btnAdd.Text = "Thêm Học Sinh Vào Lớp";
             btnAdd.UseVisualStyleBackColor = true;
             btnAdd.Click += btnAdd_Click;
+            // 
+            // btnAbout
+            // 
+            btnAbout.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnAbout.Location = new Point(23, 124);
+            btnAbout.Name = "btnAbout";
+            btnAbout.Size = new Size(218, 38);
+            btnAbout.TabIndex = 0;
+            btnAbout.Text = "Chi Tiết";
+            btnAbout.UseVisualStyleBackColor = true;
+            btnAbout.Click += btnAbout_Click;
             // 
             // panel4
             // 
@@ -375,7 +369,6 @@
             // 
             // panel2
             // 
-            panel2.Controls.Add(panel10);
             panel2.Controls.Add(panel9);
             panel2.Dock = DockStyle.Left;
             panel2.Location = new Point(572, 0);
@@ -383,55 +376,13 @@
             panel2.Size = new Size(476, 515);
             panel2.TabIndex = 4;
             // 
-            // panel10
-            // 
-            panel10.Controls.Add(groupBox6);
-            panel10.Dock = DockStyle.Top;
-            panel10.Location = new Point(0, 449);
-            panel10.Name = "panel10";
-            panel10.Size = new Size(476, 66);
-            panel10.TabIndex = 1;
-            // 
-            // groupBox6
-            // 
-            groupBox6.Controls.Add(btnReport);
-            groupBox6.Controls.Add(btnAbout);
-            groupBox6.Dock = DockStyle.Fill;
-            groupBox6.Location = new Point(0, 0);
-            groupBox6.Name = "groupBox6";
-            groupBox6.Size = new Size(476, 66);
-            groupBox6.TabIndex = 1;
-            groupBox6.TabStop = false;
-            groupBox6.Text = "Chi Tiết";
-            // 
-            // btnReport
-            // 
-            btnReport.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnReport.Location = new Point(266, 22);
-            btnReport.Name = "btnReport";
-            btnReport.Size = new Size(199, 38);
-            btnReport.TabIndex = 0;
-            btnReport.Text = "button1";
-            btnReport.UseVisualStyleBackColor = true;
-            // 
-            // btnAbout
-            // 
-            btnAbout.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnAbout.Location = new Point(24, 22);
-            btnAbout.Name = "btnAbout";
-            btnAbout.Size = new Size(218, 38);
-            btnAbout.TabIndex = 0;
-            btnAbout.Text = "Chi Tiết";
-            btnAbout.UseVisualStyleBackColor = true;
-            btnAbout.Click += btnAbout_Click;
-            // 
             // panel9
             // 
             panel9.Controls.Add(groupBox4);
             panel9.Dock = DockStyle.Top;
             panel9.Location = new Point(0, 0);
             panel9.Name = "panel9";
-            panel9.Size = new Size(476, 449);
+            panel9.Size = new Size(476, 515);
             panel9.TabIndex = 0;
             // 
             // groupBox4
@@ -440,7 +391,7 @@
             groupBox4.Dock = DockStyle.Fill;
             groupBox4.Location = new Point(0, 0);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(476, 449);
+            groupBox4.Size = new Size(476, 515);
             groupBox4.TabIndex = 0;
             groupBox4.TabStop = false;
             groupBox4.Text = "Thông tin học sinh:";
@@ -454,7 +405,7 @@
             gvStudent.Location = new Point(3, 19);
             gvStudent.Name = "gvStudent";
             gvStudent.RowTemplate.Height = 25;
-            gvStudent.Size = new Size(470, 427);
+            gvStudent.Size = new Size(470, 493);
             gvStudent.TabIndex = 1;
             gvStudent.CellClick += gvStudent_CellClick;
             // 
@@ -484,8 +435,6 @@
             groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)gvParent).EndInit();
             panel2.ResumeLayout(false);
-            panel10.ResumeLayout(false);
-            groupBox6.ResumeLayout(false);
             panel9.ResumeLayout(false);
             groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)gvStudent).EndInit();
@@ -521,18 +470,14 @@
         private GroupBox groupBox2;
         private Button button2;
         private Button btnAdd;
-        private Panel panel10;
         private Button btnAbout;
         private Panel panel9;
         private DataGridView dataGridView1;
-        private Button btnReport;
         private ComboBox cbSex;
         private DateTimePicker dateBirth;
         private GroupBox groupBox5;
         private GroupBox groupBox4;
-        private GroupBox groupBox6;
         private DataGridView gvStudent;
-        private Button btn;
         private DataGridView gvParent;
     }
 }

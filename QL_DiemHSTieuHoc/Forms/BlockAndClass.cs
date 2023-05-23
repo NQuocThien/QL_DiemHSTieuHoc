@@ -34,15 +34,9 @@ namespace QL_DiemHSTieuHoc.Forms
             user = userBll.GetUser(currentUser);
             Law l = userBll.GetLaw(currentUser);
 
-            if (l.law_name == "admin" || l.law_name == "manager")
+            if (l.law_name == "admin")
             {
                 UnLock_Control();
-            }
-            if (l.law_name == "teacher")
-            {
-                this.btnAddClass.Enabled = true;
-                this.btnDeleteClass.Enabled = true;
-                this.btnUdateClass.Enabled = true;
             }
         }
         private void BlockAndClass_Load(object sender, EventArgs e)

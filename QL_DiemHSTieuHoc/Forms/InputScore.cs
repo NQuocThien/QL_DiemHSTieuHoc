@@ -168,7 +168,7 @@ namespace QL_DiemHSTieuHoc.Forms
             DataTable dt = reportBLL.GetReportOfStudent(student_id);
             if (dt == null)
             {
-                MessageBox.Show("ko có: st "+ student_id +", "+class_id);
+                MessageBox.Show("ko có: st " + student_id + ", " + class_id);
                 return;
             }
             gvReport.DataSource = dt;
@@ -227,7 +227,7 @@ namespace QL_DiemHSTieuHoc.Forms
                 MessageBox.Show("Chọn học kỳ");
                 return;
             }
-            MessageBox.Show(mess); 
+            MessageBox.Show(mess);
             Load_gvReport();
         }
 

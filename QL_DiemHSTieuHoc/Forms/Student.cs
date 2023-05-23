@@ -32,7 +32,7 @@ namespace QL_DiemHSTieuHoc.Forms
         {
             user = userBll.GetUser(currentUser);
             Law l = userBll.GetLaw(currentUser);
-            if (l.law_name == "admin" || l.law_name == "manager")
+            if (l.law_name == "admin" || l.law_name == "teacher")
             {
                 Load_ControlUnLock();
             }
@@ -48,7 +48,6 @@ namespace QL_DiemHSTieuHoc.Forms
             Load_cbClass();
             Load_Control();
             Load_CurrentUser();
-            // Load_gvParent();
         }
         private void xoa()
         {
@@ -86,7 +85,6 @@ namespace QL_DiemHSTieuHoc.Forms
         private void Load_Control()
         {
             this.btnAbout.Enabled = false;
-            this.btnReport.Enabled = false;
             this.btnSearch.Enabled = false;
             this.btnAdd.Enabled = false;
             this.cbSex.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -94,7 +92,6 @@ namespace QL_DiemHSTieuHoc.Forms
         private void Load_ControlUnLock()
         {
             this.btnAbout.Enabled = true;
-            this.btnReport.Enabled = true;
             this.btnSearch.Enabled = true;
             this.btnAdd.Enabled = true;
         }
@@ -202,6 +199,11 @@ namespace QL_DiemHSTieuHoc.Forms
         private void gvStudent_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             Load_gvParent();
+        }
+
+        private void btnReport_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

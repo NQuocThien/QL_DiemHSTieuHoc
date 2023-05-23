@@ -28,8 +28,6 @@ namespace QL_DiemHSTieuHoc
             InitializeComponent();
             random = new Random();
             btnCloseChildForm.Visible = false;
-            //this.Text = string.Empty;
-            //this.ControlBox = false;
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
             this.currentUser = currentUser;
         }

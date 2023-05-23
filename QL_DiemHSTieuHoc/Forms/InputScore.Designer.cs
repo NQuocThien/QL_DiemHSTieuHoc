@@ -49,8 +49,6 @@
             btnImportReportSubject = new Button();
             panel1 = new Panel();
             panel2 = new Panel();
-            btnCapacityAndQuality = new Button();
-            btnComment = new Button();
             panel3.SuspendLayout();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -266,9 +264,9 @@
             // btnImportReportSubject
             // 
             btnImportReportSubject.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnImportReportSubject.Location = new Point(37, 26);
+            btnImportReportSubject.Location = new Point(361, 26);
             btnImportReportSubject.Name = "btnImportReportSubject";
-            btnImportReportSubject.Size = new Size(196, 43);
+            btnImportReportSubject.Size = new Size(391, 43);
             btnImportReportSubject.TabIndex = 0;
             btnImportReportSubject.Text = "Đánh Giá Môn Học";
             btnImportReportSubject.UseVisualStyleBackColor = true;
@@ -287,36 +285,12 @@
             // 
             // panel2
             // 
-            panel2.Controls.Add(btnComment);
-            panel2.Controls.Add(btnCapacityAndQuality);
             panel2.Controls.Add(btnImportReportSubject);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 434);
             panel2.Name = "panel2";
             panel2.Size = new Size(1051, 89);
             panel2.TabIndex = 1;
-            // 
-            // btnCapacityAndQuality
-            // 
-            btnCapacityAndQuality.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnCapacityAndQuality.Location = new Point(386, 26);
-            btnCapacityAndQuality.Name = "btnCapacityAndQuality";
-            btnCapacityAndQuality.Size = new Size(265, 43);
-            btnCapacityAndQuality.TabIndex = 0;
-            btnCapacityAndQuality.Text = "Đánh Giá Năng Lực Phẩm Chất";
-            btnCapacityAndQuality.UseVisualStyleBackColor = true;
-            btnCapacityAndQuality.Click += btnCapacityAndQuality_Click;
-            // 
-            // btnComment
-            // 
-            btnComment.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnComment.Location = new Point(804, 26);
-            btnComment.Name = "btnComment";
-            btnComment.Size = new Size(196, 43);
-            btnComment.TabIndex = 0;
-            btnComment.Text = "Nhận Xét";
-            btnComment.UseVisualStyleBackColor = true;
-            btnComment.Click += btnComment_Click;
             // 
             // InputScore
             // 
@@ -325,7 +299,7 @@
             ClientSize = new Size(1049, 515);
             Controls.Add(panel1);
             Name = "InputScore";
-            Text = "InputScore";
+            Text = "Nhập Điểm";
             Load += InputScore_Load;
             panel3.ResumeLayout(false);
             groupBox1.ResumeLayout(false);
@@ -366,7 +340,5 @@
         private Button btnCreateReport;
         private ComboBox cbSemester;
         private Button btnDelete;
-        private Button btnComment;
-        private Button btnCapacityAndQuality;
     }
 }

@@ -51,8 +51,6 @@ namespace QL_DiemHSTieuHoc.Forms.SubInputScoreFoms
             {
                 CapacityObject cp = reportBLL.GetCapacityObject(rp.report_id);
                 QualityObject ql = reportBLL.GetQualityObject(rp.report_id);
-                //MessageBox.Show(cp.selftSeviceAndManage+ " " +cp.cooperate + cp.selfStudyAndreslove);
-                //MessageBox.Show(ql.hardWorking+ " " +ql.confidenceAndResponsibility + ql.honestAndDiscipline + ql.unite);
                 load_capcity(cp);
                 load_quality(ql);
                 Load_cmt();
@@ -150,7 +148,6 @@ namespace QL_DiemHSTieuHoc.Forms.SubInputScoreFoms
             else
                          if (rdbHardWork3.Checked == true)
                 ql.hardWorking = "CCG";
-
             //---------------------------------------------
             if (rdbReponsibilty1.Checked == true)
                 ql.confidenceAndResponsibility = "Tốt";
@@ -181,7 +178,6 @@ namespace QL_DiemHSTieuHoc.Forms.SubInputScoreFoms
                 ql.unite = "CCG";
             return ql;
         }
-
         private CapacityObject read_capacity()
         {
             CapacityObject ql = new CapacityObject();
@@ -216,7 +212,6 @@ namespace QL_DiemHSTieuHoc.Forms.SubInputScoreFoms
                 ql.selftSeviceAndManage = "CCG";
             //------------------------------------
             return ql;
-
         }
         private void Load_gvSubject()
         {

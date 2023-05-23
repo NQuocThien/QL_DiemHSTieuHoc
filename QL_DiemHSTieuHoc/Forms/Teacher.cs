@@ -30,9 +30,14 @@ namespace QL_DiemHSTieuHoc.Forms
         {
             currentUser = userBll.GetUser(currentUserName);
             Law l = userBll.GetLaw(currentUserName);
-            if (l.law_name == "admin" || l.law_name == "manager")
+            if (l.law_name == "admin")
             {
                 Load_ControlUnLock();
+            }
+            else 
+                if(l.law_name =="teacher")
+            {
+
             }
 
 
@@ -43,10 +48,16 @@ namespace QL_DiemHSTieuHoc.Forms
             this.btnSearch.Enabled = true;
             this.btnTakeSubject.Enabled = true;
             this.bttnTakeClass.Enabled = true;
+            this.btnAddSubject.Enabled = true;
+            this.btnUpdate.Enabled = true;
+            this.btnDeleteSubject.Enabled = true;
+            btnAddTeacher.Enabled = true;
+            btnAbout.Enabled = true;
         }
 
         private void Teacher_Load(object sender, EventArgs e)
         {
+           
             Load_lockControl();
             Load_CurrentUser();
             Load_gvTeacher();
@@ -99,6 +110,11 @@ namespace QL_DiemHSTieuHoc.Forms
             this.btnSearch.Enabled = false;
             this.btnTakeSubject.Enabled = false;
             this.bttnTakeClass.Enabled = false;
+            this.btnAddSubject.Enabled = false;
+            btnUpdate.Enabled = false;
+            btnDeleteSubject.Enabled = false;
+            btnAddTeacher.Enabled = false;
+            btnAbout.Enabled = false;
         }
 
         private void gvTeacher_CellClick(object sender, DataGridViewCellEventArgs e)

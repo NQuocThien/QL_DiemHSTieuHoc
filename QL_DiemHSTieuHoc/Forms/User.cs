@@ -76,6 +76,7 @@ namespace QL_DiemHSTieuHoc.Forms
                 this.btnAdd.Enabled = true;
                 this.btnDelete.Enabled = true;
                 this.btnUpdate.Enabled = true;
+                btnLaw.Enabled = true;
             }
         }
 
@@ -86,6 +87,7 @@ namespace QL_DiemHSTieuHoc.Forms
             this.txtEmail.Enabled = false;
             this.txtType.Enabled = false;
             this.cbLaw.Enabled = false;
+            btnLaw.Enabled = false;
             this.cbLaw.DropDownStyle = ComboBoxStyle.DropDownList;
             Load_adminConTrol();
         }
